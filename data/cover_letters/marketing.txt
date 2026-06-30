@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Tengo [X] años de experiencia en marketing digital con foco en [TUS ESPECIALIDADES: SEO/SEM/contenido/performance/branding], y me interesa este rol porque [MOTIVO: producto, audiencia, escala, cultura].
+
+Entre mis experiencias más relevantes, [LOGRO CON MÉTRICA, ej: "gestioné campañas de Google Ads con presupuesto de $XX/mes logrando un ROAS de X"] y [OTRO LOGRO, ej: "crecí la audiencia orgánica de un blog B2B de 10k a 80k visitas mensuales en 12 meses"]. Trabajo orientado/a a resultados, con foco en datos pero sin perder el eje creativo.
+
+{company} me resulta atractiva porque [ALGO CONCRETO: posicionamiento de marca, estrategia de contenido, etapa de crecimiento]. Creo que puedo aportar tanto en la ejecución como en la estrategia.
+
+Adjunto mi CV y quedo disponible para conversar.
+
+Saludos cordiales,

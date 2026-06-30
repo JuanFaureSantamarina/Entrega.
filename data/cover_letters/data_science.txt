@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Soy data scientist con [X] años de experiencia en [ÁREA: ML/analytics/NLP/computer vision], con manejo de [STACK: Python, SQL, TensorFlow/PyTorch, etc.].
+
+Entre mis trabajos más relevantes, [LOGRO CONCRETO, ej: "desarrollé un modelo de churn prediction que redujo la tasa de abandono un 18% en el primer trimestre de implementación"] y [OTRO LOGRO, ej: "construí un pipeline de MLOps end-to-end que llevó el tiempo de deployment de semanas a horas"]. Me destaco por traducir resultados técnicos en decisiones de negocio concretas.
+
+{company} me resulta especialmente interesante por [MOTIVO: volumen de datos, problema técnico, impacto en el negocio, cultura data-driven]. Creo que puedo aportar tanto en el desarrollo de modelos como en su implementación productiva.
+
+Adjunto mi CV y quedo disponible para una entrevista técnica o conversación exploratoria.
+
+Saludos,

@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Soy profesional de Recursos Humanos con [X] años de experiencia en [ÁREA: selección/desarrollo organizacional/HRBP/compensaciones], y me interesa este rol por [MOTIVO: cultura, etapa de la empresa, desafío].
+
+En mis experiencias anteriores [LOGRO CONCRETO, ej: "rediseñé el proceso de onboarding reduciendo el tiempo de integración de 60 a 30 días y mejorando la retención a 90 días un 25%"] y [OTRO LOGRO, ej: "lideré un proceso de selección masivo incorporando 40 personas en 3 meses para expansión regional"]. Combino la mirada estratégica del negocio con la gestión concreta del día a día.
+
+Me atrae {company} porque [ALGO ESPECÍFICO: cultura que quieren construir, etapa de crecimiento, diversidad, valores].
+
+Quedo a disposición para conversar. Adjunto mi CV.
+
+Saludos cordiales,

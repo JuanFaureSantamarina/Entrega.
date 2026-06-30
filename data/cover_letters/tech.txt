@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Soy desarrollador/a con [X] años de experiencia en [TUS STACKS PRINCIPALES], y me interesa especialmente este rol por [MOTIVO ESPECÍFICO: tecnología, producto, escala, cultura de ingeniería].
+
+En mis experiencias anteriores [LOGRO TÉCNICO CONCRETO, ej: "rediseñé el pipeline de datos reduciendo latencia un 40%"] y [OTRO LOGRO, ej: "lideré la migración de monolito a microservicios para un sistema con 50k usuarios activos"]. Trabajo cómodo/a con metodologías ágiles y me adapto rápido a nuevas tecnologías y codebases.
+
+Lo que más me atrae de {company} es [ALGO ESPECÍFICO: stack, open source, producto, impacto técnico]. Creo que puedo sumar desde el día uno y seguir creciendo con el equipo.
+
+Adjunto mi CV y quedo disponible para una charla técnica o entrevista cuando les sea útil.
+
+Saludos,

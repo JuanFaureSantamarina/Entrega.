@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Soy profesional de finanzas con [X] años de experiencia en [ÁREA: controlling/análisis financiero/auditoría/tesorería], y considero que mi perfil encaja con lo que buscan para este rol.
+
+En mis posiciones anteriores [LOGRO CONCRETO, ej: "implementé un modelo de forecasting que redujo la variación presupuestaria al 3%"] y [OTRO LOGRO, ej: "lideré el proceso de cierre mensual para una empresa con operaciones en 3 países, cumpliendo plazos al 100%"]. Tengo sólido manejo de [HERRAMIENTAS: Excel avanzado, SAP, Power BI] y experiencia con [NORMATIVA: NIIF/GAAP si aplica].
+
+Me atrae {company} por [MOTIVO: industria, escala de operaciones, cultura de rigor analítico, proceso de transformación financiera].
+
+Quedo a disposición para una entrevista. Adjunto mi CV para su evaluación.
+
+Atentamente,

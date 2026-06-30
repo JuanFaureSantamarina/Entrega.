@@ -1,0 +1,11 @@
+Estimado equipo de {company},
+
+Me dirijo a ustedes para postularme al puesto de {position}. Soy [TU PROFESIÓN] con [X] años de experiencia en [TU ÁREA], y considero que mi perfil se alinea muy bien con lo que buscan.
+
+A lo largo de mi trayectoria he [LOGRO O EXPERIENCIA RELEVANTE 1] y [LOGRO O EXPERIENCIA RELEVANTE 2]. Esto me permitió desarrollar habilidades sólidas en [HABILIDADES CLAVE], que creo son directamente aplicables a este rol.
+
+Me atrae especialmente la oportunidad en {company} porque [MOTIVO GENUINO: valores, producto, impacto, sector]. Estoy convencido/a de que puedo aportar valor desde el primer día y seguir creciendo junto al equipo.
+
+Quedo a disposición para una entrevista en el momento que les resulte conveniente. Adjunto mi CV con más detalles sobre mi experiencia.
+
+Saludos cordiales,

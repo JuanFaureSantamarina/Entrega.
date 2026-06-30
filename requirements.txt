@@ -1,0 +1,11 @@
+# Dependencias del sistema (ya disponibles en el entorno)
+# PyYAML>=6.0
+# Jinja2>=3.1
+# requests>=2.28
+
+# Para PDF: se usa Chromium headless (incluido en el entorno)
+# Chromium: /opt/pw-browsers/chromium-*/chrome-linux/chrome
+
+# Para instalar en un entorno nuevo:
+# pip install pyyaml jinja2 requests
+# Y asegurate de tener Chromium o wkhtmltopdf instalado para PDFs

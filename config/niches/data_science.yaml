@@ -1,0 +1,33 @@
+name: "Data Science e IA"
+description: "Ciencia de datos, machine learning, inteligencia artificial, analytics"
+keywords:
+  - Python
+  - R
+  - machine learning
+  - deep learning
+  - TensorFlow
+  - PyTorch
+  - scikit-learn
+  - pandas
+  - numpy
+  - SQL
+  - Spark
+  - Hadoop
+  - Power BI
+  - Tableau
+  - estadística
+  - NLP
+  - computer vision
+  - MLOps
+  - data pipeline
+  - feature engineering
+
+skills_to_highlight:
+  - "Pensamiento analítico y estadístico avanzado"
+  - "Traducción de insights de datos en decisiones de negocio"
+  - "Experiencia con grandes volúmenes de datos"
+  - "Comunicación efectiva de resultados técnicos a audiencias no técnicas"
+
+tone: "analítico y orientado a insights"
+emphasis: "modelos implementados, impacto en el negocio, metodología científica"
+cv_length: "una a dos páginas"

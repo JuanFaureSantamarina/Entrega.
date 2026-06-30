@@ -1,0 +1,22 @@
+app:
+  name: "Job Application Automation"
+  version: "1.0.0"
+  output_dir: "output"
+  data_dir: "data"
+
+ai:
+  model: "claude-sonnet-4-6"
+  max_tokens: 4096
+
+pdf:
+  font: "Helvetica"
+  margin_mm: 20
+  primary_color: [30, 64, 175]    # Blue
+  text_color: [30, 30, 30]
+  accent_color: [107, 114, 128]
+
+email:
+  default_subject: "Postulación - {position} en {company}"
+  signature: |
+    Quedo a disposición para cualquier consulta.
+    Saludos cordiales,

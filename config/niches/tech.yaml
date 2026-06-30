@@ -1,0 +1,33 @@
+name: "Tecnología"
+description: "Software, desarrollo, DevOps, QA, datos"
+keywords:
+  - Python
+  - JavaScript
+  - TypeScript
+  - React
+  - Node.js
+  - Docker
+  - Kubernetes
+  - AWS
+  - Git
+  - API
+  - backend
+  - frontend
+  - fullstack
+  - DevOps
+  - machine learning
+  - data science
+  - SQL
+  - NoSQL
+  - cloud
+  - microservices
+
+skills_to_highlight:
+  - "Experiencia con metodologías ágiles (Scrum/Kanban)"
+  - "Capacidad de trabajo en equipo técnico"
+  - "Resolución de problemas complejos"
+  - "Aprendizaje continuo de nuevas tecnologías"
+
+tone: "técnico y preciso"
+emphasis: "logros cuantificables, stack tecnológico, proyectos"
+cv_length: "una página para roles junior, dos para senior"

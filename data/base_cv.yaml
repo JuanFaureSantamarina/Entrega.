@@ -1,0 +1,81 @@
+# ============================================================
+# TU CV BASE - Completá con tu información real
+# ============================================================
+
+personal:
+  name: "Tu Nombre Completo"
+  email: "tu@email.com"
+  phone: "+54 9 11 XXXX-XXXX"
+  location: "Buenos Aires, Argentina"
+  linkedin: "linkedin.com/in/tu-perfil"
+  github: "github.com/tu-usuario"           # opcional
+  portfolio: "tu-portfolio.com"             # opcional
+
+# Resumen profesional base (el AI lo adaptará por nicho/oferta)
+summary: |
+  Profesional con X años de experiencia en [tu área].
+  Especializado en [tus especialidades principales].
+  Busco aportar valor en equipos dinámicos y seguir creciendo profesionalmente.
+
+experience:
+  - company: "Empresa Ejemplo"
+    position: "Tu Cargo"
+    location: "Buenos Aires, AR"
+    start_date: "2022-03"
+    end_date: null                          # null = presente
+    description: "Descripción general del rol y responsabilidades principales."
+    achievements:
+      - "Logro 1 con impacto cuantificable (ej: reduje X en un 30%)"
+      - "Logro 2 que demuestra habilidades clave"
+      - "Logro 3 con resultado concreto"
+
+  - company: "Empresa Anterior"
+    position: "Cargo Anterior"
+    location: "Buenos Aires, AR"
+    start_date: "2020-01"
+    end_date: "2022-02"
+    description: "Descripción del rol anterior."
+    achievements:
+      - "Logro destacado de este rol"
+      - "Otro logro relevante"
+
+education:
+  - institution: "Universidad de Buenos Aires"
+    degree: "Licenciatura"
+    field: "Tu Carrera"
+    start_year: 2015
+    graduation_year: 2020
+    highlights: []                          # ej: ["Promedio 8.5", "Tesis con distinción"]
+
+  - institution: "Nombre del Curso/Bootcamp"
+    degree: "Certificación"
+    field: "Especialidad"
+    start_year: 2021
+    graduation_year: 2021
+    highlights: []
+
+skills:
+  technical:
+    - "Habilidad técnica 1"
+    - "Habilidad técnica 2"
+    - "Habilidad técnica 3"
+  soft:
+    - "Liderazgo"
+    - "Comunicación"
+    - "Trabajo en equipo"
+    - "Resolución de problemas"
+  languages:
+    - "Español (nativo)"
+    - "Inglés (nivel - ej: B2/C1)"
+
+certifications:
+  - name: "Nombre de la certificación"
+    issuer: "Entidad emisora"
+    year: 2023
+    url: ""                                 # opcional
+
+projects:
+  - name: "Nombre del proyecto"
+    description: "Breve descripción de qué hace el proyecto."
+    technologies: ["Tech1", "Tech2"]
+    url: "github.com/..."                   # opcional

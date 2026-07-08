@@ -1,0 +1,2 @@
+# Dependencias (sqlite3 viene con Python estándar)
+PyYAML>=6.0

@@ -1,8 +1,13 @@
 # Finanzas Personales
 
-App de línea de comandos para ordenarte financieramente: registrá ingresos y
-egresos, llevá un control de vencimientos (facturas, alquiler, tarjetas),
-definí presupuestos por categoría y mirá un dashboard con alertas.
+App para ordenarte financieramente: registrá ingresos y egresos, llevá un
+control de vencimientos (facturas, alquiler, tarjetas), definí presupuestos
+por categoría y mirá un dashboard con alertas.
+
+Tiene dos interfaces que comparten la misma base de datos:
+
+- **`main.py`** — línea de comandos (CLI)
+- **`webapp.py`** — interfaz web (para usar desde el navegador, ideal celular). No usa ninguna dependencia externa (solo librería estándar de Python), así que se puede hostear gratis en cualquier lado sin instalar nada más que Python.
 
 > Esta app es independiente del resto del repositorio (no comparte código,
 > dependencias ni base de datos con otros proyectos).
@@ -24,7 +29,36 @@ pip install -r requirements.txt
 python main.py init
 ```
 
-## Uso
+## Interfaz web (recomendada para celular / iPhone)
+
+```bash
+python webapp.py
+```
+
+Esto levanta un servidor en `http://localhost:8000` — abrí esa dirección en
+el navegador. Es responsive (se adapta bien a pantallas de celular).
+
+### Publicarla gratis para usarla desde el iPhone
+
+Como no tiene dependencias externas, se puede hostear gratis en cualquier
+servicio que corra Python, por ejemplo **[Render](https://render.com)** (plan free):
+
+1. Subí este repo a GitHub (público o privado, Render soporta ambos con login).
+2. En Render: `New` → `Web Service` → conectá el repo.
+3. **Root Directory**: `finanzas`
+4. **Build Command**: (dejar vacío, no hay dependencias que instalar)
+5. **Start Command**: `python webapp.py`
+6. Render define la variable `PORT` automáticamente — `webapp.py` ya la lee sola.
+7. Deploy. Te da una URL pública (`https://tu-app.onrender.com`) — esa la abrís desde Safari en el iPhone, la agregás a la pantalla de inicio (Compartir → "Agregar a inicio") y queda como un ícono más, sin instalar nada.
+
+**Importante:** en el plan free de Render la app se "duerme" tras un rato sin uso
+(tarda ~30 seg en volver a arrancar la primera vez que la abrís) y el disco
+no es persistente entre reinicios de la app, así que la base SQLite podría
+resetearse en algún redeploy. Para uso personal está bien; si querés que los
+datos nunca se pierdan, contame y vemos un disco persistente (también gratis
+hasta cierto tamaño) o pasar a una base de datos externa.
+
+## Uso (línea de comandos)
 
 ### Movimientos (ingresos/egresos)
 
@@ -91,6 +125,7 @@ editar o agregar nuevas directamente en ese archivo.
 ```
 finanzas/
 ├── main.py                  # CLI principal
+├── webapp.py                # Interfaz web (sin dependencias externas)
 ├── config/
 │   └── categories.yaml      # Categorías de ingreso/egreso
 ├── data/

@@ -7,7 +7,7 @@ por categoría y mirá un dashboard con alertas.
 Tiene dos interfaces que comparten la misma base de datos:
 
 - **`main.py`** — línea de comandos (CLI)
-- **`webapp.py`** — interfaz web (para usar desde el navegador, ideal celular). No usa ninguna dependencia externa (solo librería estándar de Python), así que se puede hostear gratis en cualquier lado sin instalar nada más que Python.
+- **`webapp.py`** — interfaz web (para usar desde el navegador, ideal celular). Solo depende de PyYAML (en `requirements.txt`), todo lo demás es librería estándar de Python.
 
 > Esta app es independiente del resto del repositorio (no comparte código,
 > dependencias ni base de datos con otros proyectos).
@@ -40,22 +40,26 @@ el navegador. Es responsive (se adapta bien a pantallas de celular).
 
 ### Publicarla gratis para usarla desde el iPhone
 
-Como no tiene dependencias externas, se puede hostear gratis en cualquier
-servicio que corra Python, por ejemplo **[Render](https://render.com)** (plan free):
+El repo incluye un `render.yaml` (Render Blueprint) con todo pre-configurado
+— rootDir, build command, start command y el puerto. Publicarla es un click:
 
-1. Subí este repo a GitHub (público o privado, Render soporta ambos con login).
-2. En Render: `New` → `Web Service` → conectá el repo.
-3. **Root Directory**: `finanzas`
-4. **Build Command**: (dejar vacío, no hay dependencias que instalar)
-5. **Start Command**: `python webapp.py`
-6. Render define la variable `PORT` automáticamente — `webapp.py` ya la lee sola.
-7. Deploy. Te da una URL pública (`https://tu-app.onrender.com`) — esa la abrís desde Safari en el iPhone, la agregás a la pantalla de inicio (Compartir → "Agregar a inicio") y queda como un ícono más, sin instalar nada.
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/JuanFaureSantamarina/Entrega./tree/claude/personal-finance-app-3gk1h6)
+
+1. Click en el botón de arriba (o entrá a ese link).
+2. Iniciá sesión / creá cuenta en Render con tu GitHub (esto lo tenés que hacer vos — ningún tercero puede loguearse en tu nombre).
+3. Render va a mostrar el plan detectado desde `render.yaml` (servicio `finanzas-personales`, plan Free). Click en **Apply**.
+4. Esperá ~1-2 minutos al primer deploy. Te va a quedar una URL pública tipo `https://finanzas-personales.onrender.com`.
+5. Abrí esa URL en Safari en el iPhone → botón Compartir → **"Agregar a inicio"**. Te queda como un ícono más, sin instalar nada de la App Store.
+
+Si preferís hacerlo a mano (sin el botón): `New` → `Web Service` → conectás el
+repo → Root Directory `finanzas` → Build Command `pip install -r requirements.txt`
+→ Start Command `python webapp.py`.
 
 **Importante:** en el plan free de Render la app se "duerme" tras un rato sin uso
 (tarda ~30 seg en volver a arrancar la primera vez que la abrís) y el disco
 no es persistente entre reinicios de la app, así que la base SQLite podría
 resetearse en algún redeploy. Para uso personal está bien; si querés que los
-datos nunca se pierdan, contame y vemos un disco persistente (también gratis
+datos nunca se pierdan, decime y vemos un disco persistente (también gratis
 hasta cierto tamaño) o pasar a una base de datos externa.
 
 ## Uso (línea de comandos)

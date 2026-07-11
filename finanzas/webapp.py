@@ -25,74 +25,116 @@ from src import transactions, bills, budgets, reports
 # ─── HTML helpers ──────────────────────────────────────────────────────────────
 
 STYLE = """
-  :root { color-scheme: light dark; }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, system-ui, sans-serif;
-    max-width: 640px; margin: 0 auto; padding: 12px 16px 60px;
-    background: #f4f5f7; color: #1a1a1a; line-height: 1.4;
+  :root {
+    color-scheme: light dark;
+    --bg: #f2f3f7; --surface: #ffffff; --border: #e7e8ee;
+    --text: #14151a; --muted: #6b7080;
+    --brand: #5b5bf6; --brand-dark: #4438ca; --brand-contrast: #ffffff;
+    --green: #17a058; --green-bg: #e7f7ee;
+    --red: #e0392b; --red-bg: #fdeaea;
+    --amber: #b6790a; --amber-bg: #fdf2d9;
+    --sky: #0576b9; --sky-bg: #e5f3fb;
+    --shadow: 0 1px 2px rgba(20,21,26,0.04), 0 4px 14px rgba(20,21,26,0.06);
   }
   @media (prefers-color-scheme: dark) {
-    body { background: #16171a; color: #eee; }
-    .card { background: #232428 !important; border-color: #333 !important; }
-    input, select { background: #1b1c1f !important; color: #eee !important; border-color: #444 !important; }
+    :root {
+      --bg: #101116; --surface: #1b1c22; --border: #2b2d38;
+      --text: #eef0f5; --muted: #9a9db0;
+      --brand: #8583ff; --brand-dark: #6f6dff; --brand-contrast: #101116;
+      --green: #3ecb82; --green-bg: rgba(62,203,130,0.14);
+      --red: #ff6b60; --red-bg: rgba(255,107,96,0.14);
+      --amber: #f0b429; --amber-bg: rgba(240,180,41,0.14);
+      --sky: #52b8f0; --sky-bg: rgba(82,184,240,0.14);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 14px rgba(0,0,0,0.35);
+    }
   }
-  h1 { font-size: 1.3rem; }
-  h2 { font-size: 1.05rem; margin: 18px 0 8px; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+    max-width: 640px; margin: 0 auto; padding: 16px 16px 60px;
+    background: var(--bg); color: var(--text); line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    font-size: 1.3rem; font-weight: 700; margin: 4px 0 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  h2 {
+    font-size: 0.78rem; font-weight: 700; margin: 0 0 10px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+  }
   nav {
-    display: flex; gap: 6px; overflow-x: auto; margin-bottom: 14px;
-    padding-bottom: 4px; -webkit-overflow-scrolling: touch;
+    display: flex; gap: 6px; overflow-x: auto; margin-bottom: 16px;
+    padding-bottom: 2px; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  nav::-webkit-scrollbar { display: none; }
   nav a {
-    flex: none; padding: 8px 12px; border-radius: 8px; background: #fff;
-    border: 1px solid #ddd; text-decoration: none; color: #333; font-size: 0.9rem;
+    flex: none; padding: 9px 14px; border-radius: 999px; background: var(--surface);
+    border: 1px solid var(--border); text-decoration: none; color: var(--text);
+    font-size: 0.87rem; font-weight: 600; transition: background 0.15s, color 0.15s;
   }
-  nav a.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+  nav a.active { background: var(--brand); color: var(--brand-contrast); border-color: var(--brand); }
   .card {
-    background: #fff; border: 1px solid #e3e3e3; border-radius: 10px;
-    padding: 14px; margin-bottom: 12px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow);
   }
-  .row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #eee; }
+  .card.hero {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #fff; border: none;
+  }
+  .card.hero .muted { color: rgba(255,255,255,0.78); }
+  .card.hero .amount { color: #fff; }
+  .card.hero .row { border-bottom-color: rgba(255,255,255,0.16); }
+  .pill-warn {
+    display: inline-block; margin-top: 8px; font-size: 0.78rem; font-weight: 700;
+    background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 999px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--border); }
   .row:last-child { border-bottom: none; }
+  .row:first-child { padding-top: 0; }
   .row > *:first-child { min-width: 0; flex: 1 1 auto; overflow-wrap: break-word; }
   .row > *:last-child { flex: 0 0 auto; text-align: right; }
-  .muted { color: #777; font-size: 0.85rem; }
-  .green { color: #16a34a; } .red { color: #dc2626; } .yellow { color: #ca8a04; }
-  .amount { font-weight: 600; white-space: nowrap; }
+  .muted { color: var(--muted); font-size: 0.85rem; }
+  .green { color: var(--green); } .red { color: var(--red); } .yellow { color: var(--amber); }
+  .amount { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
   form.inline { display: inline; }
-  label { display: block; font-size: 0.85rem; margin: 10px 0 4px; color: #555; }
+  label { display: block; font-size: 0.8rem; font-weight: 600; margin: 12px 0 5px; color: var(--muted); }
   input, select {
-    width: 100%; padding: 10px; font-size: 1rem; border-radius: 8px;
-    border: 1px solid #ccc; background: #fff;
+    width: 100%; padding: 11px 12px; font-size: 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border); background: var(--surface); color: var(--text);
   }
+  input:focus, select:focus { outline: none; border-color: var(--brand); }
   button {
-    margin-top: 14px; padding: 11px 16px; font-size: 1rem; border: none;
-    border-radius: 8px; background: #2563eb; color: #fff; width: 100%;
+    margin-top: 16px; padding: 12px 16px; font-size: 0.95rem; font-weight: 700; border: none;
+    border-radius: 10px; background: var(--brand); color: var(--brand-contrast); width: 100%;
   }
-  button.secondary { background: #eee; color: #333; width: auto; margin: 0; }
-  button.danger { background: #dc2626; width: auto; margin: 0; }
-  .bar-bg { background: #e5e7eb; border-radius: 6px; height: 10px; overflow: hidden; margin-top: 4px; }
-  .bar-fill { height: 100%; background: #2563eb; }
-  .badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
-  .badge.overdue { background: #fee2e2; color: #b91c1c; }
-  .badge.due_soon { background: #fef3c7; color: #92400e; }
-  .badge.upcoming { background: #e0f2fe; color: #0369a1; }
-  .actions { display: flex; gap: 8px; margin-top: 6px; }
-  .error { background: #fee2e2; color: #991b1b; padding: 10px; border-radius: 8px; margin-bottom: 12px; }
-  .ok { background: #dcfce7; color: #166534; padding: 10px; border-radius: 8px; margin-bottom: 12px; }
+  button:active { opacity: 0.85; }
+  button.secondary { background: var(--sky-bg); color: var(--sky); width: auto; margin: 0; padding: 8px 14px; font-size: 0.85rem; }
+  button.danger { background: var(--red-bg); color: var(--red); width: auto; margin: 0; padding: 8px 14px; font-size: 0.85rem; }
+  .bar-bg { background: var(--bg); border-radius: 6px; height: 8px; overflow: hidden; margin-top: 6px; }
+  .bar-fill { height: 100%; background: var(--brand); border-radius: 6px; }
+  .badge { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; font-weight: 700; }
+  .badge.overdue { background: var(--red-bg); color: var(--red); }
+  .badge.due_soon { background: var(--amber-bg); color: var(--amber); }
+  .badge.upcoming { background: var(--sky-bg); color: var(--sky); }
+  .actions { display: flex; gap: 8px; margin-top: 8px; }
+  .error { background: var(--red-bg); color: var(--red); padding: 11px 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.9rem; }
+  .ok { background: var(--green-bg); color: var(--green); padding: 11px 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.9rem; }
 """
 
 NAV_ITEMS = [
-    ("/", "Dashboard"),
-    ("/movimientos", "Movimientos"),
-    ("/vencimientos", "Vencimientos"),
-    ("/presupuestos", "Presupuestos"),
-    ("/reportes", "Reportes"),
+    ("/", "📊 Dashboard"),
+    ("/movimientos", "💵 Movimientos"),
+    ("/vencimientos", "⏰ Vencimientos"),
+    ("/presupuestos", "🎯 Presupuestos"),
+    ("/reportes", "📈 Reportes"),
 ]
 
 
 def money(n: float) -> str:
-    return f"${n:,.2f}"
+    sign = "-" if n < 0 else ""
+    return f"{sign}${abs(n):,.2f}"
 
 
 def e(s) -> str:
@@ -138,14 +180,15 @@ def option_list(items, selected=None):
 def render_dashboard(qs):
     d = reports.dashboard()
     s = d["monthly_summary"]
-    balance_class = "green" if d["balance"] >= 0 else "red"
 
+    warn_pill = '<div class="pill-warn">⚠ Balance negativo</div>' if d["balance"] < 0 else ""
     body = f"""
-    <div class="card">
+    <div class="card hero">
       <div class="muted">Balance total</div>
-      <div class="amount {balance_class}" style="font-size:1.6rem">{money(d['balance'])}</div>
-      <div class="row"><span class="muted">Ingresos ({d['month']})</span><span class="amount green">{money(s['income_total'])}</span></div>
-      <div class="row"><span class="muted">Egresos ({d['month']})</span><span class="amount red">{money(s['expense_total'])}</span></div>
+      <div class="amount" style="font-size:2rem">{money(d['balance'])}</div>
+      {warn_pill}
+      <div class="row"><span class="muted">▲ Ingresos ({d['month']})</span><span class="amount">{money(s['income_total'])}</span></div>
+      <div class="row"><span class="muted">▼ Egresos ({d['month']})</span><span class="amount">{money(s['expense_total'])}</span></div>
     </div>
     """
 
@@ -262,6 +305,7 @@ def render_vencimientos(qs):
     today = date.today().isoformat()
 
     badge_labels = {"overdue": "VENCIDO", "due_soon": "PRÓXIMO", "upcoming": "a futuro", "paid": "pagado"}
+    recurring_labels = {"none": "única vez", "weekly": "semanal", "monthly": "mensual", "yearly": "anual"}
 
     rows_html = ""
     for b in bs:
@@ -270,7 +314,7 @@ def render_vencimientos(qs):
         rows_html += f"""
         <div class="row" style="flex-direction:column;align-items:stretch">
           <div style="display:flex;justify-content:space-between">
-            <span><strong>{e(b['name'])}</strong><br><span class="muted">{e(b['category'])} · vence {b['due_date']} · {b['recurring']}</span></span>
+            <span><strong>{e(b['name'])}</strong><br><span class="muted">{e(b['category'])} · vence {b['due_date']} · {recurring_labels.get(b['recurring'], b['recurring'])}</span></span>
             <span class="amount">{money(b['amount'])}<br>{badge}</span>
           </div>
           <div class="actions">
@@ -341,7 +385,7 @@ def render_presupuestos(qs):
     rows_html = ""
     for r in rows:
         pct = min(r["pct_used"], 100)
-        bar_color = "#dc2626" if r["pct_used"] >= 100 else ("#ca8a04" if r["pct_used"] >= 80 else "#2563eb")
+        bar_color = "#e0392b" if r["pct_used"] >= 100 else ("#b6790a" if r["pct_used"] >= 80 else "#5b5bf6")
         rows_html += f"""
         <div class="row" style="flex-direction:column;align-items:stretch">
           <div style="display:flex;justify-content:space-between">

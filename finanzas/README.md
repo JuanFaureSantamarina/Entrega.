@@ -55,12 +55,25 @@ Si preferís hacerlo a mano (sin el botón): `New` → `Web Service` → conect�
 repo → Root Directory `finanzas` → Build Command `pip install -r requirements.txt`
 → Start Command `python webapp.py`.
 
-**Importante:** en el plan free de Render la app se "duerme" tras un rato sin uso
-(tarda ~30 seg en volver a arrancar la primera vez que la abrís) y el disco
-no es persistente entre reinicios de la app, así que la base SQLite podría
-resetearse en algún redeploy. Para uso personal está bien; si querés que los
-datos nunca se pierdan, decime y vemos un disco persistente (también gratis
-hasta cierto tamaño) o pasar a una base de datos externa.
+**Importante:** en el plan free de Render el disco no es persistente entre
+redeploys/reinicios, así que la base SQLite local podría resetearse. Para que
+los datos nunca se pierdan, seguí la sección de abajo (base de datos
+persistente gratis).
+
+### Que los datos nunca se pierdan (base de datos persistente gratis)
+
+La app soporta guardar en **[Turso](https://turso.tech)** (base de datos SQLite
+remota, gratis) en vez del disco local de Render. Es opt-in: si no configurás
+nada, sigue usando el archivo local igual que antes.
+
+1. Creá una cuenta gratis en [turso.tech](https://turso.tech) (podés entrar con GitHub).
+2. Creá una base de datos nueva (botón "Create Database" en el dashboard).
+3. Copiá la **URL de conexión** (empieza con `libsql://...`).
+4. Generá un **token de acceso** para esa base (en la sección de la base, algo como "Create Token" / "Generate Token") y copialo.
+5. En Render, andá al servicio `finanzas-personales` → **Settings** → **Environment** → agregá dos variables:
+   - `TURSO_DATABASE_URL` → la URL del paso 3
+   - `TURSO_AUTH_TOKEN` → el token del paso 4
+6. Guardá — Render redeploya solo con las variables nuevas. A partir de ahí, todo lo que cargues en la web queda guardado en Turso y sobrevive a cualquier redeploy o reinicio.
 
 ## Uso (línea de comandos)
 

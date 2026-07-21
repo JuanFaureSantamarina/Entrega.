@@ -33,11 +33,11 @@ def add_bill(name: str, amount: float, category: str, due_date: str, recurring: 
 
     conn = get_connection()
     cur = conn.execute(
-        "INSERT INTO bills (name, amount, category, due_date, recurring, notes) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO bills (name, amount, category, due_date, recurring, notes) VALUES (?, ?, ?, ?, ?, ?) RETURNING id",
         (name, amount, category, due_date, recurring, notes),
     )
+    bill_id = cur.fetchone()["id"]
     conn.commit()
-    bill_id = cur.lastrowid
     conn.close()
     return bill_id
 

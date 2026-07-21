@@ -1,2 +1,7 @@
 # Dependencias (sqlite3 viene con Python estándar)
 PyYAML>=6.0
+
+# Solo se usa si están configuradas TURSO_DATABASE_URL / TURSO_AUTH_TOKEN
+# (base de datos remota persistente). Sin esas variables, la app sigue
+# usando el archivo SQLite local sin necesitar este paquete en runtime.
+libsql-client>=0.3.1

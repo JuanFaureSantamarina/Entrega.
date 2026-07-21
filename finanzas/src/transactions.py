@@ -12,11 +12,11 @@ def add_movement(type_: str, amount: float, category: str, description: str = ""
 
     conn = get_connection()
     cur = conn.execute(
-        "INSERT INTO movements (type, amount, category, description, date) VALUES (?, ?, ?, ?, ?)",
+        "INSERT INTO movements (type, amount, category, description, date) VALUES (?, ?, ?, ?, ?) RETURNING id",
         (type_, amount, category, description, date),
     )
+    movement_id = cur.fetchone()["id"]
     conn.commit()
-    movement_id = cur.lastrowid
     conn.close()
     return movement_id
 

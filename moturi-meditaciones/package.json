@@ -1,0 +1,24 @@
+{
+  "name": "moturi-meditaciones",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Biblioteca de meditaciones de MOTURI. Experiencia independiente, accesible por link o código QR.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  }
+}

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Moturi Promo</title>
+<style>
+  :root{
+    --cream:#F6F1EA; --ink:#0B1F18; --green:#1F4D3F; --green2:#2E6B57; --deep:#06120E;
+    --lime:#C8F169; --coral:#FF7A59; --sky:#8FD3FF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1080px;overflow:hidden;background:var(--deep)}
+  body{font-family:"Inter Display","Inter",sans-serif;color:#fff}
+  #stage{position:relative;width:1080px;height:1080px;overflow:hidden;background:var(--deep)}
+  #cam{position:absolute;inset:0}
+  .scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+  .word{display:inline-block;will-change:transform,opacity,filter}
+  .glow{position:absolute;border-radius:50%;pointer-events:none}
+  .logo{position:absolute}
+  .logo img{position:absolute;inset:0;width:100%;height:100%}
+
+  /* S1 hook */
+  #s1 .lines{position:absolute;left:70px;right:70px;top:290px;text-align:center;font-weight:800;font-size:102px;line-height:1.06;letter-spacing:-3px}
+  #s1 .hl{color:var(--lime);font-style:italic;text-shadow:0 0 40px rgba(200,241,105,.55)}
+
+  /* S2 pain */
+  .pain{position:absolute;font-weight:700;color:#8A948F;white-space:nowrap;padding:14px 28px;border:2px solid #2A3833;border-radius:60px;background:#111C18}
+  #s2msg{position:absolute;left:0;right:0;top:470px;text-align:center;font-size:96px;font-weight:900;letter-spacing:-3px}
+  #dot{position:absolute;width:40px;height:40px;border-radius:50%;background:var(--lime);left:520px;top:520px;opacity:0;box-shadow:0 0 60px 20px rgba(200,241,105,.6)}
+
+  /* S3 brand */
+  #s3{background:radial-gradient(circle at 50% 45%, #1F4D3F 0%, #0C2219 55%, #06120E 100%)}
+  #turn{position:absolute;left:0;right:0;top:470px;text-align:center;font-size:120px;font-weight:900;letter-spacing:-4px;color:var(--lime)}
+  #ring{position:absolute;left:540px;top:540px;border-radius:50%;border:6px solid var(--lime)}
+  #logo1{left:340px;top:220px;width:400px;height:400px}
+  #word1{position:absolute;left:0;right:0;top:660px;text-align:center;font-size:150px;font-weight:900;letter-spacing:-6px}
+  #word1 .word{background:linear-gradient(180deg,#fff 30%,#CFE6C4);-webkit-background-clip:text;color:transparent}
+  #shine{position:absolute;top:-200px;width:220px;height:1500px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(20deg);mix-blend-mode:overlay}
+  .spark{position:absolute;width:12px;height:12px;border-radius:50%;left:534px;top:414px}
+
+  /* S3b body & mind */
+  #s3b{background:transparent;z-index:2}
+  .half{position:absolute;top:0;bottom:0;width:540px;overflow:hidden}
+  #hl{left:0;background:var(--lime)}
+  #hr{left:540px;background:linear-gradient(160deg,#16382D,#06120E)}
+  .half .big{position:absolute;width:660px;height:660px;top:60px}
+  #kbBig{left:-10px}
+  #brBig{left:-230px}
+  .half .lab{position:absolute;left:0;right:0;bottom:110px;text-align:center;font-size:76px;font-weight:900;letter-spacing:-2px;line-height:1}
+  .half .lab small{display:block;font-size:24px;letter-spacing:8px;font-weight:700;margin-bottom:14px;opacity:.7}
+  #hl .lab{color:var(--ink)}
+  #hr .lab{color:#fff}
+  #hr .lab span{color:var(--lime)}
+
+  /* S4 app */
+  #s4{background:radial-gradient(circle at 30% 60%, #1A4234 0%, #0A1D16 60%, #06120E 100%)}
+  #phone{position:absolute;left:110px;top:120px;width:400px;height:840px;border-radius:64px;background:#0B0F0E;padding:16px;box-shadow:0 0 0 2px #2b3a34, 0 40px 120px rgba(200,241,105,.18)}
+  #screen{position:relative;width:100%;height:100%;border-radius:50px;background:#FBF8F3;overflow:hidden;color:var(--ink)}
+  .notch{position:absolute;left:50%;top:14px;width:120px;height:32px;margin-left:-60px;border-radius:20px;background:#0B0F0E;z-index:5}
+  .scr{position:absolute;inset:0;padding:70px 26px 26px;opacity:0}
+  .scr .top{display:flex;align-items:center;gap:10px}
+  .scr .top img{width:38px;height:38px}
+  .scr h3{font-size:30px;font-weight:800;letter-spacing:-.5px}
+  .scr .sub{font-size:18px;color:#6B7A74;margin-top:4px}
+  .ringwrap{position:relative;width:200px;height:200px;margin:22px auto 16px}
+  .ringwrap .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:58px;font-weight:800;color:var(--green)}
+  .ringwrap .num small{font-size:15px;font-weight:600;color:#6B7A74;letter-spacing:1px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{border-radius:22px;padding:16px;height:118px}
+  .tile .ic{font-size:30px}
+  .tile .t{font-size:18px;font-weight:700;margin-top:10px}
+  .tile .v{font-size:14px;color:rgba(11,31,24,.65);margin-top:2px}
+  .task{display:flex;align-items:center;gap:14px;background:#fff;border-radius:20px;padding:16px;margin-top:14px;box-shadow:0 4px 14px rgba(19,35,30,.06)}
+  .chk{width:34px;height:34px;border-radius:50%;border:3px solid #CFD8D3;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px}
+  .task .tt{font-size:19px;font-weight:700}
+  .task .td{font-size:14px;color:#6B7A74}
+  .prog{height:12px;border-radius:8px;background:#E7E2D9;margin-top:22px;overflow:hidden}
+  .prog i{display:block;height:100%;background:var(--green2);border-radius:8px;width:0}
+  .lb{display:flex;align-items:center;gap:12px;background:#fff;border-radius:20px;padding:14px;margin-top:12px}
+  .av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:none}
+  .lb .n{font-size:18px;font-weight:700}
+  .bar{height:10px;border-radius:6px;background:var(--lime);margin-top:4px;width:0}
+  .lb .p{font-size:16px;font-weight:800;color:var(--green);width:52px;text-align:right}
+  .toast{position:absolute;left:400px;background:#fff;color:var(--ink);border-radius:22px;padding:16px 22px;font-size:22px;font-weight:700;box-shadow:0 20px 50px rgba(0,0,0,.35);white-space:nowrap;opacity:0}
+  .cap{position:absolute;left:585px;width:440px;top:330px;opacity:0}
+  .cap .k{font-size:22px;font-weight:700;color:var(--lime);letter-spacing:4px;text-transform:uppercase}
+  .cap h2{font-size:68px;line-height:1;font-weight:900;color:#fff;letter-spacing:-2.5px;margin-top:16px}
+  .cap h2 em{font-style:normal;color:var(--lime)}
+  .cap p{font-size:26px;color:rgba(255,255,255,.7);margin-top:20px;line-height:1.35}
+
+  /* S5 empresas */
+  #s5{background:var(--cream);color:var(--ink)}
+  #s5 .head{position:absolute;left:90px;top:100px;font-size:26px;font-weight:800;color:var(--coral);letter-spacing:5px;text-transform:uppercase}
+  #s5 h2{position:absolute;left:90px;top:150px;width:940px;font-size:82px;line-height:1;font-weight:900;letter-spacing:-3px;color:var(--green)}
+  #s5 h2 em{font-style:normal;color:var(--coral)}
+  #dash{position:absolute;left:90px;top:470px;width:520px;height:480px;border-radius:36px;background:#fff;padding:34px;box-shadow:0 30px 80px rgba(31,77,63,.15)}
+  #dash .dt{font-size:24px;font-weight:800}
+  #dash .ds{font-size:17px;color:#6B7A74;margin-top:4px}
+  .bars{position:absolute;left:34px;right:34px;bottom:70px;height:260px;display:flex;align-items:flex-end;gap:16px}
+  .bars i{flex:1;border-radius:12px 12px 6px 6px;background:var(--green2);height:0}
+  .bars i.last{background:var(--coral)}
+  .months{position:absolute;left:34px;right:34px;bottom:30px;display:flex;gap:16px;font-size:15px;color:#6B7A74;font-weight:600}
+  .months span{flex:1;text-align:center}
+  .feat{position:absolute;left:650px;width:340px;border-radius:28px;background:var(--green);color:#fff;padding:24px;opacity:0}
+  .feat .ic{font-size:36px}
+  .feat .t{font-size:26px;font-weight:800;margin-top:8px;line-height:1.1}
+  .feat .d{font-size:18px;color:rgba(255,255,255,.72);margin-top:6px}
+
+  /* S6 CTA */
+  #s6{background:radial-gradient(circle at 50% 30%, #24594A 0%, #0C2219 55%, #06120E 100%)}
+  #logo2{left:400px;top:110px;width:280px;height:280px}
+  .pring{position:absolute;left:540px;top:250px;border-radius:50%;border:3px solid rgba(200,241,105,.6)}
+  #s6big{position:absolute;left:0;right:0;top:440px;text-align:center;font-size:112px;font-weight:900;letter-spacing:-4px;line-height:1}
+  #s6big em{font-style:normal;color:var(--lime);text-shadow:0 0 50px rgba(200,241,105,.45)}
+  #cta{position:absolute;left:50%;top:740px;background:var(--lime);color:var(--ink);font-size:40px;font-weight:800;padding:28px 60px;border-radius:80px;white-space:nowrap;box-shadow:0 20px 60px rgba(200,241,105,.35)}
+  #s6foot{position:absolute;left:0;right:0;top:900px;text-align:center;font-size:24px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:6px;text-transform:uppercase}
+
+  #grain{position:absolute;inset:-100px;background:url(assets/grain.png);pointer-events:none;mix-blend-mode:overlay;opacity:.5}
+  #vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%, transparent 55%, rgba(0,0,0,.45) 100%)}
+  #flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="stage"><div id="cam">
+
+  <!-- S1: hook -->
+  <div class="scene" id="s1">
+    <div class="glow" id="g1" style="width:900px;height:900px;left:90px;top:90px;background:radial-gradient(circle,rgba(200,241,105,.16),transparent 65%)"></div>
+    <div class="lines" id="s1lines"></div>
+  </div>
+
+  <!-- S2: pain -->
+  <div class="scene" id="s2">
+    <div class="glow" id="g2" style="width:1100px;height:1100px;left:-10px;top:-10px;background:radial-gradient(circle,rgba(255,90,60,.22),transparent 65%)"></div>
+    <div id="pains"></div>
+    <div id="s2msg">La rutina te consume.</div>
+    <div id="dot"></div>
+  </div>
+
+  <!-- "Hasta hoy." -->
+  <div class="scene" id="sTurn"><div id="turn">Hasta hoy.</div></div>
+
+  <!-- S3: brand reveal -->
+  <div class="scene" id="s3">
+    <div id="ring"></div>
+    <div id="sparks"></div>
+    <div class="glow" id="g3" style="width:800px;height:800px;left:140px;top:20px;background:radial-gradient(circle,rgba(200,241,105,.28),transparent 62%)"></div>
+    <div class="logo" id="logo1">
+      <img id="l1kb" src="assets/logo_kettlebell.png">
+      <img id="l1br" src="assets/logo_brain.png">
+      <img id="l1lf" src="assets/logo_leaf_lime.png">
+    </div>
+    <div id="word1"></div>
+    <div id="shine"></div>
+  </div>
+
+  <!-- S3b: body & mind -->
+  <div class="scene" id="s3b">
+    <div class="half" id="hl">
+      <img class="big" id="kbBig" src="assets/logo_kettlebell_ink.png">
+      <div class="lab" id="labL"><small>CUERPO</small>Entrená tu<br>cuerpo.</div>
+    </div>
+    <div class="half" id="hr">
+      <img class="big" id="brBig" src="assets/logo_brain.png">
+      <div class="lab" id="labR"><small>MENTE</small>Cuidá tu<br><span>mente.</span></div>
+    </div>
+  </div>
+
+  <!-- S4: app -->
+  <div class="scene" id="s4">
+    <div class="glow" id="b1" style="width:700px;height:700px;left:-200px;top:420px;background:radial-gradient(circle,rgba(200,241,105,.22),transparent 65%)"></div>
+    <div class="glow" id="b2" style="width:600px;height:600px;left:640px;top:-160px;background:radial-gradient(circle,rgba(255,122,89,.18),transparent 65%)"></div>
+    <div id="phone">
+      <div id="screen">
+        <div class="notch"></div>
+        <div class="scr" id="scrA">
+          <div class="top"><img src="assets/logo_full_ink.png"><h3>Hola, Sofi 👋</h3></div>
+          <div class="sub">Así viene tu semana</div>
+          <div class="ringwrap">
+            <svg width="200" height="200" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="84" fill="none" stroke="#E7E2D9" stroke-width="18"/>
+              <circle id="score" cx="100" cy="100" r="84" fill="none" stroke="#2E6B57" stroke-width="18" stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="527.8" stroke-dashoffset="527.8"/>
+            </svg>
+            <div class="num"><span id="scorenum">0</span><small>BIENESTAR</small></div>
+          </div>
+          <div class="tiles">
+            <div class="tile" style="background:#E3F5BE"><div class="ic">🏋️</div><div class="t">Cuerpo</div><div class="v">3 entrenamientos</div></div>
+            <div class="tile" style="background:#DCEFFC"><div class="ic">🧠</div><div class="t">Mente</div><div class="v">12' meditación</div></div>
+            <div class="tile" style="background:#FFE3D8"><div class="ic">🥗</div><div class="t">Nutrición</div><div class="v">3 de 4 comidas</div></div>
+            <div class="tile" style="background:#EDE6FA"><div class="ic">🌙</div><div class="t">Descanso</div><div class="v">7 h 40 m</div></div>
+          </div>
+        </div>
+        <div class="scr" id="scrB">
+          <h3>Tu plan de hoy</h3>
+          <div class="sub">Pequeños pasos, grandes cambios</div>
+          <div class="prog"><i id="progbar"></i></div>
+          <div class="task"><div class="chk" id="c0">✓</div><div><div class="tt">Respiración guiada</div><div class="td">5 minutos · Mente</div></div></div>
+          <div class="task"><div class="chk" id="c1">✓</div><div><div class="tt">Entrenamiento express</div><div class="td">20 minutos · Cuerpo</div></div></div>
+          <div class="task"><div class="chk" id="c2">✓</div><div><div class="tt">Tomar 2 litros de agua</div><div class="td">Durante el día · Nutrición</div></div></div>
+          <div class="task"><div class="chk" id="c3">✓</div><div><div class="tt">Pantallas off a las 22 h</div><div class="td">Rutina nocturna · Descanso</div></div></div>
+        </div>
+        <div class="scr" id="scrC">
+          <h3>Reto en equipo</h3>
+          <div class="sub">🔥 30 días activos · Semana 3</div>
+          <div class="lb"><div class="av" style="background:#2E6B57">M</div><div style="flex:1"><div class="n">Marketing</div><div class="bar" id="lb0"></div></div><div class="p" id="lp0">0%</div></div>
+          <div class="lb"><div class="av" style="background:#FF7A59">V</div><div style="flex:1"><div class="n">Ventas</div><div class="bar" id="lb1"></div></div><div class="p" id="lp1">0%</div></div>
+          <div class="lb"><div class="av" style="background:#5A7BD8">T</div><div style="flex:1"><div class="n">Tecnología</div><div class="bar" id="lb2"></div></div><div class="p" id="lp2">0%</div></div>
+          <div class="lb"><div class="av" style="background:#B77BD8">O</div><div style="flex:1"><div class="n">Operaciones</div><div class="bar" id="lb3"></div></div><div class="p" id="lp3">0%</div></div>
+          <div class="task" id="trophy" style="margin-top:22px;background:var(--green);color:#fff"><div style="font-size:30px">🏆</div><div><div class="tt">¡Tu equipo subió al 2°!</div><div class="td" style="color:#CFE3DA">Seguí así, Sofi</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="t0" style="top:250px">🎉 ¡Hábito cumplido!</div>
+    <div class="toast" id="t1" style="top:640px">🔥 Racha de 7 días</div>
+    <div class="cap" id="cap0"><div class="k">Todo en un lugar</div><h2>Tu bienestar, en <em>una sola app.</em></h2><p>Cuerpo, mente, nutrición y descanso, conectados.</p></div>
+    <div class="cap" id="cap1"><div class="k">Hábitos reales</div><h2>Un plan que se <em>adapta a vos.</em></h2><p>Rutinas simples que sí podés sostener.</p></div>
+    <div class="cap" id="cap2"><div class="k">Mejor juntos</div><h2>El bienestar <em>se contagia.</em></h2><p>Retos en equipo que suman motivación.</p></div>
+  </div>
+
+  <!-- S5: empresas -->
+  <div class="scene" id="s5">
+    <div class="head" id="s5head">Para empresas</div>
+    <h2 id="s5h2"><span id="h2a">Equipos más sanos.</span><br><span id="h2b">Equipos que <em>rinden más.</em></span></h2>
+    <div id="dash">
+      <div class="dt">Participación del equipo</div>
+      <div class="ds">Programa de bienestar Moturi</div>
+      <div class="bars"><i></i><i></i><i></i><i></i><i></i><i class="last"></i></div>
+      <div class="months"><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span></div>
+    </div>
+    <div class="feat" id="f0" style="top:470px"><div class="ic">🎯</div><div class="t">Programas a medida</div><div class="d">Diseñados para tu cultura</div></div>
+    <div class="feat" id="f1" style="top:635px"><div class="ic">📊</div><div class="t">Métricas reales</div><div class="d">El impacto, en tiempo real</div></div>
+    <div class="feat" id="f2" style="top:800px"><div class="ic">🤖</div><div class="t">Potenciado con IA</div><div class="d">Menos gestión, más bienestar</div></div>
+  </div>
+
+  <!-- S6: CTA -->
+  <div class="scene" id="s6">
+    <div class="pring" id="pr0"></div><div class="pring" id="pr1"></div>
+    <div class="logo" id="logo2"><img src="assets/logo_full.png"></div>
+    <div id="s6big"><span id="cb1">Empezá a</span><br><em id="cb2">sentirte bien.</em></div>
+    <div id="cta">Sumate a Moturi →</div>
+    <div id="s6foot">Personas · Empresas</div>
+  </div>
+
+</div>
+<div id="grain"></div><div id="vig"></div><div id="flash"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3);
+const eOut5=x=>1-Math.pow(1-x,5);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const rnd=i=>{const x=Math.sin(i*127.1)*43758.5453;return x-Math.floor(x)};
+const V=TL.vo, END=TL.duration;
+
+// scene boundaries derived from the voice-over cues
+const S={s2:4.3, turn:V.turn-.15, s3:V.turn+.85, s3b:V.body-.4, s4:V.app1-.5, s5:V.biz-.4, s6:V.cta-.7};
+
+const s1=[["¿Cuándo","fue","la"],["última","vez"],["que","te","sentiste"],["*bien","*de","*verdad?"]];
+const s1w=[];
+s1.forEach(line=>{const d=document.createElement('div');line.forEach(w=>{const s=document.createElement('span');s.className='word'+(w[0]=='*'?' hl':'');s.textContent=w.replace('*','');d.appendChild(s);d.appendChild(document.createTextNode(' '));s1w.push(s)});$('s1lines').appendChild(d)});
+const s1t=[0,.18,.32,.52,.78,1.45,1.6,1.72,2.25,2.45,2.65].map(x=>x+V.hook);
+
+'moturi'.split('').forEach(c=>{const s=document.createElement('span');s.className='word';s.textContent=c;$('word1').appendChild(s)});
+
+const pains=[["Estrés",110,140,56],["Reuniones sin fin",540,110,42],["Noches sin dormir",590,300,44],["Sin tiempo",70,330,46],["Cansancio",130,700,52],["Pantallas 24/7",600,740,42],["Ansiedad",420,870,48],["Burnout",740,600,46],["Sedentarismo",60,880,38]];
+const painT=[0,.75,1.7,.35,1.1,1.45,2.0,1.25,2.2].map(x=>x+V.pain);
+const painEls=pains.map(([txt,x,y,fs])=>{const d=document.createElement('div');d.className='pain';d.textContent=txt;d.style.fontSize=fs+'px';d.style.left=x+'px';d.style.top=y+'px';$('pains').appendChild(d);return d});
+
+const sparks=[...Array(28)].map((_,i)=>{const d=document.createElement('div');d.className='spark';d.style.background=i%3?'#C8F169':(i%2?'#fff':'#FF7A59');$('sparks').appendChild(d);return d});
+const bars=[...document.querySelectorAll('.bars i')], barH=[36,46,55,66,78,94];
+
+function render(t){
+  const F=Math.floor(t*30);
+  $('grain').style.transform=`translate(${(rnd(F)*100-50)|0}px,${(rnd(F+7)*100-50)|0}px)`;
+  let shake=0, zoom=1;
+
+  // ---------- S1 hook
+  $('s1').style.opacity=1-P(t,S.s2-.2,S.s2+.2);
+  const beat=Math.pow(Math.max(0,Math.sin(t*Math.PI*2/1.25)),12);
+  $('g1').style.transform=`scale(${1+beat*.12})`; $('g1').style.opacity=.6+beat*.4;
+  s1w.forEach((w,i)=>{const p=eOut(P(t,s1t[i],s1t[i]+.45)), hl=i>=8;
+    w.style.opacity=p; w.style.filter=`blur(${(1-p)*14}px)`;
+    w.style.transform=`translateY(${(1-p)*50}px) scale(${hl?lerp(1.6,1,eOut5(P(t,s1t[i],s1t[i]+.5))):1})`;});
+  $('s1lines').style.transform=`scale(${1+P(t,0,S.s2)*.06})`;
+
+  // ---------- S2 pain
+  $('s2').style.opacity=t<S.turn?P(t,S.s2-.1,S.s2+.3):0;
+  const heat=P(t,V.pain+.5,V.pain2);
+  $('g2').style.opacity=heat*(.7+Math.sin(t*14)*.15);
+  const suck=eIO(P(t,V.pain2+1.5,S.turn-.1));
+  painEls.forEach((el,i)=>{
+    const st=painT[i], p=eBack(P(t,st,st+.4));
+    const jit=2+heat*6, jx=Math.sin(t*23+i*1.7)*jit, jy=Math.cos(t*19+i)*jit;
+    const cx=540-el.offsetWidth/2-parseFloat(el.style.left), cy=540-el.offsetHeight/2-parseFloat(el.style.top);
+    el.style.opacity=P(t,st,st+.15)*(1-suck);
+    el.style.transform=`translate(${jx+cx*suck}px,${jy+cy*suck}px) scale(${p*(1-suck*.9)}) rotate(${Math.sin(i*3)*7}deg)`;
+    el.style.color=`rgb(${lerp(138,255,heat)},${lerp(148,122,heat)},${lerp(143,89,heat)})`;
+    el.style.borderColor=`rgba(255,122,89,${heat*.7})`;
+  });
+  const mp=eOut(P(t,V.pain2,V.pain2+.35)), glitch=t>V.pain2&&t<V.pain2+1.4;
+  $('s2msg').style.opacity=mp*(1-P(t,V.pain2+1.4,V.pain2+1.7));
+  $('s2msg').style.transform=`scale(${lerp(1.3,1,mp)+P(t,V.pain2,V.pain2+1.6)*.05})`;
+  const gx=glitch?(rnd(F)*10-5):0; $('s2msg').style.textShadow=`${gx}px 0 rgba(255,60,60,.8), ${-gx}px 0 rgba(80,220,255,.8)`;
+  if(t>V.pain2&&t<V.pain2+.4) shake=8*(1-P(t,V.pain2,V.pain2+.4));
+  const dp=P(t,S.turn-.4,S.turn-.1); $('dot').style.opacity=dp; $('dot').style.transform=`scale(${eBack(dp)})`;
+
+  // ---------- "Hasta hoy."
+  const tp=P(t,S.turn,S.turn+.25), to=P(t,S.s3-.2,S.s3);
+  $('sTurn').style.opacity=(t>=S.turn&&t<S.s3)?1:0;
+  $('turn').style.opacity=tp*(1-to); $('turn').style.transform=`scale(${lerp(.6,1,eBack(tp))*(1+to*2)})`;
+  $('turn').style.filter=`blur(${to*20}px)`;
+
+  // ---------- S3 brand reveal
+  const r3=eIO(P(t,S.s3,S.s3+.5));
+  $('s3').style.opacity=(t>=S.s3&&t<S.s3b+.35)?1-P(t,S.s3b,S.s3b+.35):0;
+  $('s3').style.clipPath=`circle(${r3*800}px at 540px 540px)`;
+  $('flash').style.opacity=t>=S.s3&&t<S.s3+.35?(1-P(t,S.s3,S.s3+.35))*.6:0;
+  const rr=P(t,S.s3,S.s3+1.0); $('ring').style.width=$('ring').style.height=(rr*1300)+'px';
+  $('ring').style.transform='translate(-50%,-50%)'; $('ring').style.opacity=1-rr; $('ring').style.borderWidth=(12*(1-rr)+1)+'px';
+  const kb=eOut5(P(t,S.s3+.15,S.s3+.85)), br=eOut5(P(t,S.s3+.3,S.s3+1.0)), lf=eBack(P(t,S.s3+.85,S.s3+1.3));
+  $('l1kb').style.transform=`translate(${(1-kb)*-700}px,0) rotate(${(1-kb)*-40}deg)`; $('l1kb').style.opacity=clamp(kb*2);
+  $('l1br').style.transform=`translate(${(1-br)*700}px,0) rotate(${(1-br)*40}deg)`; $('l1br').style.opacity=clamp(br*2);
+  $('l1lf').style.transform=`translate(${(1-lf)*-60}px,${(1-lf)*60}px) scale(${lf}) rotate(${(1-lf)*-90}deg)`; $('l1lf').style.opacity=clamp(lf);
+  const lock=S.s3+1.0; if(t>lock&&t<lock+.3) shake=Math.max(shake,10*(1-P(t,lock,lock+.3)));
+  const bump=t>lock?1+Math.sin(P(t,lock,lock+.35)*Math.PI)*.06:1;
+  $('logo1').style.transform=`scale(${bump*(1+P(t,lock,S.s3b)*.05)})`;
+  $('g3').style.opacity=P(t,lock-.2,lock+.3)*(.75+Math.sin(t*3)*.25);
+  sparks.forEach((s,i)=>{const a=i/sparks.length*Math.PI*2+rnd(i)*.4, sp=P(t,lock,lock+1.1), d=eOut(sp)*(260+rnd(i+3)*260);
+    s.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(${1-sp})`; s.style.opacity=t>lock?1-sp:0;});
+  [...$('word1').children].forEach((c,i)=>{const st=V.brand+.35+i*.06, p=P(t,st,st+.45);
+    c.style.opacity=p; c.style.transform=`translateY(${(1-eOut5(p))*90}px)`; c.style.filter=`blur(${(1-p)*10}px)`;});
+  $('shine').style.left=lerp(-400,1400,P(t,V.brand+.9,V.brand+1.7))+'px';
+  const zin=eIO(P(t,S.s3b-.25,S.s3b+.35));
+  $('s3').style.transform=`scale(${1+zin*2.5})`;
+
+  // ---------- S3b body & mind
+  $('s3b').style.opacity=(t>=S.s3b&&t<S.s4)?1:0;
+  const lIn=eOut5(P(t,S.s3b,S.s3b+.5)), rIn=eOut5(P(t,V.mind-.3,V.mind+.2)), merge=eIO(P(t,S.s4-.5,S.s4));
+  $('hl').style.clipPath=`inset(${(1-lIn)*100}% 0 0 0)`;
+  $('hr').style.clipPath=`inset(0 0 ${(1-rIn)*100}% 0)`;
+  $('hl').style.width=lerp(1080,540,rIn)+'px';
+  $('kbBig').style.transform=`translate(${(1-rIn)*270}px,${Math.sin(t*2)*8}px) scale(${lerp(1.25,1,lIn)})`;
+  $('brBig').style.transform=`translate(${(1-rIn)*200}px,${Math.cos(t*2)*8}px) scale(${lerp(1.25,1,rIn)})`;
+  const lL=eOut(P(t,V.body,V.body+.4)), lR=eOut(P(t,V.mind,V.mind+.4));
+  $('labL').style.opacity=lL*(1-merge); $('labL').style.transform=`translateY(${(1-lL)*40}px)`;
+  $('labR').style.opacity=lR*(1-merge); $('labR').style.transform=`translateY(${(1-lR)*40}px)`;
+  $('hl').style.transform=`translateX(${-merge*560}px)`; $('hr').style.transform=`translateX(${merge*560}px)`;
+
+  // ---------- S4 app
+  $('s4').style.opacity=(t>=S.s4-.5&&t<S.s5+.6)?1:0;
+  const ph=eOut5(P(t,S.s4-.2,S.s4+.7));
+  $('phone').style.transform=`translateY(${(1-ph)*800}px) rotate(${(1-ph)*-10+Math.sin(t*1.1)*.7}deg)`;
+  $('b1').style.transform=`translate(${Math.sin(t*.6)*40}px,${Math.cos(t*.5)*30}px)`;
+  $('b2').style.transform=`translate(${Math.cos(t*.5)*40}px,${Math.sin(t*.7)*30}px)`;
+  const segs=[[S.s4-.5,V.app2-.4],[V.app2-.4,V.app3-.25],[V.app3-.25,S.s5+.6]];
+  ['scrA','scrB','scrC'].forEach((id,i)=>{const [a,b]=segs[i];
+    const inn=i==0?1:eOut(P(t,a,a+.45)), out=i==2?0:eIO(P(t,b-.05,b+.4));
+    const el=$(id); el.style.opacity=(t>=a&&t<b+.4)?1:0; el.style.transform=`translateX(${(1-inn)*380-out*380}px)`;
+    const c=$('cap'+i), cue=[V.app1,V.app2,V.app3][i], cp=eOut5(P(t,cue-.1,cue+.5)), co=P(t,b-.35,b);
+    c.style.opacity=cp*(1-co); c.style.transform=`translateY(${(1-cp)*60-co*30}px)`; c.style.filter=`blur(${(1-cp)*8}px)`;});
+  const rp=eOut(P(t,S.s4+.6,S.s4+2.3)); $('score').style.strokeDashoffset=527.8*(1-.82*rp); $('scorenum').textContent=Math.round(82*rp);
+  [...document.querySelectorAll('#scrA .tile')].forEach((el,i)=>{const p=eBack(P(t,S.s4+.8+i*.12,S.s4+1.3+i*.12));el.style.transform=`scale(${p})`;el.style.opacity=clamp(p)});
+  for(let i=0;i<4;i++){const ct=V.app2+.6+i*.55,p=P(t,ct,ct+.2),c=$('c'+i);
+    c.style.background=p>0?'#2E6B57':'transparent';c.style.borderColor=p>0?'#2E6B57':'#CFD8D3';c.style.transform=`scale(${1+Math.sin(p*Math.PI)*.4})`;c.style.color=p>0?'#fff':'transparent';}
+  $('progbar').style.width=(eOut(P(t,V.app2+.6,V.app2+2.6))*100)+'%';
+  [[0,V.app2+1.2,V.app3-.4],[1,V.app3+1.6,S.s5]].forEach(([i,a,b])=>{const p=eBack(P(t,a,a+.4)),o=P(t,b-.3,b);
+    $('t'+i).style.opacity=clamp(p)*(1-o);$('t'+i).style.transform=`translateY(${(1-clamp(p))*30}px) scale(${p})`;});
+  [86,78,71,64].forEach((v,i)=>{const p=eOut(P(t,V.app3+.3+i*.12,V.app3+1.5+i*.12));$('lb'+i).style.width=(v*p)+'%';$('lp'+i).textContent=Math.round(v*p)+'%'});
+  const trp=eBack(P(t,V.app3+1.8,V.app3+2.3)); $('trophy').style.transform=`scale(${trp})`; $('trophy').style.opacity=clamp(trp);
+  if(t>=S.s4&&t<S.s5) zoom*=1+P(t,S.s4,S.s5)*.04;
+
+  // ---------- S5 empresas
+  const on5=t>=S.s5&&t<S.s6+.6; $('s5').style.opacity=on5?1:0;
+  const sl=eIO(P(t,S.s5,S.s5+.55)); $('s5').style.clipPath=`inset(${(1-sl)*100}% 0 0 0)`;
+  $('s5head').style.opacity=eOut(P(t,S.s5+.4,S.s5+.8));
+  const a1=eOut5(P(t,V.biz2-.1,V.biz2+.4)), a2=eOut5(P(t,V.biz2+1.2,V.biz2+1.7));
+  $('h2a').style.opacity=a1; $('h2b').style.opacity=a2;
+  $('h2a').style.filter=`blur(${(1-a1)*10}px)`; $('h2b').style.filter=`blur(${(1-a2)*10}px)`;
+  const dpp=eOut5(P(t,S.s5+.5,S.s5+1.1)); $('dash').style.opacity=dpp; $('dash').style.transform=`translateY(${(1-dpp)*150}px)`;
+  bars.forEach((b,i)=>{b.style.height=(barH[i]*eBack(P(t,S.s5+1.0+i*.15,S.s5+1.7+i*.15)))+'%'});
+  [V.biz+.9,V.biz+2.0,V.biz+2.8].forEach((c,i)=>{const p=eOut5(P(t,c,c+.5));$('f'+i).style.opacity=p;$('f'+i).style.transform=`translateX(${(1-p)*120}px)`});
+  if(on5) zoom*=1+P(t,S.s5,S.s6)*.03;
+
+  // ---------- S6 CTA
+  const on6=t>=S.s6; $('s6').style.opacity=on6?1:0;
+  const r6=eIO(P(t,S.s6,S.s6+.6)); $('s6').style.clipPath=`circle(${r6*1300}px at 540px 540px)`;
+  const lp=eBack(P(t,S.s6+.3,S.s6+.9)), pulse=t>S.s6+1?1+Math.sin((t-S.s6)*3)*.02:1;
+  $('logo2').style.opacity=clamp(lp); $('logo2').style.transform=`scale(${lp*pulse})`;
+  [0,1].forEach(i=>{const ph=((t-S.s6-1)/2.2+i*.5+10)%1, el=$('pr'+i);
+    el.style.width=el.style.height=(280+ph*500)+'px'; el.style.transform='translate(-50%,-50%)'; el.style.opacity=t>S.s6+1?(1-ph)*.7:0;});
+  const c1=eOut5(P(t,V.cta-.1,V.cta+.4)), c2=eOut5(P(t,V.cta+.5,V.cta+1.0));
+  $('cb1').style.opacity=c1; $('cb2').style.opacity=c2; $('cb2').style.filter=`blur(${(1-c2)*12}px)`;
+  $('s6big').style.transform=`translateY(${(1-c1)*40}px)`;
+  const cpp=eBack(P(t,V.cta+1.5,V.cta+2.0)), cpl=t>V.cta+2.2?1+Math.sin((t-V.cta)*5)*.03:1;
+  $('cta').style.opacity=clamp(cpp); $('cta').style.transform=`translateX(-50%) scale(${cpp*cpl})`;
+  $('s6foot').style.opacity=eOut(P(t,V.cta+2.1,V.cta+2.7));
+  if(on6) zoom*=1+P(t,S.s6,END)*.03;
+
+  const sx=shake?(rnd(F*3)*2-1)*shake:0, sy=shake?(rnd(F*5)*2-1)*shake:0;
+  $('cam').style.transform=`translate(${sx}px,${sy}px) scale(${zoom})`;
+}
+window.render=render; window.DURATION=END;
+if(!window.__RENDERING__){const t0=performance.now();(function loop(){render(((performance.now()-t0)/1000)%END);requestAnimationFrame(loop)})();}
+</script>
+</body>
+</html>

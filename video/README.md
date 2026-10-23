@@ -1,15 +1,26 @@
 # Video promocional de Moturi
 
-`moturi_promo.mp4`: video animado de 32 s, 1080×1080, con música original sintetizada.
+`moturi_promo.mp4`: video animado de 42 s, 1080×1080, con voz de locutor y música original.
 
-Guion: gancho → dolor (estrés, burnout…) → aparece la marca → recorrido por la app → para empresas → llamado a la acción.
+Guion: gancho → problema (estrés, burnout…) → "Hasta hoy." → el logo se arma (pesa + cerebro + hoja) → "Entrená tu cuerpo / Cuidá tu mente" → recorrido por la app → para empresas → llamado a la acción.
 
-## Editar y volver a generar
+## Archivos
 
-Los textos, los colores y los tiempos están en `moturi_promo.html`. Si lo abrís en el navegador, se reproduce en loop.
+- `moturi_promo.html`: la animación. Si lo abrís en el navegador, se reproduce en loop.
+- `timeline.js`: en qué segundo entra cada frase del locutor. Las escenas y la música se acomodan solas a estos tiempos.
+- `voiceover.py`: genera la voz (Kokoro TTS, voz `em_alex`). El guion completo está en `LINES`.
+- `music.py` / `mix.py`: música sintetizada y mezcla final con la voz (la música baja sola cuando habla el locutor).
+- `split_logo.py`: separa el logo en piezas (`assets/`) para animarlas.
+
+## Volver a generar
 
 ```bash
-python3 music.py                               # genera music.wav
-PLAYWRIGHT_PATH=$(npm root -g)/playwright node render.mjs moturi_promo_silent.mp4
-ffmpeg -i moturi_promo_silent.mp4 -i music.wav -c:v copy -c:a aac -shortest moturi_promo.mp4
+pip install kokoro-onnx soundfile
+# modelos: https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0
+mkdir -p build && (cd build && python3 ../voiceover.py kokoro-v1.0.onnx voices-v1.0.bin)
+python3 music.py && python3 mix.py build
+PLAYWRIGHT_PATH=$(npm root -g)/playwright node render.mjs build/silent.mp4
+ffmpeg -y -i build/silent.mp4 -i soundtrack.wav -c:v copy -c:a aac -b:a 192k -shortest moturi_promo.mp4
 ```
+
+Si cambiás una frase del guion, volvé a correr `voiceover.py`, mirá las duraciones en `build/vo_lines.json` y ajustá `timeline.js`.

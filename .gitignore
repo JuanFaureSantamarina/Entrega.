@@ -9,3 +9,6 @@ output/
 video/music.wav
 video/moturi_promo_silent.mp4
 video/snap_*.png
+!video/*.html
+video/build/
+video/soundtrack.wav

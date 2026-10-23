@@ -115,16 +115,21 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     """Búsqueda pública de LinkedIn (la que se ve sin iniciar sesión)."""
     src = cfg["fuentes"]["linkedin"]
     segundos = int(src.get("horas", 24)) * 3600
+    # Búsquedas por palabra clave (últimas N horas) y por empresa objetivo (última semana,
+    # quedándose solo con las tarjetas de esa empresa).
+    busquedas = [(kw, segundos, None, int(src.get("paginas_por_keyword", 1))) for kw in keywords]
+    busquedas += [(emp, 7 * 86400, emp, int(src.get("paginas_por_empresa", 3)))
+                  for emp in src.get("empresas", []) or []]
     ofertas = []
     # f_WT: 2 = remoto, 3 = híbrido
     for modo, modalidad in (("2", "remoto"), ("3", "hibrido")):
-        for kw in keywords:
-            for page in range(int(src.get("paginas_por_keyword", 1))):
+        for kw, ventana, solo_empresa, paginas in busquedas:
+            for page in range(paginas):
                 params = urllib.parse.urlencode({
                     "keywords": kw,
                     "location": src.get("ubicacion", "Argentina"),
                     "f_WT": modo,
-                    "f_TPR": f"r{segundos}",
+                    "f_TPR": f"r{ventana}",
                     "start": page * 25,
                 })
                 url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?{params}"
@@ -144,9 +149,12 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
                     loc = re.search(r'job-search-card__location[^>]*>\s*([^<]+)', card)
                     date = re.search(r'datetime="([^"]+)"', card)
                     href = html.unescape(link.group(1))
+                    nombre_empresa = html.unescape(company.group(1)) if company else ""
+                    if solo_empresa and not _contiene(solo_empresa, _norm(nombre_empresa)):
+                        continue
                     ofertas.append(_oferta(
                         "linkedin", href.rstrip("/").split("-")[-1] or href,
-                        html.unescape(company.group(1)) if company else "",
+                        nombre_empresa,
                         html.unescape(title.group(1)),
                         href,
                         ubicacion=html.unescape(loc.group(1)) if loc else "",
@@ -407,7 +415,7 @@ def _cargar_existentes() -> dict:
     return {o["id"]: o for o in json.loads(OFERTAS.read_text(encoding="utf-8"))}
 
 
-def buscar(dry_run: bool = False, log=print) -> dict:
+def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dict:
     cfg = load_config()
     fuentes_cfg = cfg["fuentes"]
     kw_es, kw_en = cfg["keywords"]["es"], cfg["keywords"]["en"]
@@ -442,7 +450,7 @@ def buscar(dry_run: bool = False, log=print) -> dict:
             estado["fuentes"][nombre] = {"ok": False, "error": f"{type(e).__name__}: {e}"[:300]}
             log(f"  ✗ {nombre}: {type(e).__name__}: {e}")
 
-    existentes = _cargar_existentes()
+    existentes = {} if sin_historial else _cargar_existentes()
     hoy = datetime.now(timezone.utc).date().isoformat()
     nuevas, vistas, detalles = [], set(), 0
     min_score = int(cfg.get("puntaje_minimo", 30))

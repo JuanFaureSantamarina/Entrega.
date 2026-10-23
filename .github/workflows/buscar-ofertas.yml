@@ -9,6 +9,10 @@ on:
         description: "Guardar los resultados en el repo"
         type: boolean
         default: true
+      prueba:
+        description: "Modo prueba: ignora el historial y no guarda"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -31,10 +35,10 @@ jobs:
       - run: pip install pyyaml
 
       - name: Buscar ofertas
-        run: python main.py jobs search
+        run: python main.py jobs search ${{ inputs.prueba && '--dry-run --sin-historial' || '' }}
 
       - name: Guardar resultados
-        if: ${{ github.event_name == 'schedule' || inputs.guardar }}
+        if: ${{ github.event_name == 'schedule' || (inputs.guardar && !inputs.prueba) }}
         run: |
           git config user.name "buscador-ofertas"
           git config user.email "actions@users.noreply.github.com"

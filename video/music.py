@@ -5,7 +5,7 @@ import numpy as np
 TL = json.loads(re.search(r'window\.TL\s*=\s*(\{.*\})', open('timeline.js').read(), re.S).group(1))
 V, DUR = TL['vo'], TL['duration']
 # scene boundaries, mirrored from moturi_promo.html
-S = dict(s2=4.3, turn=V['turn'] - .15, s3=V['turn'] + .85, s3b=V['body'] - .4,
+S = dict(s2=4.3, turn=V['turn'] - .15, s3=V['turn'] + .85,
          s4=V['app1'] - .5, s5=V['biz'] - .4, s6=V['cta'] - .7)
 
 SR = 44100
@@ -86,16 +86,16 @@ riser(V['pain2'] + .3, S['turn'] - V['pain2'] - .6, .16)
 # 3. Brand reveal: impact on the flash, hit when the logo locks, sparkle arpeggio
 impact(S['s3'], .8)
 whoosh(S['s3'] + .3, .7, .1)
-impact(S['s3'] + 1.0, .5)
+impact(S['s3'] + 1.2, .5)
 for k, m in enumerate([72, 76, 79, 84, 88]):
-    pluck(m, S['s3'] + 1.0 + k * .09, 1.4, .09, (k - 2) * .25)
-pad([48, 55, 60, 64], S['s3'], S['s3b'] - S['s3'] + .3, .07, .3)
+    pluck(m, S['s3'] + 1.2 + k * .09, 1.4, .09, (k - 2) * .25)
+pad([48, 55, 60, 64], S['s3'], 1.6, .07, .3)
 
-# 4. Main groove (100 bpm) from body/mind until the CTA
+# 4. Main groove (100 bpm) from the moment the logo locks until the CTA
 BEAT = 60 / 100
 bar = BEAT * 4
 chords = [[53, 57, 60, 64], [55, 59, 62, 67], [57, 60, 64, 67], [48, 52, 55, 59]]  # Fmaj7 G Am7 Cmaj7
-s, ci = S['s3b'], 0
+s, ci = S['s3'] + 1.2, 0
 while s < S['s6'] - .05:
     ch = chords[ci % 4]
     blen = min(bar, S['s6'] - s)

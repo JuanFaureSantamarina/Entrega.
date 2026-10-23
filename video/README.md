@@ -2,7 +2,7 @@
 
 `moturi_promo.mp4`: video animado de 42 s, 1080×1080, con voz de locutor y música original.
 
-Guion: gancho → problema (estrés, burnout…) → "Hasta hoy." → el logo se arma (pesa + cerebro + hoja) → "Entrená tu cuerpo / Cuidá tu mente" → recorrido por la app → para empresas → llamado a la acción.
+Guion: gancho → problema (estrés, burnout…) → "Hasta hoy." → aparece el logo completo dentro de un círculo lima y se llena de abajo hacia arriba → "Bienestar integral para personas y empresas" → recorrido por la app → para empresas → llamado a la acción.
 
 ## Archivos
 
@@ -10,7 +10,7 @@ Guion: gancho → problema (estrés, burnout…) → "Hasta hoy." → el logo se
 - `timeline.js`: en qué segundo entra cada frase del locutor. Las escenas y la música se acomodan solas a estos tiempos.
 - `voiceover.py`: genera la voz (Kokoro TTS, voz `em_alex`). El guion completo está en `LINES`.
 - `music.py` / `mix.py`: música sintetizada y mezcla final con la voz (la música baja sola cuando habla el locutor).
-- `split_logo.py`: separa el logo en piezas (`assets/`) para animarlas.
+- `make_logo_assets.py`: genera el logo en blanco, lima y verde oscuro (`assets/`).
 
 ## Volver a generar
 

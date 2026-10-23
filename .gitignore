@@ -6,3 +6,6 @@ data/applications.db
 output/
 *.pdf
 *.html
+video/music.wav
+video/moturi_promo_silent.mp4
+video/snap_*.png

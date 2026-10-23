@@ -1,0 +1,64 @@
+{
+ "fecha": "2026-10-23T01:29:14+00:00",
+ "fuentes": {
+  "linkedin": {
+   "ok": true,
+   "encontradas": 508
+  },
+  "remotive": {
+   "ok": true,
+   "encontradas": 72
+  },
+  "himalayas": {
+   "ok": true,
+   "encontradas": 1
+  },
+  "workday:Givaudan": {
+   "ok": false,
+   "error": "HTTPError: HTTP Error 422: Unprocessable Entity"
+  },
+  "workday:Mondelez": {
+   "ok": true,
+   "encontradas": 6
+  },
+  "workday:Kimberly-Clark": {
+   "ok": true,
+   "encontradas": 1
+  },
+  "workday:Coca-Cola": {
+   "ok": true,
+   "encontradas": 1
+  },
+  "workday:Johnson & Johnson": {
+   "ok": true,
+   "encontradas": 6
+  },
+  "workday:Pfizer": {
+   "ok": true,
+   "encontradas": 7
+  },
+  "workday:Salesforce": {
+   "ok": true,
+   "encontradas": 21
+  },
+  "workday:Mastercard": {
+   "ok": true,
+   "encontradas": 7
+  },
+  "eightfold:Mercado Libre": {
+   "ok": false,
+   "error": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "greenhouse:nubank": {
+   "ok": true,
+   "encontradas": 0
+  },
+  "lever:dlocal": {
+   "ok": true,
+   "encontradas": 2
+  }
+ },
+ "crudas": 632,
+ "nuevas": 31,
+ "total": 31
+}

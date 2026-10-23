@@ -547,6 +547,36 @@ def cmd_jobs_list(args):
         print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, o['link'])}")
 
 
+# ─── Command: postulacion ─────────────────────────────────────────────────────
+
+def cmd_postulacion_armar(args):
+    """Arma CV y carta en PDF para una oferta, a partir de un CV adaptado (YAML) y una carta (TXT)."""
+    from src.cv_generator import generate_cv_pdf
+    from src.cover_letter_generator import generate_cover_letter_pdf
+
+    with open(args.cv) as f:
+        cv_data = yaml.safe_load(f)
+    lang = cv_data.get("lang", "es")
+    name = cv_data.get("personal", {}).get("name", "CV")
+    slug = make_slug(args.empresa, args.puesto)
+    out_dir = Path("output/postulaciones") / slug
+    empresa_archivo = re.sub(r"[^\w-]", "", args.empresa.replace(" ", "_"))
+    base = name.replace(" ", "_")
+
+    cv_label = "CV" if lang == "es" else "Resume"
+    cv_pdf = generate_cv_pdf(cv_data, out_dir / f"{cv_label}_{base}_{empresa_archivo}.pdf")
+    ok(f"CV: {cv_pdf}")
+
+    if args.carta:
+        content = Path(args.carta).read_text(encoding="utf-8").strip()
+        cl_label = "Carta" if lang == "es" else "Cover_Letter"
+        cl_pdf = generate_cover_letter_pdf(
+            content, cv_data.get("personal", {}), args.empresa, args.puesto,
+            out_dir / f"{cl_label}_{base}_{empresa_archivo}.pdf", lang,
+        )
+        ok(f"Carta: {cl_pdf}")
+
+
 # ─── Parser ───────────────────────────────────────────────────────────────────
 
 def build_parser():
@@ -622,6 +652,15 @@ def build_parser():
     p_jl.add_argument("--min", type=int, default=0, help="Puntaje mínimo")
     p_jl.add_argument("--dias", type=int, default=7, help="Encontradas en los últimos N días")
 
+    # postulacion
+    p_post = sub.add_parser("postulacion", help="Armar CV y carta en PDF para una oferta")
+    ps = p_post.add_subparsers(dest="post_cmd", required=True)
+    p_pa = ps.add_parser("armar", help="Genera los PDFs desde un CV adaptado y una carta")
+    p_pa.add_argument("--cv", required=True, help="YAML del CV adaptado (mismo formato que data/base_cv.yaml)")
+    p_pa.add_argument("--carta", help="TXT con el texto de la carta")
+    p_pa.add_argument("--empresa", "-c", required=True)
+    p_pa.add_argument("--puesto", "-p", required=True)
+
     return parser
 
 
@@ -636,6 +675,7 @@ def main():
         or getattr(args, "cl_cmd", None)
         or getattr(args, "track_cmd", None)
         or getattr(args, "jobs_cmd", None)
+        or getattr(args, "post_cmd", None)
     )
 
     dispatch = {
@@ -654,6 +694,7 @@ def main():
         ("track",         "stats"):       cmd_track_stats,
         ("jobs",          "search"):      cmd_jobs_search,
         ("jobs",          "list"):        cmd_jobs_list,
+        ("postulacion",   "armar"):       cmd_postulacion_armar,
     }
 
     fn = dispatch.get((args.command, sub_cmd))

@@ -30,6 +30,7 @@ JOBS_DIR    = Path("data/jobs")
 OFERTAS     = JOBS_DIR / "ofertas.json"
 ESTADO      = JOBS_DIR / "estado.json"
 DIAS_HISTORIAL = 45
+MAX_DETALLES = 120  # ofertas de LinkedIn por corrida a las que se les baja la descripción
 
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -156,6 +157,23 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     return ofertas
 
 
+def detalle_linkedin(oferta: dict) -> None:
+    """Completa descripción y modalidad de una oferta de LinkedIn con su página pública."""
+    job_id = re.search(r"(\d{6,})/?$", oferta["link"])
+    if not job_id:
+        return
+    page = _http(f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id.group(1)}")
+    desc = re.search(r'show-more-less-html__markup[^>]*>(.*?)</div>', page, re.S)
+    if desc:
+        oferta["descripcion"] = _strip_html(desc.group(1))[:4000]
+    criterios = re.findall(r'description__job-criteria-text[^>]*>\s*([^<]+)', page)
+    if criterios:
+        oferta["seniority"] = html.unescape(criterios[0]).strip()
+    modo = _detectar_modalidad(oferta.get("descripcion", ""))
+    if modo in ("hibrido", "presencial"):
+        oferta["modalidad"] = modo
+
+
 def fetch_remotive(cfg: dict, keywords: list[str]) -> list[dict]:
     ofertas = []
     for kw in keywords:
@@ -204,15 +222,24 @@ def fetch_workday(empresa: str, url: str) -> list[dict]:
     site = [p for p in parsed.path.split("/") if p and not re.fullmatch(r"[a-z]{2}-[A-Z]{2}", p)][0]
     api = f"https://{parsed.netloc}/wday/cxs/{tenant}/{site}/jobs"
     ofertas = []
+    texto_busqueda = "Argentina"
     for offset in (0, 20, 40):
-        data = json.loads(_http(api, {"appliedFacets": {}, "limit": 20, "offset": offset,
-                                      "searchText": "Argentina"}))
+        try:
+            data = json.loads(_http(api, {"appliedFacets": {}, "limit": 20, "offset": offset,
+                                          "searchText": texto_busqueda}))
+        except urllib.error.HTTPError as e:
+            if e.code != 422 or not texto_busqueda:
+                raise
+            texto_busqueda = ""  # algunos portales rechazan la búsqueda por texto
+            data = json.loads(_http(api, {"appliedFacets": {}, "limit": 20, "offset": offset,
+                                          "searchText": ""}))
         posts = data.get("jobPostings", [])
         for p in posts:
             loc = p.get("locationsText", "")
-            if "argentin" not in _norm(loc) and "buenos aires" not in _norm(loc) and "location" not in _norm(loc):
-                continue
             path = p.get("externalPath", "")
+            donde = _norm(f"{loc} {path.replace('-', ' ')}")
+            if "argentin" not in donde and "buenos aires" not in donde:
+                continue
             ofertas.append(_oferta(
                 "workday", f"{tenant}{path}", empresa, p.get("title"),
                 f"https://{parsed.netloc}/{site}{path}", ubicacion=loc,
@@ -237,19 +264,29 @@ def fetch_eightfold(empresa: str, hosts: list[str], domain: str, consultas: list
                         "domain": domain, "query": q, "location": ubicacion,
                         "start": start, "num": 10, "sort_by": "timestamp",
                     })
-                    data = json.loads(_http(f"https://{host}/api/apply/v2/jobs?{params}"))
+                    try:
+                        data = json.loads(_http(f"https://{host}/api/apply/v2/jobs?{params}"))
+                    except urllib.error.HTTPError as e:
+                        if e.code != 404:
+                            raise
+                        data = json.loads(_http(f"https://{host}/api/pcsx/search?{params}"))
+                    data = data.get("data", data)
                     posiciones = data.get("positions", [])
                     for p in posiciones:
-                        locs = p.get("locations") or [p.get("location", "")]
+                        locs = (p.get("locations") or p.get("standardizedLocations")
+                                or [p.get("location", "")])
                         loc = ", ".join(str(l) for l in locs if l)
                         if "argentin" not in _norm(loc) and "buenos aires" not in _norm(loc):
                             continue
-                        modo = _norm(p.get("work_location_option", ""))
+                        modo = _norm(p.get("work_location_option") or p.get("workLocationOption") or "")
                         modalidad = ("hibrido" if "hybrid" in modo else "remoto" if "remote" in modo
                                      else "presencial" if "onsite" in modo or "on_site" in modo
                                      else _detectar_modalidad(p.get("name", "")))
-                        link = p.get("canonicalPositionUrl") or f"https://{host}/careers?pid={p.get('id')}&domain={domain}"
-                        ts = p.get("t_create") or p.get("t_update")
+                        link = (p.get("canonicalPositionUrl") or p.get("positionUrl")
+                                or f"https://{host}/careers?pid={p.get('id')}&domain={domain}")
+                        if link.startswith("/"):
+                            link = f"https://{host}{link}"
+                        ts = p.get("t_create") or p.get("postedTs") or p.get("t_update")
                         ofertas.append(_oferta(
                             "eightfold", f"{domain}-{p.get('id')}", empresa, p.get("name"), link,
                             ubicacion=loc, modalidad=modalidad,
@@ -407,7 +444,7 @@ def buscar(dry_run: bool = False, log=print) -> dict:
 
     existentes = _cargar_existentes()
     hoy = datetime.now(timezone.utc).date().isoformat()
-    nuevas, vistas = [], set()
+    nuevas, vistas, detalles = [], set(), 0
     min_score = int(cfg.get("puntaje_minimo", 30))
     for o in crudas:
         if o["id"] in vistas or not o["link"] or not o["puesto"]:
@@ -416,6 +453,16 @@ def buscar(dry_run: bool = False, log=print) -> dict:
         score, motivos = puntuar(o, cfg)
         if score < min_score:
             continue
+        if o["fuente"] == "linkedin" and o["id"] not in existentes and detalles < MAX_DETALLES:
+            detalles += 1
+            try:
+                detalle_linkedin(o)
+                time.sleep(1)
+                score, motivos = puntuar(o, cfg)
+                if score < min_score:
+                    continue
+            except Exception as e:
+                log(f"  ! detalle {o['link']}: {type(e).__name__}")
         o.update({"puntaje": score, "motivos": motivos, "nicho": _nicho(o),
                   "mercado": "exterior" if o["fuente"] in ("remotive", "himalayas") else "argentina"})
         if o["id"] in existentes:

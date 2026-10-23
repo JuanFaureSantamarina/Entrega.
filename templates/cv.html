@@ -1,0 +1,104 @@
+{%- set en = cv.get('lang') == 'en' -%}
+{%- set L = {
+  'contact': 'CONTACT' if en else 'CONTACTO',
+  'education': 'EDUCATION' if en else 'EDUCACIÓN',
+  'languages': 'LANGUAGES' if en else 'IDIOMAS',
+  'skills': 'SKILLS' if en else 'APTITUDES',
+  'tools': 'TOOLS' if en else 'HERRAMIENTAS',
+  'profile': 'PROFILE' if en else 'PERFIL',
+  'experience': 'EXPERIENCE' if en else 'EXPERIENCIA',
+  'present': 'Present' if en else 'actualidad',
+  'to': 'to' if en else 'a',
+} -%}
+{%- macro period(start, end) -%}
+{{ start | fmt_date(en) }} {{ L.to }} {{ (end | fmt_date(en)) if end else L.present }}
+{%- endmacro -%}
+<!doctype html>
+<html lang="{{ 'en' if en else 'es' }}">
+<head>
+<meta charset="utf-8">
+<title>CV {{ cv.personal.name }}</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1f2933; font-size: 9.6pt; line-height: 1.42; }
+  .page { width: 210mm; min-height: 297mm; padding: 15mm 15mm 12mm; }
+  header { border-bottom: 2px solid #1e3a5f; padding-bottom: 8px; margin-bottom: 12px; }
+  h1 { font-size: 22pt; letter-spacing: 0.06em; margin: 0; color: #1e3a5f; }
+  .role { font-size: 10pt; letter-spacing: 0.08em; color: #4a5a6a; margin-top: 3px; text-transform: uppercase; }
+  .cols { display: grid; grid-template-columns: 58mm 1fr; gap: 8mm; }
+  h2 { font-size: 9pt; letter-spacing: 0.14em; color: #1e3a5f; margin: 0 0 5px; padding-bottom: 3px; border-bottom: 1px solid #c9d3dd; }
+  section { margin-bottom: 11px; }
+  .side p, .side li { margin: 0; }
+  .side ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+  .edu { margin-bottom: 6px; }
+  .edu b { display: block; }
+  .muted { color: #5c6b79; }
+  .job { margin-bottom: 9px; page-break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .job-head b { font-size: 10pt; }
+  .job-head .muted { white-space: nowrap; flex-shrink: 0; }
+  .job ul { margin: 3px 0 0; padding-left: 14px; }
+  .job li { margin-bottom: 2px; }
+  .summary { margin: 0; text-align: justify; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>{{ cv.personal.name | upper }}</h1>
+    {% if cv.personal.title %}<div class="role">{{ cv.personal.title }}</div>{% endif %}
+  </header>
+  <div class="cols">
+    <aside class="side">
+      <section>
+        <h2>{{ L.contact }}</h2>
+        <ul>
+          {% if cv.personal.phone %}<li>{{ cv.personal.phone }}</li>{% endif %}
+          {% if cv.personal.email %}<li>{{ cv.personal.email }}</li>{% endif %}
+          {% if cv.personal.location %}<li>{{ cv.personal.location }}</li>{% endif %}
+          {% if cv.personal.linkedin %}<li>{{ cv.personal.linkedin }}</li>{% endif %}
+        </ul>
+      </section>
+      {% if cv.education %}
+      <section>
+        <h2>{{ L.education }}</h2>
+        {% for e in cv.education %}
+        <div class="edu">
+          <b>{{ e.field }}</b>
+          <span>{{ e.institution }}</span><br>
+          <span class="muted">{{ e.start_year }}{% if e.graduation_year and e.graduation_year != e.start_year %} {{ L.to }} {{ e.graduation_year }}{% elif not e.graduation_year %} {{ L.to }} {{ L.present }}{% endif %}{% if e.highlights %} ({{ e.highlights | join(', ') }}){% endif %}</span>
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+      {% if cv.skills and cv.skills.languages %}
+      <section><h2>{{ L.languages }}</h2><ul>{% for l in cv.skills.languages %}<li>{{ l }}</li>{% endfor %}</ul></section>
+      {% endif %}
+      {% set tools = cv.skills.tools if cv.skills and cv.skills.tools else [] %}
+      {% set skills = ((cv.skills.technical or []) + (cv.skills.soft or [])) if cv.skills else [] %}
+      {% if skills %}
+      <section><h2>{{ L.skills }}</h2><ul>{% for s in skills %}<li>{{ s }}</li>{% endfor %}</ul></section>
+      {% endif %}
+      {% if tools %}
+      <section><h2>{{ L.tools }}</h2><ul>{% for s in tools %}<li>{{ s }}</li>{% endfor %}</ul></section>
+      {% endif %}
+    </aside>
+    <main>
+      {% if cv.summary %}
+      <section><h2>{{ L.profile }}</h2><p class="summary">{{ cv.summary | trim }}</p></section>
+      {% endif %}
+      <section>
+        <h2>{{ L.experience }}</h2>
+        {% for x in cv.experience %}
+        <div class="job">
+          <div class="job-head"><b>{{ x.position }} · {{ x.company }}</b><span class="muted">{{ period(x.start_date, x.end_date) }}</span></div>
+          {% if x.achievements %}<ul>{% for a in x.achievements %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        {% endfor %}
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>

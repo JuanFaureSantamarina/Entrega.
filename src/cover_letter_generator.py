@@ -75,6 +75,7 @@ def generate_cover_letter_pdf(
                     "--disable-dev-shm-usage",
                     f"--print-to-pdf={output_path}",
                     "--print-to-pdf-no-header",
+                    "--no-pdf-header-footer",
                     str(html_path),
                 ],
                 capture_output=True,

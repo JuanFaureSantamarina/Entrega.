@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Carta de presentación - {{ candidate.name if candidate else "" }}</title>
+<style>
+  @page { size: A4; margin: 22mm 22mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #222;
+  }
+  header { border-bottom: 2px solid #1f4e79; padding-bottom: 8px; margin-bottom: 22px; }
+  h1 {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18pt;
+    color: #1f4e79;
+  }
+  .title { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 10.5pt; color: #444; margin-top: 2px; }
+  .contact { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 9pt; color: #555; margin-top: 4px; }
+  .contact span + span::before { content: " · "; color: #999; }
+  .meta { margin-bottom: 20px; }
+  .date { text-align: right; color: #555; margin-bottom: 14px; }
+  .recipient strong { display: block; }
+  .subject { margin: 14px 0 18px; font-weight: bold; }
+  p { margin: 0 0 11px; text-align: justify; white-space: pre-line; }
+  .signature { margin-top: 18px; font-weight: bold; }
+</style>
+</head>
+<body>
+{% set c = candidate or {} %}
+<header>
+  <h1>{{ c.name or "" }}</h1>
+  {% if c.title %}<div class="title">{{ c.title }}</div>{% endif %}
+  <div class="contact">
+    {%- for key in ["email", "phone", "location", "linkedin"] if c[key] -%}
+      <span>{{ c[key] }}</span>
+    {%- endfor -%}
+  </div>
+</header>
+
+<div class="meta">
+  <div class="date">{% if c.location %}{{ c.location.split(",")[0] }}, {% endif %}{{ today }}</div>
+  {% if company %}
+  <div class="recipient">
+    <strong>{{ company }}</strong>
+    Equipo de Selección
+  </div>
+  {% endif %}
+  {% if position %}<div class="subject">Ref.: Postulación al puesto de {{ position }}</div>{% endif %}
+</div>
+
+{% for para in paragraphs %}
+<p>{{ para }}</p>
+{% endfor %}
+
+{% if c.name %}<div class="signature">{{ c.name }}</div>{% endif %}
+</body>
+</html>

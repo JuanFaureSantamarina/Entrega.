@@ -63,6 +63,7 @@ def generate_cv_pdf(cv_data: dict, output_path: Path) -> Path:
                     "--disable-dev-shm-usage",
                     f"--print-to-pdf={output_path}",
                     "--print-to-pdf-no-header",
+                    "--no-pdf-header-footer",
                     str(html_path),
                 ],
                 capture_output=True,

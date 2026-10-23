@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>CV - {{ cv.personal.name if cv.personal else "" }}</title>
+<style>
+  @page { size: A4; margin: 14mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+    color: #222;
+  }
+  a { color: inherit; text-decoration: none; }
+  header { border-bottom: 2px solid #1f4e79; padding-bottom: 7px; margin-bottom: 10px; }
+  h1 { margin: 0; font-size: 21pt; letter-spacing: .3px; color: #1f4e79; }
+  .title { margin: 2px 0 4px; font-size: 11pt; color: #444; }
+  .contact { font-size: 8.6pt; color: #555; }
+  .contact span + span::before { content: " · "; color: #999; }
+  section { margin-bottom: 9px; }
+  h2 {
+    margin: 0 0 5px;
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: #1f4e79;
+    border-bottom: 1px solid #c9d6e3;
+    padding-bottom: 2px;
+  }
+  .summary { margin: 0; white-space: pre-line; }
+  .item { margin-bottom: 6px; page-break-inside: avoid; }
+  .item-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .item-title { font-weight: bold; }
+  .item-sub { color: #555; }
+  .dates { font-size: 8.6pt; color: #666; white-space: nowrap; }
+  .desc { margin: 2px 0 0; }
+  ul { margin: 2px 0 0; padding-left: 15px; }
+  li { margin-bottom: 1px; }
+  .skills-grid { display: grid; grid-template-columns: 1fr; gap: 2px; }
+  .skills-grid strong { color: #333; }
+  .tech { font-size: 8.6pt; color: #666; }
+</style>
+</head>
+<body>
+{% set p = cv.personal or {} %}
+<header>
+  <h1>{{ p.name or "" }}</h1>
+  {% if p.title %}<div class="title">{{ p.title }}</div>{% endif %}
+  <div class="contact">
+    {%- for key in ["email", "phone", "location", "linkedin", "github", "portfolio"] if p[key] -%}
+      <span>{{ p[key] }}</span>
+    {%- endfor -%}
+  </div>
+</header>
+
+{% if cv.summary %}
+<section>
+  <h2>Perfil profesional</h2>
+  <p class="summary">{{ cv.summary | trim }}</p>
+</section>
+{% endif %}
+
+{% if cv.experience %}
+<section>
+  <h2>Experiencia laboral</h2>
+  {% for job in cv.experience %}
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">{{ job.position or "" }}</span>
+        {%- if job.company %} <span class="item-sub">— {{ job.company }}</span>{% endif %}
+        {%- if job.location %} <span class="item-sub">· {{ job.location }}</span>{% endif %}
+      </div>
+      {% if job.start_date or job.end_date is defined %}
+      <div class="dates">
+        {%- if job.start_date %}{{ job.start_date | fmt_date }} – {% endif %}{{ job.end_date | fmt_date }}
+      </div>
+      {% endif %}
+    </div>
+    {% if job.description %}<p class="desc">{{ job.description }}</p>{% endif %}
+    {% if job.achievements %}
+    <ul>
+      {% for a in job.achievements if a %}<li>{{ a }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if cv.education %}
+<section>
+  <h2>Educación</h2>
+  {% for ed in cv.education %}
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">{{ ed.degree or "" }}{% if ed.degree and ed.field %} en {% endif %}{{ ed.field or "" }}</span>
+        {%- if ed.institution %} <span class="item-sub">— {{ ed.institution }}</span>{% endif %}
+      </div>
+      {% if ed.start_year or ed.graduation_year %}
+      <div class="dates">
+        {%- if ed.start_year and ed.graduation_year and ed.start_year != ed.graduation_year -%}
+          {{ ed.start_year }} – {{ ed.graduation_year }}
+        {%- elif ed.graduation_year -%}
+          {{ ed.graduation_year }}
+        {%- else -%}
+          {{ ed.start_year }} – En curso
+        {%- endif -%}
+      </div>
+      {% endif %}
+    </div>
+    {% if ed.highlights %}
+    <ul>
+      {% for h in ed.highlights if h %}<li>{{ h }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% set s = cv.skills or {} %}
+{% if s.technical or s.soft or s.languages %}
+<section>
+  <h2>Habilidades</h2>
+  <div class="skills-grid">
+    {% if s.technical %}<div><strong>Técnicas:</strong> {{ s.technical | join(", ") }}</div>{% endif %}
+    {% if s.soft %}<div><strong>Blandas:</strong> {{ s.soft | join(", ") }}</div>{% endif %}
+    {% if s.languages %}<div><strong>Idiomas:</strong> {{ s.languages | join(", ") }}</div>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% set certs = (cv.certifications or []) | selectattr("name") | list %}
+{% if certs %}
+<section>
+  <h2>Certificaciones</h2>
+  <ul>
+    {% for cert in certs %}
+    <li>
+      <strong>{{ cert.name }}</strong>
+      {%- if cert.issuer %} — {{ cert.issuer }}{% endif %}
+      {%- if cert.year %} ({{ cert.year }}){% endif %}
+      {%- if cert.url %} · <a href="{{ cert.url }}">{{ cert.url }}</a>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% set projs = (cv.projects or []) | selectattr("name") | list %}
+{% if projs %}
+<section>
+  <h2>Proyectos</h2>
+  {% for proj in projs %}
+  <div class="item">
+    <div class="item-head">
+      <span class="item-title">{{ proj.name }}</span>
+      {% if proj.url %}<span class="dates">{{ proj.url }}</span>{% endif %}
+    </div>
+    {% if proj.description %}<p class="desc">{{ proj.description }}</p>{% endif %}
+    {% if proj.technologies %}<div class="tech">Tecnologías: {{ proj.technologies | join(", ") }}</div>{% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+</body>
+</html>

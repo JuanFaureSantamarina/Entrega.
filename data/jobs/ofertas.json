@@ -582,5 +582,25 @@
   "nicho": "operaciones",
   "mercado": "argentina",
   "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-ee487d3033c6",
+  "fuente": "workday",
+  "empresa": "Kimberly-Clark",
+  "puesto": "Pasante de Recursos Humanos",
+  "link": "https://kimberlyclark.wd1.myworkdayjobs.com/GLOBAL/job/Argentina--San-Luis/Pasante-de-Recursos-Humanos_887929",
+  "ubicacion": "Argentina- San Luis",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Yesterday",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
  }
 ]

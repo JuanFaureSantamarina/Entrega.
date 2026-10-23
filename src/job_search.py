@@ -400,6 +400,8 @@ def puntuar(oferta: dict, cfg: dict) -> tuple[int, list[str]]:
         return -1, ["título excluido"]
     if oferta["modalidad"] == "presencial":
         return -1, ["presencial"]
+    if oferta.get("mercado") == "exterior" and oferta.get("descripcion") and not _abierta_a_argentina(oferta):
+        return -1, ["remoto solo para otro país"]
 
     score = 0
     keywords = cfg["keywords"]["es"] + cfg["keywords"]["en"]
@@ -439,6 +441,15 @@ def puntuar(oferta: dict, cfg: dict) -> tuple[int, list[str]]:
         score += 5
 
     return max(0, min(100, score)), motivos
+
+
+def _abierta_a_argentina(oferta: dict) -> bool:
+    """Una oferta remota de afuera sirve si la ubicación o la descripción la abren a la región o a Argentina."""
+    texto = _norm(f"{oferta['ubicacion']} {oferta['descripcion']}")
+    return any(k in texto for k in (
+        "latin america", "latam", "south america", "americas", "argentin", "anywhere",
+        "worldwide", "latinoamerica", "america latina", "cualquier pais", "any country",
+    ))
 
 
 def _nicho(oferta: dict) -> str:

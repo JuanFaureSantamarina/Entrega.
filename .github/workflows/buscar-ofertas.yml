@@ -35,7 +35,7 @@ jobs:
       - run: pip install pyyaml
 
       - name: Buscar ofertas
-        run: python main.py jobs search ${{ inputs.prueba && '--dry-run --sin-historial' || '' }}
+        run: python main.py jobs search ${{ inputs.prueba && '--dry-run --sin-historial --json' || '' }}
 
       - name: Guardar resultados
         if: ${{ github.event_name == 'schedule' || (inputs.guardar && !inputs.prueba) }}

@@ -532,6 +532,10 @@ def cmd_jobs_search(args):
     ok(f"{est['crudas']} ofertas revisadas · {est['nuevas']} nuevas que encajan · {est['total']} en historial")
     if caidas:
         warn(f"Fuentes con error: {', '.join(caidas)} (detalle en data/jobs/estado.json)")
+    if args.json:
+        import json as _json
+        for o in sorted(res["nuevas"], key=lambda o: -o["puntaje"]):
+            print("OFERTA_JSON " + _json.dumps({**o, "descripcion": o.get("descripcion", "")[:600]}, ensure_ascii=False))
     for o in sorted(res["nuevas"], key=lambda o: -o["puntaje"])[:15]:
         desc = f"{len(o.get('descripcion', ''))} car." if o.get("descripcion") else "sin desc."
         print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, (o['modalidad'] or '?') + ' · ' + desc)}")
@@ -645,6 +649,7 @@ def build_parser():
     p_js = js.add_parser("search", help="Buscar ofertas nuevas en todas las fuentes")
     p_js.add_argument("--dry-run", action="store_true", help="No guardar resultados")
     p_js.add_argument("--sin-historial", action="store_true", help="Tratar todas las ofertas como nuevas (para probar)")
+    p_js.add_argument("--json", action="store_true", help="Imprimir las ofertas nuevas en JSON (una por línea)")
     p_jl = js.add_parser("list", help="Ver ofertas encontradas")
     p_jl.add_argument("--min", type=int, default=0, help="Puntaje mínimo")
     p_jl.add_argument("--dias", type=int, default=7, help="Encontradas en los últimos N días")

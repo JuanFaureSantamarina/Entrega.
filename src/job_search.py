@@ -111,6 +111,42 @@ def _detectar_modalidad(*textos: str) -> str:
 
 # ─── Fuentes ──────────────────────────────────────────────────────────────────
 
+def _linkedin_pagina(kw: str, ubicacion: str, f_wt: str, ventana: int, page: int,
+                     solo_empresa: str | None, modalidad: str) -> list[dict] | None:
+    """Una página de resultados de la búsqueda pública de LinkedIn. None = no hay más páginas."""
+    params = urllib.parse.urlencode({
+        "keywords": kw, "location": ubicacion, "f_WT": f_wt,
+        "f_TPR": f"r{ventana}", "start": page * 25,
+    })
+    try:
+        page_html = _http(f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?{params}")
+    except urllib.error.HTTPError as e:
+        if e.code in (400, 404):
+            return None
+        raise
+    ofertas = []
+    for card in page_html.split("<li"):
+        link = re.search(r'class="base-card__full-link[^"]*"\s+href="([^"?]+)', card)
+        title = re.search(r'base-search-card__title[^>]*>\s*([^<]+)', card)
+        if not link or not title:
+            continue
+        company = re.search(r'base-search-card__subtitle[^>]*>\s*(?:<a[^>]*>)?\s*([^<]+)', card)
+        loc = re.search(r'job-search-card__location[^>]*>\s*([^<]+)', card)
+        date = re.search(r'datetime="([^"]+)"', card)
+        href = html.unescape(link.group(1))
+        nombre_empresa = html.unescape(company.group(1)) if company else ""
+        if solo_empresa and not _contiene(solo_empresa, _norm(nombre_empresa)):
+            continue
+        ofertas.append(_oferta(
+            "linkedin", href.rstrip("/").split("-")[-1] or href,
+            nombre_empresa, html.unescape(title.group(1)), href,
+            ubicacion=html.unescape(loc.group(1)) if loc else "",
+            modalidad=modalidad, publicada=date.group(1) if date else "",
+        ))
+    time.sleep(1.5)
+    return ofertas
+
+
 def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     """Búsqueda pública de LinkedIn (la que se ve sin iniciar sesión)."""
     src = cfg["fuentes"]["linkedin"]
@@ -121,46 +157,24 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     busquedas += [(emp, 7 * 86400, emp, int(src.get("paginas_por_empresa", 3)))
                   for emp in src.get("empresas", []) or []]
     ofertas = []
+    # Empresas de afuera: búsquedas remotas con ubicación regional (por ejemplo "Latin America").
+    # Van primero para que, si una oferta aparece también en la búsqueda de Argentina, quede como exterior.
+    ext = src.get("exterior") or {}
+    for ubic in ext.get("ubicaciones", []) or []:
+        for kw in ext.get("keywords", []) or []:
+            for o in _linkedin_pagina(kw, ubic, "2", int(ext.get("dias", 3)) * 86400, 0, None, "remoto"):
+                o["mercado"] = "exterior"
+                ofertas.append(o)
+            time.sleep(1.5)
     # f_WT: 2 = remoto, 3 = híbrido
     for modo, modalidad in (("2", "remoto"), ("3", "hibrido")):
         for kw, ventana, solo_empresa, paginas in busquedas:
             for page in range(paginas):
-                params = urllib.parse.urlencode({
-                    "keywords": kw,
-                    "location": src.get("ubicacion", "Argentina"),
-                    "f_WT": modo,
-                    "f_TPR": f"r{ventana}",
-                    "start": page * 25,
-                })
-                url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?{params}"
-                try:
-                    page_html = _http(url)
-                except urllib.error.HTTPError as e:
-                    if e.code in (400, 404):
-                        break
-                    raise
-                cards = page_html.split("<li")
-                for card in cards:
-                    link = re.search(r'class="base-card__full-link[^"]*"\s+href="([^"?]+)', card)
-                    title = re.search(r'base-search-card__title[^>]*>\s*([^<]+)', card)
-                    if not link or not title:
-                        continue
-                    company = re.search(r'base-search-card__subtitle[^>]*>\s*(?:<a[^>]*>)?\s*([^<]+)', card)
-                    loc = re.search(r'job-search-card__location[^>]*>\s*([^<]+)', card)
-                    date = re.search(r'datetime="([^"]+)"', card)
-                    href = html.unescape(link.group(1))
-                    nombre_empresa = html.unescape(company.group(1)) if company else ""
-                    if solo_empresa and not _contiene(solo_empresa, _norm(nombre_empresa)):
-                        continue
-                    ofertas.append(_oferta(
-                        "linkedin", href.rstrip("/").split("-")[-1] or href,
-                        nombre_empresa,
-                        html.unescape(title.group(1)),
-                        href,
-                        ubicacion=html.unescape(loc.group(1)) if loc else "",
-                        modalidad=modalidad,
-                        publicada=date.group(1) if date else "",
-                    ))
+                res = _linkedin_pagina(kw, src.get("ubicacion", "Argentina"), modo, ventana, page,
+                                       solo_empresa, modalidad)
+                if res is None:
+                    break
+                ofertas.extend(res)
                 time.sleep(1.5)
     return ofertas
 
@@ -196,6 +210,33 @@ def fetch_remotive(cfg: dict, keywords: list[str]) -> list[dict]:
                 j.get("url"), ubicacion=loc, modalidad="remoto",
                 descripcion=j.get("description", ""), publicada=j.get("publication_date", ""),
             ))
+        time.sleep(1)
+    return ofertas
+
+
+def fetch_getonbrd(cfg: dict, keywords: list[str]) -> list[dict]:
+    """Get on Board: bolsa de trabajo latinoamericana, solo ofertas remotas."""
+    ofertas = []
+    for kw in keywords:
+        url = "https://www.getonbrd.com/api/v0/search/jobs?" + urllib.parse.urlencode(
+            {"query": kw, "per_page": 50, "page": 1, "expand": '["company"]'})
+        data = json.loads(_http(url))
+        for j in data.get("data", []):
+            a = j.get("attributes", {})
+            if not a.get("remote") and "remote" not in _norm(str(a.get("remote_modality", ""))):
+                continue
+            comp = ((a.get("company") or {}).get("data") or {}).get("attributes", {})
+            link = (j.get("links") or {}).get("public_url") or f"https://www.getonbrd.com/jobs/{j.get('id')}"
+            paises = a.get("countries") or []
+            o = _oferta(
+                "getonbrd", str(j.get("id")), comp.get("name", ""), a.get("title"), link,
+                ubicacion=", ".join(map(str, paises)) or "Remoto LATAM", modalidad="remoto",
+                descripcion=a.get("description", ""),
+                publicada=datetime.fromtimestamp(a["published_at"], timezone.utc).date().isoformat()
+                if isinstance(a.get("published_at"), (int, float)) else str(a.get("published_at", "")),
+            )
+            o["mercado"] = "exterior"
+            ofertas.append(o)
         time.sleep(1)
     return ofertas
 
@@ -425,6 +466,8 @@ def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dic
         tareas.append(("linkedin", lambda: fetch_linkedin(cfg, kw_es + kw_en)))
     if fuentes_cfg.get("remotive", {}).get("activo"):
         tareas.append(("remotive", lambda: fetch_remotive(cfg, kw_en)))
+    if fuentes_cfg.get("getonbrd", {}).get("activo"):
+        tareas.append(("getonbrd", lambda: fetch_getonbrd(cfg, kw_en)))
     if fuentes_cfg.get("himalayas", {}).get("activo"):
         tareas.append(("himalayas", lambda: fetch_himalayas(cfg, kw_en)))
     for w in fuentes_cfg.get("workday", []) or []:
@@ -472,7 +515,8 @@ def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dic
             except Exception as e:
                 log(f"  ! detalle {o['link']}: {type(e).__name__}")
         o.update({"puntaje": score, "motivos": motivos, "nicho": _nicho(o),
-                  "mercado": "exterior" if o["fuente"] in ("remotive", "himalayas") else "argentina"})
+                  "mercado": o.get("mercado") or ("exterior" if o["fuente"] in ("remotive", "himalayas")
+                                                   else "argentina")})
         if o["id"] in existentes:
             existentes[o["id"]].update({k: o[k] for k in ("puntaje", "motivos", "modalidad")})
             continue

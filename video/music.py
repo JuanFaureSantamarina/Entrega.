@@ -5,7 +5,7 @@ import numpy as np
 TL = json.loads(re.search(r'window\.TL\s*=\s*(\{.*\})', open('timeline.js').read(), re.S).group(1))
 V, DUR = TL['vo'], TL['duration']
 # scene boundaries, mirrored from moturi_promo.html
-S = dict(s2=4.3, turn=V['turn'] - .15, s3=V['turn'] + .85,
+S = dict(s2=4.3, turn=V['turn'] - .15, s3=V['turn'] + 1.25,
          s4=V['app1'] - .5, s5=V['biz'] - .4, s6=V['cta'] - .7)
 
 SR = 44100
@@ -75,7 +75,7 @@ pad([38, 45, 52], 0, S['s2'] + .4, .08, .1)
 for b in np.arange(.3125 - .06, S['s2'], 1.25):
     kick(b, .32, 45); kick(b + .2, .2, 45)
 
-# 2. Pain: rising tension, clock ticks, glitch hit, then silence before "Hasta hoy."
+# 2. Pain: rising tension, clock ticks, glitch hit, then silence before "Termina hoy."
 pad([37, 44, 49], S['s2'], S['turn'] - S['s2'] - .3, .09, .4)
 for i, b in enumerate(np.arange(S['s2'], S['turn'] - .45, .3125)):
     hat(b, .03 + .05 * min(1, i / 14), .5 if i % 2 else -.5)

@@ -129,8 +129,8 @@
     <div id="dot"></div>
   </div>
 
-  <!-- "Hasta hoy." -->
-  <div class="scene" id="sTurn"><div id="turn">Hasta hoy.</div></div>
+  <!-- "Termina hoy." -->
+  <div class="scene" id="sTurn"><div id="turn">Termina hoy.</div></div>
 
   <!-- S3: brand reveal -->
   <div class="scene" id="s3">
@@ -240,7 +240,7 @@ const rnd=i=>{const x=Math.sin(i*127.1)*43758.5453;return x-Math.floor(x)};
 const V=TL.vo, END=TL.duration;
 
 // scene boundaries derived from the voice-over cues
-const S={s2:4.3, turn:V.turn-.15, s3:V.turn+.85, s4:V.app1-.5, s5:V.biz-.4, s6:V.cta-.7};
+const S={s2:4.3, turn:V.turn-.15, s3:V.turn+1.25, s4:V.app1-.5, s5:V.biz-.4, s6:V.cta-.7};
 
 const s1=[["¿Cuándo","fue","la"],["última","vez"],["que","te","sentiste"],["*bien","*de","*verdad?"]];
 const s1w=[];
@@ -291,7 +291,7 @@ function render(t){
   if(t>V.pain2&&t<V.pain2+.4) shake=8*(1-P(t,V.pain2,V.pain2+.4));
   const dp=P(t,S.turn-.4,S.turn-.1); $('dot').style.opacity=dp; $('dot').style.transform=`scale(${eBack(dp)})`;
 
-  // ---------- "Hasta hoy."
+  // ---------- "Termina hoy."
   const tp=P(t,S.turn,S.turn+.25), to=P(t,S.s3-.2,S.s3);
   $('sTurn').style.opacity=(t>=S.turn&&t<S.s3)?1:0;
   $('turn').style.opacity=tp*(1-to); $('turn').style.transform=`scale(${lerp(.6,1,eBack(tp))*(1+to*2)})`;

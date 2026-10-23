@@ -1,0 +1,586 @@
+[
+ {
+  "id": "linkedin-f108b33cf5ea",
+  "fuente": "linkedin",
+  "empresa": "Accenture Argentina",
+  "puesto": "Recruiting Operations Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/recruiting-operations-analyst-at-accenture-argentina-4480762552",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 65,
+  "motivos": [
+   "título: operations analyst",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-c4a861d65d6e",
+  "fuente": "linkedin",
+  "empresa": "Inspired Way",
+  "puesto": "Analista de Investigación y Desarrollo – Jóvenes Profesionales Molinos",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-investigaci%C3%B3n-y-desarrollo-%E2%80%93-j%C3%B3venes-profesionales-molinos-at-inspired-way-4481608090",
+  "ubicacion": "Victoria, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 55,
+  "motivos": [
+   "título: jóvenes profesionales"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-f2b25edb40cd",
+  "fuente": "linkedin",
+  "empresa": "Bidcom",
+  "puesto": "Analista de Procesos de Negocio Cross",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-procesos-de-negocio-cross-at-bidcom-4481635638",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-23",
+  "puntaje": 54,
+  "motivos": [
+   "título: analista de procesos",
+   "skills: procesos"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-64f9312bed70",
+  "fuente": "linkedin",
+  "empresa": "Acciona IT",
+  "puesto": "QA & Business Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/qa-business-analyst-at-acciona-it-4482488225",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 50,
+  "motivos": [
+   "título: business analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-1db52ed68bca",
+  "fuente": "linkedin",
+  "empresa": "CookUnity",
+  "puesto": "Business Operations Associate",
+  "link": "https://ar.linkedin.com/jobs/view/business-operations-associate-at-cookunity-4481369924",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 50,
+  "motivos": [
+   "título: business operations"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-707b3ef34b35",
+  "fuente": "linkedin",
+  "empresa": "BTG Pactual Colombia",
+  "puesto": "Operations Analyst | BTG Argentina",
+  "link": "https://ar.linkedin.com/jobs/view/operations-analyst-btg-argentina-at-btg-pactual-colombia-4480078251",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-2de531f24328",
+  "fuente": "linkedin",
+  "empresa": "Randstad Argentina",
+  "puesto": "Analista Administrativo Comercial - Munro",
+  "link": "https://ar.linkedin.com/jobs/view/analista-administrativo-comercial-munro-at-randstad-argentina-4480072288",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista administrativo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-1207a981e1f7",
+  "fuente": "linkedin",
+  "empresa": "Grupo Arcor",
+  "puesto": "Pasante Universitario",
+  "link": "https://ar.linkedin.com/jobs/view/pasante-universitario-at-grupo-arcor-4482498860",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 40,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-e875ea65b5ff",
+  "fuente": "linkedin",
+  "empresa": "Accenture Argentina",
+  "puesto": "Changemakers Program - Pasantías Strategy & Consulting",
+  "link": "https://ar.linkedin.com/jobs/view/changemakers-program-pasant%C3%ADas-strategy-consulting-at-accenture-argentina-4481192540",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 40,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-af94c0328685",
+  "fuente": "linkedin",
+  "empresa": "EY",
+  "puesto": "Global C&I Strategic Operations Specialist - EY GDS",
+  "link": "https://ar.linkedin.com/jobs/view/global-c-i-strategic-operations-specialist-ey-gds-at-ey-4480039894",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-a9a9ae8f61d1",
+  "fuente": "linkedin",
+  "empresa": "EY",
+  "puesto": "Global C&I Strategic Operations Support - EY GDS",
+  "link": "https://ar.linkedin.com/jobs/view/global-c-i-strategic-operations-support-ey-gds-at-ey-4481342947",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-b1702c6935c1",
+  "fuente": "linkedin",
+  "empresa": "Ualá",
+  "puesto": "FraudOps Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/fraudops-analyst-at-ual%C3%A1-4464145122",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-c24643ad1932",
+  "fuente": "linkedin",
+  "empresa": "Cervecería y Maltería Quilmes",
+  "puesto": "Analista de Logistica SMK",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-logistica-smk-at-cervecer%C3%ADa-y-malter%C3%ADa-quilmes-4455989000",
+  "ubicacion": "Corrientes, Corrientes, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-221ddf893575",
+  "fuente": "linkedin",
+  "empresa": "YPF",
+  "puesto": "Analista de planificación",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-planificaci%C3%B3n-at-ypf-4480045119",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-6f2a0a92320b",
+  "fuente": "linkedin",
+  "empresa": "Personal",
+  "puesto": "Analista Ssr Mercado de Capitales",
+  "link": "https://ar.linkedin.com/jobs/view/analista-ssr-mercado-de-capitales-at-personal-4435375219",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-7543021468bd",
+  "fuente": "workday",
+  "empresa": "Mondelez",
+  "puesto": "Immigration Analyst",
+  "link": "https://mdlz.wd3.myworkdayjobs.com/External/job/Santa-F-Mexico/Immigration-Analyst_R-179359",
+  "ubicacion": "2 Locations",
+  "modalidad": "hibrido",
+  "descripcion": "",
+  "publicada": "Posted 14 Days Ago",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-18a8c1de9a06",
+  "fuente": "linkedin",
+  "empresa": "ManpowerGroup Argentina",
+  "puesto": "Analista de Cobranzas y Pagos (Contratación Temporal)",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-cobranzas-y-pagos-contrataci%C3%B3n-temporal-at-manpowergroup-argentina-4482475745",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 34,
+  "motivos": [
+   "título relacionado",
+   "skills: cobranza"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-9a0eb27c319b",
+  "fuente": "linkedin",
+  "empresa": "Importadora Sudamericana",
+  "puesto": "Administrador de ventas",
+  "link": "https://ar.linkedin.com/jobs/view/administrador-de-ventas-at-importadora-sudamericana-4482472690",
+  "ubicacion": "Benavídez, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-063ee0f89e0f",
+  "fuente": "linkedin",
+  "empresa": "dentsu",
+  "puesto": "Operational Finance Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/operational-finance-analyst-at-dentsu-4481388154",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-ba94c06165f6",
+  "fuente": "linkedin",
+  "empresa": "Drogueria del Sud S.A",
+  "puesto": "Analista de Finanzas (FP&A)",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-finanzas-fp-a-at-drogueria-del-sud-s-a-4481389944",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-1b4426b29640",
+  "fuente": "linkedin",
+  "empresa": "Chevron",
+  "puesto": "Finance Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/finance-analyst-at-chevron-4394157841",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-8ec9cd4e9b22",
+  "fuente": "linkedin",
+  "empresa": "Valeiro Consultores",
+  "puesto": "Joven Profesional para Administración Contable/ Proyección de carrera global (GBA Sur)",
+  "link": "https://ar.linkedin.com/jobs/view/joven-profesional-para-administraci%C3%B3n-contable-proyecci%C3%B3n-de-carrera-global-gba-sur-at-valeiro-consultores-4480033691",
+  "ubicacion": "Bernal, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-84cb365f5432",
+  "fuente": "linkedin",
+  "empresa": "Virtustant",
+  "puesto": "Administrative Assistant – Remote Staffing",
+  "link": "https://ar.linkedin.com/jobs/view/administrative-assistant-%E2%80%93-remote-staffing-at-virtustant-4480044867",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-243a0ef6a892",
+  "fuente": "linkedin",
+  "empresa": "PwC Argentina",
+  "puesto": "Sales & Operations Support Senior Analyst – Global Client",
+  "link": "https://ar.linkedin.com/jobs/view/sales-operations-support-senior-analyst-%E2%80%93-global-client-at-pwc-argentina-4473995202",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "linkedin-400d639648d8",
+  "fuente": "linkedin",
+  "empresa": "Brujula S.A. - Seguridad Privada",
+  "puesto": "Administrativo / Técnico en Seguridad Electrónica",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-t%C3%A9cnico-en-seguridad-electr%C3%B3nica-at-brujula-s-a-seguridad-privada-4482481406",
+  "ubicacion": "Hurlingham, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-22",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-36495abd19e6",
+  "fuente": "workday",
+  "empresa": "Johnson & Johnson",
+  "puesto": "Electrophysiology Clinical Specialty Internship Program – Buenos Aires, Argentina (eic)",
+  "link": "https://jj.wd5.myworkdayjobs.com/JJ/job/Buenos-Aires-Argentina/Healthcare-Technology-Internship-Program-2027---Buenos-Aires--Argentina--eic-_R-093406",
+  "ubicacion": "Buenos Aires, Argentina",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted 30+ Days Ago",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-39c1224ec637",
+  "fuente": "workday",
+  "empresa": "Pfizer",
+  "puesto": "Pasante PX (Recursos Humanos)",
+  "link": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers/job/Argentina---Buenos-Aires/Pasante-PX--Recursos-Humanos-_4962975",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Yesterday",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-5344617c8e98",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "LATAM Internship Program - Alliances & Channels Intern (Argentina)",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/LATAM-Internship-Program---Alliances---Channels-Intern--Argentina-_JR364075-1",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted 8 Days Ago",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-c756249d606a",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "LATAM Internship Program - Sales Strategy Intern (Argentina)",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/LATAM-Internship-Program---Sales-Strategy-Intern--Argentina-_JR362431-1",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted 21 Days Ago",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-030b9d55b69e",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "Experience Builder Intern - Creative Design",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/Experience-Builder-Intern---Creative-Design_JR359611-1",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted 30+ Days Ago",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ },
+ {
+  "id": "workday-6d6fae32f52e",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "LATAM Internship Program | Sales Intern [Argentina]",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/XMLNAME-2024-Intern---Sales-Development_JR236329-1",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted 30+ Days Ago",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-23"
+ }
+]

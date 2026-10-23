@@ -224,6 +224,47 @@ def fetch_workday(empresa: str, url: str) -> list[dict]:
     return ofertas
 
 
+def fetch_eightfold(empresa: str, hosts: list[str], domain: str, consultas: list[str],
+                    ubicacion: str = "Argentina", max_por_consulta: int = 50) -> list[dict]:
+    """Portales Eightfold (por ejemplo Mercado Libre). Prueba cada host hasta que uno responda."""
+    ultimo_error = None
+    for host in hosts:
+        try:
+            ofertas = []
+            for q in consultas:
+                for start in range(0, max_por_consulta, 10):
+                    params = urllib.parse.urlencode({
+                        "domain": domain, "query": q, "location": ubicacion,
+                        "start": start, "num": 10, "sort_by": "timestamp",
+                    })
+                    data = json.loads(_http(f"https://{host}/api/apply/v2/jobs?{params}"))
+                    posiciones = data.get("positions", [])
+                    for p in posiciones:
+                        locs = p.get("locations") or [p.get("location", "")]
+                        loc = ", ".join(str(l) for l in locs if l)
+                        if "argentin" not in _norm(loc) and "buenos aires" not in _norm(loc):
+                            continue
+                        modo = _norm(p.get("work_location_option", ""))
+                        modalidad = ("hibrido" if "hybrid" in modo else "remoto" if "remote" in modo
+                                     else "presencial" if "onsite" in modo or "on_site" in modo
+                                     else _detectar_modalidad(p.get("name", "")))
+                        link = p.get("canonicalPositionUrl") or f"https://{host}/careers?pid={p.get('id')}&domain={domain}"
+                        ts = p.get("t_create") or p.get("t_update")
+                        ofertas.append(_oferta(
+                            "eightfold", f"{domain}-{p.get('id')}", empresa, p.get("name"), link,
+                            ubicacion=loc, modalidad=modalidad,
+                            descripcion=p.get("job_description", ""),
+                            publicada=datetime.fromtimestamp(ts, timezone.utc).date().isoformat() if ts else "",
+                        ))
+                    if len(posiciones) < 10:
+                        break
+                    time.sleep(0.5)
+            return ofertas
+        except Exception as e:  # probar el siguiente host
+            ultimo_error = e
+    raise ultimo_error or RuntimeError("sin hosts configurados")
+
+
 def fetch_greenhouse(slug: str) -> list[dict]:
     data = json.loads(_http(f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true"))
     ofertas = []
@@ -343,6 +384,10 @@ def buscar(dry_run: bool = False, log=print) -> dict:
         tareas.append(("himalayas", lambda: fetch_himalayas(cfg, kw_en)))
     for w in fuentes_cfg.get("workday", []) or []:
         tareas.append((f"workday:{w['empresa']}", lambda w=w: fetch_workday(w["empresa"], w["url"])))
+    for ef in fuentes_cfg.get("eightfold", []) or []:
+        tareas.append((f"eightfold:{ef['empresa']}", lambda ef=ef: fetch_eightfold(
+            ef["empresa"], ef["hosts"], ef["domain"], ef["consultas"],
+            ef.get("ubicacion", "Argentina"), int(ef.get("max_por_consulta", 50)))))
     for slug in fuentes_cfg.get("greenhouse", []) or []:
         tareas.append((f"greenhouse:{slug}", lambda s=slug: fetch_greenhouse(s)))
     for slug in fuentes_cfg.get("lever", []) or []:

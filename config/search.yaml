@@ -186,6 +186,25 @@ fuentes:
     - empresa: Mastercard
       url: https://mastercard.wd1.myworkdayjobs.com/CorporateCareers
 
+  # Portales Eightfold. Mercado Libre publica muchas búsquedas acá; se consulta por varias palabras.
+  eightfold:
+    - empresa: Mercado Libre
+      hosts: [mercadolibre.eightfold.ai, careers-meli.mercadolibre.com]
+      domain: mercadolibre.com
+      ubicacion: Argentina
+      max_por_consulta: 50
+      consultas:
+        - analista
+        - procesos
+        - operaciones
+        - administración
+        - finanzas
+        - compras
+        - control de gestión
+        - analyst
+        - operations
+        - pasantía
+
   # Empresas con portal en Greenhouse o Lever (el "slug" es lo que aparece en la URL del portal).
   greenhouse: [nubank]
   lever: [dlocal]

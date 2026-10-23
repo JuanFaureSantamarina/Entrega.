@@ -96,6 +96,7 @@ El buscador revisa cada mañana (lunes a viernes, 07:17 hora Argentina) estas fu
 
 - **LinkedIn** (búsqueda pública): Argentina, solo remoto e híbrido, publicadas en las últimas 24 h.
 - **Remotive y Himalayas**: trabajos remotos de empresas de afuera abiertos a LATAM / Argentina.
+- **Mercado Libre** (su portal de empleos, Eightfold): búsquedas en Argentina por varias palabras clave.
 - **Portales de empresas grandes** (Workday, Greenhouse, Lever): Givaudan, Mondelez, Coca-Cola, J&J, Pfizer, Salesforce, Mastercard, Nubank, dLocal…
 
 Cada oferta recibe un puntaje de 0 a 100 según el título, las skills del CV, si es una empresa objetivo, la modalidad y la seniority. Las presenciales y las de otros rubros (desarrollo, ventas, etc.) se descartan.

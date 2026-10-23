@@ -1,0 +1,29 @@
+name: "Operaciones y Procesos"
+description: "Análisis de procesos, operaciones, mejora continua, business operations"
+keywords:
+  - procesos
+  - mejora continua
+  - operaciones
+  - eficiencia
+  - KPIs
+  - reporting
+  - indicadores
+  - automatización
+  - Excel
+  - SQL
+  - Power BI
+  - relevamiento
+  - workflow
+  - business operations
+  - process improvement
+  - operations analyst
+
+skills_to_highlight:
+  - "Detección de desvíos e ineficiencias a partir de datos"
+  - "Armado de reporting y seguimiento de KPIs"
+  - "Automatización de tareas repetitivas con N8N e IA"
+  - "Coordinación de procesos entre equipos y clientes"
+
+tone: "profesional, concreto y orientado a resultados"
+emphasis: "mejoras de proceso, automatizaciones implementadas y reporting que apoyó decisiones"
+cv_length: "una página"

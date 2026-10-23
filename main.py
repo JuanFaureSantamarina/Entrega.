@@ -520,6 +520,33 @@ def cmd_track_stats(args):
             print(f"    {c(CYAN, f'{n:<12}')} {cnt:>3}  {c(CYAN,'█'*cnt)}")
 
 
+# ─── Command: jobs ────────────────────────────────────────────────────────────
+
+def cmd_jobs_search(args):
+    from src.job_search import buscar
+    head("Buscando ofertas nuevas...")
+    res = buscar(dry_run=args.dry_run, log=info)
+    est = res["estado"]
+    caidas = [n for n, f in est["fuentes"].items() if not f["ok"]]
+    print()
+    ok(f"{est['crudas']} ofertas revisadas · {est['nuevas']} nuevas que encajan · {est['total']} en historial")
+    if caidas:
+        warn(f"Fuentes con error: {', '.join(caidas)} (detalle en data/jobs/estado.json)")
+    for o in sorted(res["nuevas"], key=lambda o: -o["puntaje"])[:15]:
+        print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, o['modalidad'] or '?')}")
+
+
+def cmd_jobs_list(args):
+    from src.job_search import listar
+    ofertas = sorted(listar(args.min, args.dias), key=lambda o: -o["puntaje"])
+    if not ofertas:
+        warn("No hay ofertas con esos filtros. Corré: python main.py jobs search")
+        return
+    head(f"Ofertas de los últimos {args.dias} días ({len(ofertas)})")
+    for o in ofertas:
+        print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, o['link'])}")
+
+
 # ─── Parser ───────────────────────────────────────────────────────────────────
 
 def build_parser():
@@ -586,6 +613,15 @@ def build_parser():
     p_tu.add_argument("--notes",  "-n")
     ts.add_parser("stats")
 
+    # jobs
+    p_jobs = sub.add_parser("jobs", help="Búsqueda automática de ofertas")
+    js = p_jobs.add_subparsers(dest="jobs_cmd", required=True)
+    p_js = js.add_parser("search", help="Buscar ofertas nuevas en todas las fuentes")
+    p_js.add_argument("--dry-run", action="store_true", help="No guardar resultados")
+    p_jl = js.add_parser("list", help="Ver ofertas encontradas")
+    p_jl.add_argument("--min", type=int, default=0, help="Puntaje mínimo")
+    p_jl.add_argument("--dias", type=int, default=7, help="Encontradas en los últimos N días")
+
     return parser
 
 
@@ -599,6 +635,7 @@ def main():
         or getattr(args, "cv_cmd", None)
         or getattr(args, "cl_cmd", None)
         or getattr(args, "track_cmd", None)
+        or getattr(args, "jobs_cmd", None)
     )
 
     dispatch = {
@@ -615,6 +652,8 @@ def main():
         ("track",         "list"):        cmd_track_list,
         ("track",         "update"):      cmd_track_update,
         ("track",         "stats"):       cmd_track_stats,
+        ("jobs",          "search"):      cmd_jobs_search,
+        ("jobs",          "list"):        cmd_jobs_list,
     }
 
     fn = dispatch.get((args.command, sub_cmd))

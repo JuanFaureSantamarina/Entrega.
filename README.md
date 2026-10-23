@@ -90,6 +90,31 @@ python main.py cv preview              # Generar preview del CV base
 python main.py cv generate -c "Empresa" -p "Puesto" -n tech -f descripcion.txt
 ```
 
+## Búsqueda automática de ofertas
+
+El buscador revisa cada mañana (lunes a viernes, 07:17 hora Argentina) estas fuentes y guarda las ofertas que encajan con el perfil en `data/jobs/ofertas.json`:
+
+- **LinkedIn** (búsqueda pública): Argentina, solo remoto e híbrido, publicadas en las últimas 24 h.
+- **Remotive y Himalayas**: trabajos remotos de empresas de afuera abiertos a LATAM / Argentina.
+- **Mercado Libre** (su portal de empleos, Eightfold): búsquedas en Argentina por varias palabras clave.
+- **Portales de empresas grandes** (Workday, Greenhouse, Lever): Givaudan, Mondelez, Coca-Cola, J&J, Pfizer, Salesforce, Mastercard, Nubank, dLocal…
+
+Cada oferta recibe un puntaje de 0 a 100 según el título, las skills del CV, si es una empresa objetivo, la modalidad y la seniority. Las presenciales y las de otros rubros (desarrollo, ventas, etc.) se descartan.
+
+```bash
+python main.py jobs search            # buscar ahora
+python main.py jobs search --dry-run  # probar sin guardar
+python main.py jobs list --min 50     # ver las mejores de la última semana
+```
+
+Todo se ajusta en `config/search.yaml`: palabras clave, empresas objetivo, títulos a excluir, puntaje mínimo y fuentes. Si una fuente falla, las demás siguen y el error queda en `data/jobs/estado.json`.
+
+El workflow está en `.github/workflows/buscar-ofertas.yml`. GitHub solo ejecuta los workflows programados que están en la rama principal del repo, y también se puede lanzar a mano desde la pestaña **Actions** → **Buscar ofertas** → **Run workflow**.
+
+### Radar Laboral (tracker)
+
+Las ofertas se siguen en el tracker publicado como artifact en claude.ai (base de datos propia): estado de cada oferta (nueva → para postular → postulado → entrevista → oferta), notas y filtros Argentina / Afuera. Una tarea programada de Claude lee `data/jobs/ofertas.json`, revisa las mejores contra el CV y las carga en el tracker.
+
 ## Nichos disponibles
 
 | ID | Nombre | Descripción |
@@ -99,6 +124,8 @@ python main.py cv generate -c "Empresa" -p "Puesto" -n tech -f descripcion.txt
 | `finance` | Finanzas y Contabilidad | Corporate finance, auditoría, controlling |
 | `data_science` | Data Science e IA | ML, analytics, BI, estadística |
 | `hr` | Recursos Humanos | Selección, capacitación, cultura |
+| `operaciones` | Operaciones y Procesos | Análisis de procesos, mejora continua, business operations |
+| `administracion` | Administración y Finanzas | Cobranzas, pagos, costos, compras, control de gestión |
 
 ### Agregar un nicho personalizado
 

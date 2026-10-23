@@ -1,0 +1,12 @@
+Estimado equipo de {company},
+
+Me postulo al puesto de {position}. Soy estudiante avanzado de Administración de Empresas y trabajo en administración y operaciones, con foco en orden, precisión y en automatizar las tareas que hoy son manuales.
+
+En PROTA gestiono el ciclo de cobranzas y pagos a proveedores, hago conciliaciones bancarias y registro en CRM, calculo costos de materia prima para el costeo de producción y preparo reporting semanal de indicadores. Además automaticé parte de ese reporting con N8N e IA. En Cavalier Polo gestioné pedidos nacionales e internacionales, control de stock y la coordinación con proveedores.
+
+Me atrae {company} por [MOTIVO CONCRETO: el área, la industria, el programa de desarrollo].
+
+Tengo inglés C2 y disponibilidad para modalidad híbrida o remota. Quedo a disposición para una entrevista.
+
+Saludos cordiales,
+{name}

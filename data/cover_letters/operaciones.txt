@@ -1,0 +1,12 @@
+Estimado equipo de {company},
+
+Me postulo al puesto de {position}. Trabajo en operaciones combinando análisis de datos, mejora de procesos y automatización, y me interesa aplicar ese enfoque en una organización de la escala de {company}.
+
+Como Jefe de Operaciones en Lauken coordiné procesos y equipo en múltiples cuentas de clientes, armé bases de datos y reporting, y diseñé flujos automatizados con N8N, Clay y Supabase para sacar trabajo manual de la operación. Hoy en PROTA llevo el reporting semanal de indicadores para detectar desvíos, optimizo los procesos de cobranzas y automatizo tareas de reporting con IA. Antes, en Cavalier Polo, mejoré los procesos de reposición de stock.
+
+Me atrae {company} por [MOTIVO CONCRETO: el área, un proyecto de transformación, la industria].
+
+Tengo inglés C2 y disponibilidad para modalidad híbrida o remota. Quedo a disposición para una entrevista.
+
+Saludos cordiales,
+{name}

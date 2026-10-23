@@ -1,0 +1,210 @@
+# ============================================================
+# Búsqueda automática de ofertas
+# Lo usa: python main.py jobs search  (y el workflow diario de GitHub Actions)
+# ============================================================
+
+# Títulos que buscamos. Se usan como consulta en cada fuente y para puntuar.
+keywords:
+  es:
+    - analista de procesos
+    - analista de operaciones
+    - mejora continua
+    - analista administrativo
+    - analista de administración
+    - administración y finanzas
+    - analista de compras
+    - cuentas a pagar
+    - cuentas a cobrar
+    - tesorería
+    - control de gestión
+    - analista de costos
+    - pasantía administración
+    - jóvenes profesionales
+  en:
+    - operations analyst
+    - process analyst
+    - business operations
+    - operations associate
+    - process improvement
+    - finance operations
+    - revenue operations
+    - procurement analyst
+    - accounts payable
+    - business analyst
+    - operations coordinator
+    - automation specialist
+
+# Palabras del CV que suman puntos si aparecen en el título o la descripción.
+skills_cv:
+  - excel
+  - sql
+  - n8n
+  - automatiza
+  - automation
+  - kpi
+  - reporting
+  - indicadores
+  - procesos
+  - process
+  - mejora continua
+  - continuous improvement
+  - conciliaci
+  - reconciliation
+  - cobranza
+  - collections
+  - proveedores
+  - suppliers
+  - inventario
+  - inventory
+  - costos
+  - costing
+  - power bi
+  - crm
+  - workflow
+  - inglés
+  - english
+
+# Si el título contiene alguna de estas, se descarta.
+excluir_titulos:
+  - developer
+  - desarrollador
+  - programador
+  - engineer
+  - ingeniero
+  - devops
+  - nurse
+  - enfermer
+  - chofer
+  - driver
+  - vendedor
+  - telemarketer
+  - call center
+  - medic
+  - abogad
+  - director
+  - vice president
+  - vp
+  - head of
+
+# Penalizan el puntaje (Juan apunta a junior / analista / semi-senior, pero no las descartamos).
+seniority_alta:
+  - senior
+  - sr
+  - lead
+  - manager
+  - gerente
+  - jefe
+
+# Modalidades aceptadas. Las presenciales se descartan.
+modalidad: [remoto, hibrido]
+
+# Ofertas por debajo de este puntaje no se guardan.
+puntaje_minimo: 30
+
+# Empresas grandes que interesan especialmente: suman puntos si aparecen.
+empresas_objetivo:
+  - Givaudan
+  - Unilever
+  - Procter
+  - P&G
+  - Mercado Libre
+  - Mercado Pago
+  - Tenaris
+  - Techint
+  - Ternium
+  - YPF
+  - Pan American Energy
+  - Pluspetrol
+  - Banco Galicia
+  - Galicia
+  - Santander
+  - BBVA
+  - Macro
+  - Accenture
+  - Deloitte
+  - PwC
+  - EY
+  - KPMG
+  - Danone
+  - Nestlé
+  - Arcor
+  - Mondelez
+  - Kimberly-Clark
+  - Coca-Cola
+  - Quilmes
+  - AB InBev
+  - Johnson & Johnson
+  - Pfizer
+  - Bayer
+  - Syngenta
+  - Cargill
+  - Bunge
+  - Telecom
+  - Personal
+  - Globant
+  - Despegar
+  - Naranja X
+  - Ualá
+  - Salesforce
+  - Mastercard
+  - Visa
+  - IBM
+  - Nubank
+  - dLocal
+
+fuentes:
+  # LinkedIn (búsqueda pública, sin login). Filtra Argentina + remoto/híbrido + publicadas en las últimas 24 h.
+  linkedin:
+    activo: true
+    ubicacion: Argentina
+    horas: 24
+    paginas_por_keyword: 1
+
+  # Bolsas de trabajo remoto internacionales (empresas de afuera que contratan desde LATAM).
+  remotive:
+    activo: true
+  himalayas:
+    activo: true
+
+  # Portales de empleo propios de empresas grandes (Workday). url = la página de empleos de la empresa.
+  # Si una empresa da error en el log, revisá la URL abriendo su página de empleos.
+  workday:
+    - empresa: Givaudan
+      url: https://givaudan.wd3.myworkdayjobs.com/External
+    - empresa: Mondelez
+      url: https://mdlz.wd3.myworkdayjobs.com/External
+    - empresa: Kimberly-Clark
+      url: https://kimberlyclark.wd1.myworkdayjobs.com/GLOBAL
+    - empresa: Coca-Cola
+      url: https://coke.wd1.myworkdayjobs.com/coca-cola-careers
+    - empresa: Johnson & Johnson
+      url: https://jj.wd5.myworkdayjobs.com/JJ
+    - empresa: Pfizer
+      url: https://pfizer.wd1.myworkdayjobs.com/PfizerCareers
+    - empresa: Salesforce
+      url: https://salesforce.wd12.myworkdayjobs.com/External_Career_Site
+    - empresa: Mastercard
+      url: https://mastercard.wd1.myworkdayjobs.com/CorporateCareers
+
+  # Portales Eightfold. Mercado Libre publica muchas búsquedas acá; se consulta por varias palabras.
+  eightfold:
+    - empresa: Mercado Libre
+      hosts: [mercadolibre.eightfold.ai, careers-meli.mercadolibre.com]
+      domain: mercadolibre.com
+      ubicacion: Argentina
+      max_por_consulta: 50
+      consultas:
+        - analista
+        - procesos
+        - operaciones
+        - administración
+        - finanzas
+        - compras
+        - control de gestión
+        - analyst
+        - operations
+        - pasantía
+
+  # Empresas con portal en Greenhouse o Lever (el "slug" es lo que aparece en la URL del portal).
+  greenhouse: [nubank]
+  lever: [dlocal]

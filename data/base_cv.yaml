@@ -1,81 +1,137 @@
 # ============================================================
-# TU CV BASE - Completá con tu información real
+# CV BASE — Juan Faure Santamarina (versión en español)
+# Fuente: CV_Juan_Faure_Santamarina_ES.pdf (octubre 2026)
+# La versión en inglés está en data/base_cv_en.yaml
 # ============================================================
 
 personal:
-  name: "Tu Nombre Completo"
-  email: "tu@email.com"
-  phone: "+54 9 11 XXXX-XXXX"
+  name: "Juan Faure Santamarina"
+  title: "Operaciones y Análisis de Datos · Automatización de Procesos"
+  email: "juanfauresantamarina@gmail.com"
+  phone: "+54 911 5871-4730"
   location: "Buenos Aires, Argentina"
-  linkedin: "linkedin.com/in/tu-perfil"
-  github: "github.com/tu-usuario"           # opcional
-  portfolio: "tu-portfolio.com"             # opcional
+  linkedin: ""
+  github: ""
+  portfolio: ""
 
-# Resumen profesional base (el AI lo adaptará por nicho/oferta)
 summary: |
-  Profesional con X años de experiencia en [tu área].
-  Especializado en [tus especialidades principales].
-  Busco aportar valor en equipos dinámicos y seguir creciendo profesionalmente.
+  Profesional de operaciones con experiencia práctica en mejora de procesos, armado de
+  sistemas de reporting y automatización de flujos. Combino análisis de datos, mejora de
+  procesos y automatización para detectar ineficiencias, ganar eficiencia y apoyar
+  decisiones claras. Licenciado y estudiante avanzado de Administración, con inglés
+  avanzado (C2), mentalidad emprendedora y foco en la ejecución.
 
 experience:
-  - company: "Empresa Ejemplo"
-    position: "Tu Cargo"
+  - company: "PROTA"
+    position: "Administración | Cobranzas, Pagos y Costos"
     location: "Buenos Aires, AR"
-    start_date: "2022-03"
-    end_date: null                          # null = presente
-    description: "Descripción general del rol y responsabilidades principales."
+    start_date: "2026-06"
+    end_date: null
+    description: "Administración de cobranzas, pagos y costos."
     achievements:
-      - "Logro 1 con impacto cuantificable (ej: reduje X en un 30%)"
-      - "Logro 2 que demuestra habilidades clave"
-      - "Logro 3 con resultado concreto"
+      - "Monitoreo de indicadores de gestión y reporting semanal para detectar desvíos y apoyar decisiones."
+      - "Optimización de procesos administrativos y de cobranzas: seguimiento de cuentas por cobrar, conciliación bancaria y registro en CRM."
+      - "Cálculo de costos de materia prima como input para el costeo de producción y el análisis de rentabilidad."
+      - "Automatización de tareas de reporting con IA y flujos (N8N) para reducir el trabajo manual."
 
-  - company: "Empresa Anterior"
-    position: "Cargo Anterior"
+  - company: "Lauken | Soluciones de Ventas B2B"
+    position: "Jefe de Operaciones"
     location: "Buenos Aires, AR"
-    start_date: "2020-01"
-    end_date: "2022-02"
-    description: "Descripción del rol anterior."
+    start_date: "2025-02"
+    end_date: "2026-09"
+    description: "Operaciones de una agencia de ventas B2B con múltiples cuentas de clientes."
     achievements:
-      - "Logro destacado de este rol"
-      - "Otro logro relevante"
+      - "Lideré las operaciones de la agencia, coordinando procesos y equipo en múltiples cuentas de clientes."
+      - "Diseñé y ejecuté sistemas de datos y automatización con Clay, Apify, Supabase, N8N y Sales Navigator."
+      - "Armé y mantuve bases de datos y reporting, asegurando la calidad y el análisis de la información."
+      - "Configuré flujos automatizados para agilizar tareas repetitivas y escalar la operación."
+
+  - company: "Moturi"
+    position: "Fundador y Coordinador"
+    location: "Buenos Aires, AR"
+    start_date: "2024-03"
+    end_date: null
+    description: "Plataforma integral de bienestar para personas y empresas."
+    achievements:
+      - "Fundé y dirijo Moturi; llevo la operación de punta a punta."
+      - "Diseño y entrego programas de bienestar corporativo, gestionando la relación comercial y automatizando procesos internos con IA."
+
+  - company: "Cavalier Polo"
+    position: "Analista Comercial"
+    location: "Buenos Aires, AR"
+    start_date: "2023-07"
+    end_date: "2024-09"
+    description: "Gestión comercial, pedidos e inventario."
+    achievements:
+      - "Mejoré los procesos internos de reposición y la eficiencia operativa, detectando desvíos y proponiendo mejoras."
+      - "Gestioné pedidos nacionales e internacionales con control de stock e inventario; coordiné proveedores, clientes y logística."
+
+  - company: "Alimente Natural"
+    position: "Reparto y Asistente Administrativo"
+    location: "Buenos Aires, AR"
+    start_date: "2021-05"
+    end_date: "2023-07"
+    description: "Logística de entregas y soporte administrativo."
+    achievements:
+      - "Reparto y logística de entregas con atención al cliente, apoyo administrativo y control de la operación diaria."
 
 education:
-  - institution: "Universidad de Buenos Aires"
-    degree: "Licenciatura"
-    field: "Tu Carrera"
-    start_year: 2015
-    graduation_year: 2020
-    highlights: []                          # ej: ["Promedio 8.5", "Tesis con distinción"]
+  - institution: "Universidad Siglo 21"
+    degree: "Licenciatura (en curso)"
+    field: "Administración de Empresas"
+    start_year: 2022
+    graduation_year: null
+    highlights: []
 
-  - institution: "Nombre del Curso/Bootcamp"
-    degree: "Certificación"
-    field: "Especialidad"
-    start_year: 2021
-    graduation_year: 2021
+  - institution: "Universidad del Salvador"
+    degree: "Licenciatura"
+    field: "Actividad Física y Deportiva"
+    start_year: 2020
+    graduation_year: 2024
+    highlights: ["Recibido"]
+
+  - institution: "Coursera"
+    degree: "Curso"
+    field: "SQL y Bases de Datos"
+    start_year: 2025
+    graduation_year: 2025
+    highlights: []
+
+  - institution: "UNAM (México)"
+    degree: "Curso"
+    field: "Introducción a la IA"
+    start_year: 2023
+    graduation_year: 2023
+    highlights: []
+
+  - institution: "University of Cambridge"
+    degree: "IGCSE"
+    field: "Cambridge International Examinations"
+    start_year: 2018
+    graduation_year: 2018
     highlights: []
 
 skills:
   technical:
-    - "Habilidad técnica 1"
-    - "Habilidad técnica 2"
-    - "Habilidad técnica 3"
+    - "Operaciones y mejora de procesos"
+    - "Análisis de datos y reporting"
+    - "KPIs y seguimiento de performance"
+    - "Automatización de procesos"
+    - "Excel"
+    - "SQL"
+    - "N8N · automatización de flujos"
+    - "Clay · Apify · Supabase"
+    - "IA generativa / LLMs"
   soft:
-    - "Liderazgo"
-    - "Comunicación"
-    - "Trabajo en equipo"
+    - "Coordinación de proyectos"
     - "Resolución de problemas"
+    - "Mentalidad emprendedora"
+    - "Foco en la ejecución"
   languages:
     - "Español (nativo)"
-    - "Inglés (nivel - ej: B2/C1)"
+    - "Inglés (C2)"
+    - "Portugués (A1)"
 
-certifications:
-  - name: "Nombre de la certificación"
-    issuer: "Entidad emisora"
-    year: 2023
-    url: ""                                 # opcional
+certifications: []
 
-projects:
-  - name: "Nombre del proyecto"
-    description: "Breve descripción de qué hace el proyecto."
-    technologies: ["Tech1", "Tech2"]
-    url: "github.com/..."                   # opcional
+projects: []

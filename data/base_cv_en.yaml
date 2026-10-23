@@ -1,0 +1,137 @@
+# ============================================================
+# BASE CV — Juan Faure Santamarina (English version)
+# Source: CV_Juan_Faure_Santamarina_EN.pdf (October 2026)
+# Used for remote roles at companies abroad.
+# ============================================================
+
+personal:
+  name: "Juan Faure Santamarina"
+  title: "Operations & Data Analysis · Process Automation"
+  email: "juanfauresantamarina@gmail.com"
+  phone: "+54 911 5871-4730"
+  location: "Buenos Aires, Argentina"
+  linkedin: ""
+  github: ""
+  portfolio: ""
+
+summary: |
+  Operations professional with practical experience improving processes, building
+  reporting systems, and automating workflows. I combine data analysis, process
+  improvement, and automation to detect inefficiencies, gain efficiency, and support
+  clear decisions. Graduate and advanced Business Administration student, fluent in
+  English (C2), with an entrepreneurial mindset and a focus on execution.
+
+experience:
+  - company: "PROTA"
+    position: "Administration | Collections, Payments & Costs"
+    location: "Buenos Aires, AR"
+    start_date: "2026-06"
+    end_date: null
+    description: "Collections, payments and cost administration."
+    achievements:
+      - "Monitor management KPIs and produce weekly reporting to detect deviations and support decisions."
+      - "Optimize administrative and collections processes: receivables tracking, bank reconciliation, and CRM records."
+      - "Calculate raw material costs as input for production costing and profitability analysis."
+      - "Automate reporting tasks with AI and workflows (N8N) to reduce manual work."
+
+  - company: "Lauken | B2B Sales Solutions"
+    position: "Head of Operations"
+    location: "Buenos Aires, AR"
+    start_date: "2025-02"
+    end_date: "2026-09"
+    description: "Operations for a B2B sales agency across multiple client accounts."
+    achievements:
+      - "Led operations for a B2B sales agency, coordinating processes and team across multiple client accounts."
+      - "Designed and ran data and automation systems with Clay, Apify, Supabase, N8N, and Sales Navigator."
+      - "Built and maintained databases and reporting, ensuring data quality and analysis."
+      - "Set up automated workflows to streamline repetitive tasks and scale the operation."
+
+  - company: "Moturi"
+    position: "Founder & Coordinator"
+    location: "Buenos Aires, AR"
+    start_date: "2024-03"
+    end_date: null
+    description: "Integral wellness platform for individuals and companies."
+    achievements:
+      - "Founded and run Moturi; lead operations end to end."
+      - "Design and deliver corporate wellness programs, managing the commercial relationship and automating internal processes with AI."
+
+  - company: "Cavalier Polo"
+    position: "Commercial Analyst"
+    location: "Buenos Aires, AR"
+    start_date: "2023-07"
+    end_date: "2024-09"
+    description: "Sales operations, orders and inventory."
+    achievements:
+      - "Improved internal restocking processes and operational efficiency, detecting deviations and proposing improvements."
+      - "Managed domestic and international orders with stock and inventory control; coordinated suppliers, clients, and logistics."
+
+  - company: "Alimente Natural"
+    position: "Delivery & Administrative Assistant"
+    location: "Buenos Aires, AR"
+    start_date: "2021-05"
+    end_date: "2023-07"
+    description: "Delivery logistics and administrative support."
+    achievements:
+      - "Handled delivery logistics and customer service, with administrative support and daily operations control."
+
+education:
+  - institution: "Universidad Siglo 21"
+    degree: "Bachelor's (in progress)"
+    field: "Business Administration"
+    start_year: 2022
+    graduation_year: null
+    highlights: []
+
+  - institution: "Universidad del Salvador"
+    degree: "BSc"
+    field: "Physical Activity & Sports"
+    start_year: 2020
+    graduation_year: 2024
+    highlights: ["Graduated"]
+
+  - institution: "Coursera"
+    degree: "Course"
+    field: "SQL & Databases"
+    start_year: 2025
+    graduation_year: 2025
+    highlights: []
+
+  - institution: "UNAM (Mexico)"
+    degree: "Course"
+    field: "Introduction to AI"
+    start_year: 2023
+    graduation_year: 2023
+    highlights: []
+
+  - institution: "University of Cambridge"
+    degree: "IGCSE"
+    field: "Cambridge International Examinations"
+    start_year: 2018
+    graduation_year: 2018
+    highlights: []
+
+skills:
+  technical:
+    - "Operations & process improvement"
+    - "Data analysis & reporting"
+    - "KPIs & performance tracking"
+    - "Process automation"
+    - "Excel"
+    - "SQL"
+    - "N8N · workflow automation"
+    - "Clay · Apify · Supabase"
+    - "Generative AI / LLMs"
+  soft:
+    - "Project coordination"
+    - "Problem solving"
+    - "Entrepreneurial mindset"
+    - "Focus on execution"
+  languages:
+    - "Spanish (Native)"
+    - "English (C2)"
+    - "Portuguese (A1)"
+
+certifications: []
+
+projects: []

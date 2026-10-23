@@ -1,0 +1,30 @@
+name: "Administración y Finanzas"
+description: "Administración, cobranzas, pagos, costos, compras, cuentas a pagar/cobrar, control de gestión"
+keywords:
+  - administración
+  - cobranzas
+  - pagos
+  - cuentas a pagar
+  - cuentas a cobrar
+  - conciliación bancaria
+  - tesorería
+  - costos
+  - compras
+  - proveedores
+  - facturación
+  - control de gestión
+  - presupuesto
+  - SAP
+  - Excel
+  - accounts payable
+  - procurement
+
+skills_to_highlight:
+  - "Ciclo de cobranzas, pagos a proveedores y conciliaciones"
+  - "Costeo de materia prima y análisis de rentabilidad"
+  - "Reporting semanal de cash flow e indicadores"
+  - "Automatización de tareas administrativas"
+
+tone: "formal y profesional"
+emphasis: "precisión, orden administrativo y automatización de tareas manuales"
+cv_length: "una página"

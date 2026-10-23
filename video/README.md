@@ -25,3 +25,17 @@ ffmpeg -y -i build/silent.mp4 -i soundtrack.wav -c:v copy -c:a aac -b:a 192k -sh
 ```
 
 Si cambiás una frase del guion, volvé a correr `voiceover.py`, mirá las duraciones en `build/vo_lines.json` y ajustá `timeline.js`.
+
+---
+
+# Versión LinkedIn (sin voz)
+
+`moturi_linkedin.mp4`: 38 s, vertical 4:5 (1080×1350), estética editorial y formal, solo música de fondo; el mensaje se entiende sin sonido.
+
+Guion: dato de la OMS (12 mil millones de días de trabajo perdidos por depresión y ansiedad) → "El bienestar de tu equipo no es un beneficio. Es una estrategia." → marca → cómo trabajamos (01 Diagnóstico, 02 Programas a medida, 03 Seguimiento con IA) → personas y empresas → "Agendá una reunión".
+
+```bash
+python3 music_linkedin.py
+PAGE=linkedin_promo.html PLAYWRIGHT_PATH=$(npm root -g)/playwright node render.mjs build/li_silent.mp4
+ffmpeg -y -i build/li_silent.mp4 -i linkedin_music.wav -af loudnorm=I=-16:TP=-1.5 -c:v copy -c:a aac -b:a 192k -shortest moturi_linkedin.mp4
+```

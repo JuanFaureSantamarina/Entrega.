@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Moturi LinkedIn</title>
+<style>
+  :root{
+    --paper:#F6F4EF; --paper2:#ECE8DF; --ink:#0F1E19; --mute:#5E6B66; --line:#D6D1C6;
+    --green:#1F4D3F; --green2:#2E6B57; --lime:#C8F169; --deep:#0C211A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px;overflow:hidden;background:var(--paper)}
+  body{font-family:"Inter Display","Inter",sans-serif;color:var(--ink)}
+  #stage{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--paper)}
+  .scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+  .pad{position:absolute;left:96px;right:96px}
+  .kicker{font-size:24px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--green2)}
+  .ln{display:block;overflow:hidden;padding-bottom:.08em}
+  .ln > span{display:inline-block;will-change:transform}
+  .hlt{background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 78%/0% 34%;padding:0 6px;margin:0 -6px}
+  .rule{position:absolute;height:2px;background:var(--ink);transform-origin:left}
+
+  /* chrome */
+  #chrome{position:absolute;inset:0;pointer-events:none}
+  #brandbar{position:absolute;left:96px;top:72px;display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:6px}
+  #brandbar img{width:44px;height:44px}
+  #topright{position:absolute;right:96px;top:84px;font-size:20px;font-weight:600;letter-spacing:3px;color:var(--mute);text-transform:uppercase}
+  #counter{position:absolute;left:96px;bottom:74px;font-size:20px;font-weight:700;letter-spacing:3px;color:var(--mute);font-variant-numeric:tabular-nums}
+  #track{position:absolute;left:250px;right:96px;bottom:84px;height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+  #bar{height:100%;width:0;background:var(--green)}
+
+  /* S1 stat */
+  #s1 .kicker{top:250px}
+  #big{position:absolute;left:84px;top:300px;font-size:430px;font-weight:900;letter-spacing:-24px;line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+  #bigu{position:absolute;left:96px;top:720px;font-size:92px;font-weight:800;letter-spacing:-3px}
+  #s1txt{top:850px;font-size:50px;font-weight:600;line-height:1.18;letter-spacing:-1px;color:var(--ink)}
+  #s1src{top:1120px;font-size:20px;color:var(--mute);font-weight:500}
+  #s1usd{top:1010px;font-size:34px;font-weight:600;color:var(--green2)}
+
+  /* S2 statement */
+  #s2 .kicker{top:330px}
+  #s2t{top:390px;font-size:108px;font-weight:900;line-height:1.02;letter-spacing:-4px}
+  #strike{position:absolute;height:12px;background:#E0563B;transform-origin:left;border-radius:6px}
+  #s2b{top:860px;font-size:108px;font-weight:900;line-height:1.02;letter-spacing:-4px;color:var(--green)}
+
+  /* S3 brand */
+  #s3{background:var(--paper)}
+  #ringsvg{position:absolute;left:340px;top:250px;width:400px;height:400px}
+  #logoA{position:absolute;left:400px;top:310px;width:280px;height:280px}
+  #word{position:absolute;left:0;right:0;top:700px;text-align:center;font-size:150px;font-weight:900;letter-spacing:-6px}
+  #word .ch{display:inline-block}
+  #desc{position:absolute;left:0;right:0;top:900px;text-align:center;font-size:40px;font-weight:500;color:var(--mute)}
+  #desc b{color:var(--ink);font-weight:700}
+  #s3rule{left:390px;top:1000px;width:300px;background:var(--green)}
+
+  /* S4 steps */
+  .step{position:absolute;inset:0;opacity:0}
+  .step .kicker{position:absolute;left:96px;top:230px}
+  .num{position:absolute;left:84px;top:270px;font-size:260px;font-weight:900;letter-spacing:-10px;line-height:1;color:transparent;-webkit-text-stroke:3px var(--green)}
+  .stitle{position:absolute;left:96px;right:96px;top:540px;font-size:84px;font-weight:900;letter-spacing:-3px;line-height:1.02}
+  .sdesc{position:absolute;left:96px;right:120px;top:660px;font-size:36px;font-weight:500;color:var(--mute);line-height:1.3}
+  .card{position:absolute;left:96px;right:96px;top:800px;height:420px;border-radius:32px;background:#fff;border:1.5px solid var(--line);padding:40px;box-shadow:0 30px 60px rgba(15,30,25,.06)}
+  .card h4{font-size:22px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mute)}
+  .row{display:flex;align-items:center;gap:22px;margin-top:30px}
+  .row .lab{width:200px;font-size:28px;font-weight:700}
+  .row .trk{flex:1;height:18px;border-radius:10px;background:var(--paper2);overflow:hidden}
+  .row .trk i{display:block;height:100%;border-radius:10px;background:var(--green2);width:0}
+  .row .val{width:80px;text-align:right;font-size:28px;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+  .tl{height:140px;border-radius:22px;border:1.5px solid var(--line);padding:24px;display:flex;flex-direction:column;justify-content:space-between;opacity:0}
+  .tl .ic{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid var(--green2);position:relative}
+  .tl .ic::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--lime)}
+  .tl .t{font-size:30px;font-weight:800}
+  .tl .d{font-size:20px;color:var(--mute);margin-top:2px}
+  #chart{position:absolute;left:40px;right:40px;bottom:36px;height:240px}
+  .kpi{position:absolute;top:96px;font-size:20px;color:var(--mute);font-weight:600;letter-spacing:1px}
+  .kpi b{display:block;font-size:56px;color:var(--ink);font-weight:900;letter-spacing:-2px;margin-top:4px;font-variant-numeric:tabular-nums}
+  .note{position:absolute;right:40px;top:44px;font-size:18px;color:var(--mute);font-weight:500}
+
+  /* S5 personas / empresas */
+  #s5 .kicker{top:230px}
+  #s5t{top:280px;font-size:78px;font-weight:900;letter-spacing:-3px;line-height:1.02}
+  .col{position:absolute;top:560px;width:430px;height:620px;border-radius:32px;padding:44px 40px;opacity:0}
+  #colP{left:96px;background:#fff;border:1.5px solid var(--line)}
+  #colE{left:554px;background:var(--green);color:#fff}
+  .col h3{font-size:22px;font-weight:700;letter-spacing:4px;text-transform:uppercase;opacity:.7}
+  .col h2{font-size:58px;font-weight:900;letter-spacing:-2px;margin-top:10px}
+  .col li{list-style:none;display:flex;gap:16px;align-items:flex-start;font-size:29px;font-weight:600;line-height:1.25;margin-top:34px;opacity:0}
+  .col li .ck{flex:none;width:36px;height:36px;border-radius:50%;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin-top:2px}
+  #colP li .ck{background:var(--green);color:#fff}
+
+  /* S6 CTA */
+  #s6{background:var(--deep);color:#fff}
+  #logoB{position:absolute;left:96px;top:260px;width:120px;height:120px}
+  #s6t{top:440px;font-size:92px;font-weight:900;letter-spacing:-4px;line-height:1.02}
+  #s6t .hl2{color:var(--lime)}
+  #s6sub{top:770px;font-size:38px;font-weight:500;color:rgba(255,255,255,.72);line-height:1.3}
+  #cta{position:absolute;left:96px;top:910px;display:inline-flex;align-items:center;gap:18px;background:var(--lime);color:var(--ink);font-size:40px;font-weight:800;padding:30px 52px;border-radius:80px;white-space:nowrap}
+  #cta .arr{display:inline-block}
+  #s6foot{position:absolute;left:96px;right:96px;bottom:110px;display:flex;justify-content:space-between;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.55);border-top:1.5px solid rgba(255,255,255,.18);padding-top:30px}
+  #s6foot b{color:#fff;letter-spacing:6px}
+  #wipe{position:absolute;inset:0;background:var(--green);transform-origin:bottom;transform:scaleY(0)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1: hook with a real figure -->
+  <div class="scene" id="s1">
+    <div class="pad kicker" style="position:absolute">Dato de la OMS</div>
+    <div id="big">0</div>
+    <div id="bigu"><span class="ln"><span>mil millones</span></span></div>
+    <div class="pad" id="s1txt">
+      <span class="ln"><span>de días de trabajo se pierden cada año</span></span>
+      <span class="ln"><span>por depresión y ansiedad.</span></span>
+    </div>
+    <div class="pad" id="s1usd"><span class="ln"><span>Un costo de USD 1 billón en productividad.</span></span></div>
+    <div class="pad" id="s1src">Fuente: Organización Mundial de la Salud (OMS), 2022.</div>
+  </div>
+
+  <!-- S2: statement -->
+  <div class="scene" id="s2">
+    <div class="pad kicker" style="position:absolute">Una nueva mirada</div>
+    <div class="pad" id="s2t">
+      <span class="ln"><span>El bienestar</span></span>
+      <span class="ln"><span>de tu equipo</span></span>
+      <span class="ln"><span>no es un</span></span>
+      <span class="ln"><span id="benef">beneficio.</span></span>
+    </div>
+    <div id="strike"></div>
+    <div class="pad" id="s2b">
+      <span class="ln"><span>Es una</span></span>
+      <span class="ln"><span><span class="hlt" id="estr">estrategia.</span></span></span>
+    </div>
+  </div>
+
+  <!-- S3: brand -->
+  <div class="scene" id="s3">
+    <svg id="ringsvg" viewBox="0 0 400 400">
+      <circle id="ringc" cx="200" cy="200" r="196" fill="none" stroke="#1F4D3F" stroke-width="3" stroke-dasharray="1231.5" stroke-dashoffset="1231.5" transform="rotate(-90 200 200)"/>
+    </svg>
+    <img id="logoA" src="assets/logo_full_ink.png">
+    <div id="word"></div>
+    <div id="desc">Bienestar integral para <b>personas</b> y <b>empresas</b>.</div>
+    <div class="rule" id="s3rule"></div>
+  </div>
+
+  <!-- S4: how it works -->
+  <div class="scene" id="s4">
+    <div class="step" id="st0">
+      <div class="kicker">Cómo trabajamos</div>
+      <div class="num">01</div>
+      <div class="stitle">Diagnóstico</div>
+      <div class="sdesc">Medimos cómo está tu equipo, de forma simple y confidencial.</div>
+      <div class="card">
+        <h4>Encuesta de bienestar</h4>
+        <div class="row"><div class="lab">Energía</div><div class="trk"><i></i></div><div class="val">0</div></div>
+        <div class="row"><div class="lab">Estrés</div><div class="trk"><i></i></div><div class="val">0</div></div>
+        <div class="row"><div class="lab">Descanso</div><div class="trk"><i></i></div><div class="val">0</div></div>
+        <div class="row"><div class="lab">Hábitos</div><div class="trk"><i></i></div><div class="val">0</div></div>
+      </div>
+    </div>
+    <div class="step" id="st1">
+      <div class="kicker">Cómo trabajamos</div>
+      <div class="num">02</div>
+      <div class="stitle">Programas a medida</div>
+      <div class="sdesc">Diseñados para la cultura y los objetivos de tu empresa.</div>
+      <div class="card">
+        <h4>Áreas de trabajo</h4>
+        <div class="tiles">
+          <div class="tl"><div class="ic"></div><div><div class="t">Cuerpo</div><div class="d">Entrenamiento y movimiento</div></div></div>
+          <div class="tl"><div class="ic"></div><div><div class="t">Mente</div><div class="d">Gestión del estrés</div></div></div>
+          <div class="tl"><div class="ic"></div><div><div class="t">Nutrición</div><div class="d">Hábitos saludables</div></div></div>
+          <div class="tl"><div class="ic"></div><div><div class="t">Descanso</div><div class="d">Sueño y recuperación</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="step" id="st2">
+      <div class="kicker">Cómo trabajamos</div>
+      <div class="num">03</div>
+      <div class="stitle">Seguimiento con IA</div>
+      <div class="sdesc">Métricas claras para ver la evolución y medir el impacto.</div>
+      <div class="card">
+        <h4>Panel de bienestar</h4>
+        <div class="note">Datos ilustrativos</div>
+        <div class="kpi" style="left:40px">Participación<b id="k0">0%</b></div>
+        <div class="kpi" style="left:330px">Índice de bienestar<b id="k1">0,0</b></div>
+        <svg id="chart" viewBox="0 0 808 240" preserveAspectRatio="none">
+          <path id="area" fill="rgba(200,241,105,.45)" d=""/>
+          <path id="line" fill="none" stroke="#1F4D3F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d=""/>
+          <circle id="dotc" r="10" fill="#1F4D3F" stroke="#fff" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: people & companies -->
+  <div class="scene" id="s5">
+    <div class="pad kicker" style="position:absolute">Una sola plataforma</div>
+    <div class="pad" id="s5t">
+      <span class="ln"><span>Para cada persona.</span></span>
+      <span class="ln"><span>Para toda la empresa.</span></span>
+    </div>
+    <div class="col" id="colP">
+      <h3>Personas</h3><h2>App Moturi</h2>
+      <ul>
+        <li><span class="ck">✓</span>Plan personalizado</li>
+        <li><span class="ck">✓</span>Hábitos que se sostienen</li>
+        <li><span class="ck">✓</span>Retos en equipo</li>
+      </ul>
+    </div>
+    <div class="col" id="colE">
+      <h3>Empresas</h3><h2>Programas</h2>
+      <ul>
+        <li><span class="ck">✓</span>Diseño a medida</li>
+        <li><span class="ck">✓</span>Métricas e impacto</li>
+        <li><span class="ck">✓</span>Gestión simple, con IA</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S6: CTA -->
+  <div class="scene" id="s6">
+    <img id="logoB" src="assets/logo_full.png">
+    <div class="pad" id="s6t">
+      <span class="ln"><span>Equipos más sanos.</span></span>
+      <span class="ln"><span class="hl2">Resultados más</span></span>
+      <span class="ln"><span class="hl2">sólidos.</span></span>
+    </div>
+    <div class="pad" id="s6sub"><span class="ln"><span>Llevemos el bienestar a tu empresa.</span></span></div>
+    <div id="cta">Agendá una reunión <span class="arr">→</span></div>
+    <div id="s6foot"><b>Moturi</b><span>Personas · Empresas</span></div>
+  </div>
+
+  <div id="wipe"></div>
+
+  <div id="chrome">
+    <div id="brandbar"><img src="assets/logo_full_ink.png">MOTURI</div>
+    <div id="topright">Bienestar corporativo</div>
+    <div id="counter">01 / 06</div>
+    <div id="track"><div id="bar"></div></div>
+  </div>
+</div>
+
+<script>
+window.VIDEO_W=1080; window.VIDEO_H=1350;
+const $=id=>document.getElementById(id), $$=(sel,root=document)=>[...root.querySelectorAll(sel)];
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>clamp((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3), eOut5=x=>1-Math.pow(1-x,5);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.4,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+
+// scene starts (seconds)
+const T={s1:0, s2:5.2, s3:10.0, s4:14.2, st1:18.4, st2:22.6, s5:27.0, s6:32.2}, END=38;
+const ORDER=['s1','s2','s3','s4','s5','s6'];
+
+// reveal lines (masked rise); returns nothing, sets styles
+function lines(root,start,step=.12,dur=.7){
+  $$('.ln > span',root).forEach((el,i)=>{const p=eOut5(P(window.__t,start+i*step,start+i*step+dur));el.style.transform=`translateY(${(1-p)*110}%)`;});
+}
+function sceneOn(id,a,b){const el=$(id);const on=window.__t>=a&&window.__t<b;el.style.opacity=on?1:0;return on;}
+// horizontal slide transition: scene leaves to the left in the last .5 s
+function slideOut(id,b){const p=eIO(P(window.__t,b-.55,b));$(id).style.transform=`translateX(${-p*1080}px)`;}
+function slideIn(id,a){const p=eIO(P(window.__t,a-.55,a));return (1-p)*1080;}
+
+'Moturi'.split('').forEach(c=>{const s=document.createElement('span');s.className='ch';s.textContent=c;$('word').appendChild(s)});
+
+// chart geometry
+const pts=[[0,200],[100,185],[200,190],[300,150],[400,140],[500,110],[600,95],[700,60],[808,40]];
+function pathUpTo(p){
+  const n=(pts.length-1)*p, k=Math.floor(n), f=n-k, out=pts.slice(0,k+1).map(q=>q.slice());
+  if(k<pts.length-1){const a=pts[k],b=pts[k+1];out.push([lerp(a[0],b[0],f),lerp(a[1],b[1],f)]);}
+  return out;
+}
+
+function render(t){
+  window.__t=t;
+  // ---------- S1
+  if(sceneOn('s1',0,T.s2)){
+    slideOut('s1',T.s2);
+    const c=eOut(P(t,.3,1.9)); $('big').textContent=Math.round(12*c);
+    $('big').style.opacity=P(t,.2,.5); $('big').style.transform=`translateY(${(1-eOut5(P(t,.2,.9)))*60}px)`;
+    lines($('bigu'),.9); lines($('s1txt'),1.4,.15); lines($('s1usd'),2.6);
+    $('s1src').style.opacity=P(t,3.0,3.5);
+    $$('.kicker',$('s1'))[0].style.opacity=P(t,0,.4);
+  }
+  // ---------- S2
+  if(sceneOn('s2',T.s2-.55,T.s3)){
+    $('s2').style.transform=`translateX(${slideIn('s2',T.s2)}px)`;
+    if(t>T.s3-.6) $('s2').style.transform=`translateY(${-eIO(P(t,T.s3-.6,T.s3))*200}px)`;
+    $$('.kicker',$('s2'))[0].style.opacity=P(t,T.s2,T.s2+.4);
+    lines($('s2t'),T.s2+.1,.13);
+    const b=$('benef').getBoundingClientRect(), o=$('s2').getBoundingClientRect(), sp=eIO(P(t,T.s2+1.6,T.s2+2.0));
+    Object.assign($('strike').style,{left:(b.left-o.left)+'px',top:(b.top-o.top+b.height*.52)+'px',width:(b.width*sp)+'px',opacity:t>T.s2+1.6?1:0});
+    $('benef').style.color=`rgba(15,30,25,${1-sp*.6})`;
+    lines($('s2b'),T.s2+2.3,.15);
+    $('estr').style.backgroundSize=`${eIO(P(t,T.s2+2.9,T.s2+3.4))*100}% 34%`;
+  }
+  // wipe between S2 and S3 (green panel rises and leaves)
+  const w1=P(t,T.s3-.6,T.s3), w2=P(t,T.s3,T.s3+.6);
+  $('wipe').style.transformOrigin=t<T.s3?'bottom':'top';
+  $('wipe').style.transform=`scaleY(${t<T.s3?eIO(w1):1-eIO(w2)})`;
+  // ---------- S3
+  if(sceneOn('s3',T.s3,T.s4)){
+    slideOut('s3',T.s4);
+    $('ringc').style.strokeDashoffset=1231.5*(1-eIO(P(t,T.s3+.3,T.s3+1.5)));
+    const lp=eOut5(P(t,T.s3+.9,T.s3+1.7)); $('logoA').style.opacity=lp; $('logoA').style.transform=`scale(${lerp(.85,1,lp)})`;
+    $$('#word .ch').forEach((c,i)=>{const p=eOut5(P(t,T.s3+1.5+i*.06,T.s3+2.2+i*.06));c.style.opacity=p;c.style.transform=`translateY(${(1-p)*60}px)`;});
+    const dp=eOut(P(t,T.s3+2.3,T.s3+2.9)); $('desc').style.opacity=dp; $('desc').style.transform=`translateY(${(1-dp)*24}px)`;
+    $('s3rule').style.transform=`scaleX(${eIO(P(t,T.s3+2.6,T.s3+3.3))})`;
+  }
+  // ---------- S4 steps
+  if(sceneOn('s4',T.s4-.55,T.s5)){
+    $('s4').style.transform=`translateX(${slideIn('s4',T.s4)}px)`;
+    if(t>T.s5-.55) slideOut('s4',T.s5);
+    const ss=[T.s4,T.st1,T.st2,T.s5];
+    for(let i=0;i<3;i++){
+      const a=ss[i], b=ss[i+1], el=$('st'+i);
+      const inn=i==0?1:eIO(P(t,a-.45,a)), out=i==2?0:eIO(P(t,b-.45,b));
+      el.style.opacity=(t>=a-.45&&t<b)?1:0;
+      el.style.transform=`translateX(${(1-inn)*1080-out*1080}px)`;
+      const nm=$$('.num',el)[0], np=eOut5(P(t,a,a+.6)); nm.style.opacity=np; nm.style.transform=`translateY(${(1-np)*40}px)`;
+      const tt=$$('.stitle',el)[0], tp=eOut5(P(t,a+.2,a+.8)); tt.style.opacity=tp; tt.style.transform=`translateY(${(1-tp)*30}px)`;
+      const dd=$$('.sdesc',el)[0], dp=eOut5(P(t,a+.4,a+1.0)); dd.style.opacity=dp; dd.style.transform=`translateY(${(1-dp)*30}px)`;
+      const cd=$$('.card',el)[0], cp=eOut5(P(t,a+.6,a+1.3)); cd.style.opacity=cp; cd.style.transform=`translateY(${(1-cp)*80}px)`;
+    }
+    [72,58,64,70].forEach((v,i)=>{const p=eOut(P(t,T.s4+1.2+i*.15,T.s4+2.4+i*.15));
+      $$('#st0 .trk i')[i].style.width=(v*p)+'%'; $$('#st0 .val')[i].textContent=Math.round(v*p);});
+    $$('#st1 .tl').forEach((el,i)=>{const p=eBack(P(t,T.st1+1.2+i*.18,T.st1+1.7+i*.18));el.style.opacity=clamp(p*1.5);el.style.transform=`scale(${lerp(.85,1,p)})`;});
+    const cp=eIO(P(t,T.st2+1.3,T.st2+3.0)), seg=pathUpTo(Math.max(.001,cp));
+    $('line').setAttribute('d','M'+seg.map(q=>q.join(',')).join(' L'));
+    $('area').setAttribute('d','M0,240 L'+seg.map(q=>q.join(',')).join(' L')+` L${seg[seg.length-1][0]},240 Z`);
+    const last=seg[seg.length-1]; $('dotc').setAttribute('cx',last[0]); $('dotc').setAttribute('cy',last[1]); $('dotc').style.opacity=cp>0?1:0;
+    $('k0').textContent=Math.round(87*cp)+'%'; $('k1').textContent=(7.8*cp).toFixed(1).replace('.',',');
+  }
+  // ---------- S5
+  if(sceneOn('s5',T.s5-.55,T.s6)){
+    $('s5').style.transform=`translateX(${slideIn('s5',T.s5)}px)`;
+    $$('.kicker',$('s5'))[0].style.opacity=P(t,T.s5,T.s5+.4);
+    lines($('s5t'),T.s5+.1,.15);
+    ['colP','colE'].forEach((id,i)=>{const a=T.s5+.9+i*.25, p=eOut5(P(t,a,a+.7)), el=$(id);
+      el.style.opacity=p; el.style.transform=`translateY(${(1-p)*90}px)`;
+      $$('li',el).forEach((li,j)=>{const q=eOut5(P(t,a+.8+j*.3,a+1.3+j*.3));li.style.opacity=q;li.style.transform=`translateX(${(1-q)*30}px)`;});});
+  }
+  // ---------- S6
+  if(sceneOn('s6',T.s6-.6,END+1)){
+    const r=eIO(P(t,T.s6-.6,T.s6+.1)); $('s6').style.clipPath=`inset(${(1-r)*100}% 0 0 0)`;
+    const lp=eOut5(P(t,T.s6+.2,T.s6+.9)); $('logoB').style.opacity=lp; $('logoB').style.transform=`translateY(${(1-lp)*30}px)`;
+    lines($('s6t'),T.s6+.4,.15); lines($('s6sub'),T.s6+1.5);
+    const cp=eBack(P(t,T.s6+2.0,T.s6+2.6)); $('cta').style.opacity=clamp(cp*1.5); $('cta').style.transform=`scale(${lerp(.8,1,cp)})`;
+    $$('#cta .arr')[0].style.transform=`translateX(${t>T.s6+2.8?Math.max(0,Math.sin((t-T.s6)*4))*10:0}px)`;
+    $('s6foot').style.opacity=eOut(P(t,T.s6+2.6,T.s6+3.2));
+  }
+  // ---------- chrome
+  const ci=ORDER.reduce((k,id,i)=>t>=T[id]?i:k,0);
+  $('counter').textContent=`0${ci+1} / 06`;
+  $('bar').style.width=(P(t,0,END)*100)+'%';
+  $('chrome').style.opacity=(1-P(t,T.s6-.6,T.s6-.1))*(t<T.s3-.3||t>T.s3+3.6?1:Math.max(1-P(t,T.s3-.6,T.s3-.3),P(t,T.s3+3.3,T.s3+3.6)));
+}
+window.render=render; window.DURATION=END;
+if(!window.__RENDERING__){const t0=performance.now();(function loop(){render(((performance.now()-t0)/1000)%END);requestAnimationFrame(loop)})();}
+</script>
+</body>
+</html>

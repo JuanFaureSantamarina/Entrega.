@@ -159,18 +159,43 @@ fuentes:
     ubicacion: Argentina
     horas: 24
     paginas_por_keyword: 1
+    # Empresas que se buscan por nombre en LinkedIn (última semana), además de las palabras clave.
+    # Sirve para empresas cuyo portal propio no se puede consultar.
+    paginas_por_empresa: 3
+    empresas:
+      - Mercado Libre
+      - Givaudan
+    # Empresas de afuera que contratan remoto en la región (publicadas en los últimos N días).
+    exterior:
+      dias: 3
+      ubicaciones:
+        - Latin America
+        - South America
+      keywords:
+        - operations analyst
+        - business operations
+        - operations associate
+        - operations coordinator
+        - process analyst
+        - process improvement
+        - finance operations
+        - revenue operations
+        - accounts payable
+        - procurement analyst
+        - automation specialist
+        - executive assistant
 
   # Bolsas de trabajo remoto internacionales (empresas de afuera que contratan desde LATAM).
   remotive:
     activo: true
   himalayas:
     activo: true
+  getonbrd:
+    activo: true
 
   # Portales de empleo propios de empresas grandes (Workday). url = la página de empleos de la empresa.
   # Si una empresa da error en el log, revisá la URL abriendo su página de empleos.
   workday:
-    - empresa: Givaudan
-      url: https://givaudan.wd3.myworkdayjobs.com/External
     - empresa: Mondelez
       url: https://mdlz.wd3.myworkdayjobs.com/External
     - empresa: Kimberly-Clark
@@ -187,7 +212,9 @@ fuentes:
       url: https://mastercard.wd1.myworkdayjobs.com/CorporateCareers
 
   # Portales Eightfold. Mercado Libre publica muchas búsquedas acá; se consulta por varias palabras.
-  eightfold:
+  # Desactivado: el portal de Mercado Libre no responde a consultas externas (404); se busca por LinkedIn.
+  eightfold: []
+  eightfold_desactivado:
     - empresa: Mercado Libre
       hosts: [mercadolibre.eightfold.ai, careers-meli.mercadolibre.com]
       domain: mercadolibre.com

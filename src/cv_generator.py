@@ -22,13 +22,15 @@ def _find_chromium() -> str | None:
     return shutil.which("chromium") or shutil.which("chromium-browser") or shutil.which("google-chrome")
 
 
-def _fmt_date(date_str) -> str:
+def _fmt_date(date_str, en: bool = False) -> str:
     if not date_str:
-        return "Presente"
+        return "Present" if en else "Presente"
     try:
         dt = datetime.strptime(str(date_str), "%Y-%m")
-        months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+        months = (["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] if en else
+                  ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                   "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"])
         return f"{months[dt.month - 1]} {dt.year}"
     except Exception:
         return str(date_str)

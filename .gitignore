@@ -6,3 +6,4 @@ data/applications.db
 output/
 *.pdf
 *.html
+!templates/*.html

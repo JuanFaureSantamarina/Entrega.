@@ -4,6 +4,8 @@
 # Used for remote roles at companies abroad.
 # ============================================================
 
+lang: en
+
 personal:
   name: "Juan Faure Santamarina"
   title: "Operations & Data Analysis · Process Automation"
@@ -117,6 +119,7 @@ skills:
     - "Data analysis & reporting"
     - "KPIs & performance tracking"
     - "Process automation"
+  tools:
     - "Excel"
     - "SQL"
     - "N8N · workflow automation"
@@ -125,8 +128,6 @@ skills:
   soft:
     - "Project coordination"
     - "Problem solving"
-    - "Entrepreneurial mindset"
-    - "Focus on execution"
   languages:
     - "Spanish (Native)"
     - "English (C2)"

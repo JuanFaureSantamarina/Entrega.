@@ -532,6 +532,10 @@ def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dic
                     continue
             except Exception as e:
                 log(f"  ! detalle {o['link']}: {type(e).__name__}")
+        if o.get("mercado") == "exterior" and o["fuente"] == "linkedin" and (
+                "argentin" in _norm(o["ubicacion"]) or "buenos aires" in _norm(o["ubicacion"])) and not any(
+                k in _norm(o["empresa"]) for k in ("outsource", "staffing", "talent", "recruit")):
+            o["mercado"] = "argentina"  # empresa local encontrada por la búsqueda regional
         o.update({"puntaje": score, "motivos": motivos, "nicho": _nicho(o),
                   "mercado": o.get("mercado") or ("exterior" if o["fuente"] in ("remotive", "himalayas")
                                                    else "argentina")})

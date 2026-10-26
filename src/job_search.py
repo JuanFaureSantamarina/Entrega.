@@ -74,9 +74,16 @@ def _http(url: str, data: dict | None = None, timeout: int = 30) -> str:
     if data is not None:
         body = json.dumps(data).encode("utf-8")
         headers["Content-Type"] = "application/json"
-    req = urllib.request.Request(url, data=body, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+    for intento in range(3):
+        req = urllib.request.Request(url, data=body, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as e:
+            # 429: el sitio pide bajar el ritmo; esperamos y reintentamos (30 s, 90 s)
+            if e.code != 429 or intento == 2:
+                raise
+            time.sleep(30 * (3 ** intento))
 
 
 def _job_id(fuente: str, key: str) -> str:

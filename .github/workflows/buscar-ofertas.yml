@@ -24,7 +24,7 @@ concurrency:
 jobs:
   buscar:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +35,7 @@ jobs:
       - run: pip install pyyaml
 
       - name: Buscar ofertas
-        run: python main.py jobs search ${{ inputs.prueba && '--dry-run --sin-historial --json' || '' }}
+        run: python -u main.py jobs search ${{ inputs.prueba && '--dry-run --sin-historial --json' || '' }}
 
       - name: Guardar resultados
         if: ${{ github.event_name == 'schedule' || (inputs.guardar && !inputs.prueba) }}

@@ -74,16 +74,16 @@ def _http(url: str, data: dict | None = None, timeout: int = 30) -> str:
     if data is not None:
         body = json.dumps(data).encode("utf-8")
         headers["Content-Type"] = "application/json"
-    for intento in range(3):
+    for intento in range(2):
         req = urllib.request.Request(url, data=body, headers=headers)
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read().decode("utf-8", errors="replace")
         except urllib.error.HTTPError as e:
-            # 429: el sitio pide bajar el ritmo; esperamos y reintentamos (30 s, 90 s)
-            if e.code != 429 or intento == 2:
+            # 429: el sitio pide bajar el ritmo; esperamos 20 s y reintentamos una vez
+            if e.code != 429 or intento == 1:
                 raise
-            time.sleep(30 * (3 ** intento))
+            time.sleep(20)
 
 
 def _job_id(fuente: str, key: str) -> str:
@@ -118,6 +118,13 @@ def _detectar_modalidad(*textos: str) -> str:
 
 # ─── Fuentes ──────────────────────────────────────────────────────────────────
 
+class LinkedInBloqueado(Exception):
+    """LinkedIn sigue respondiendo 429: dejamos de consultarlo en esta corrida."""
+
+
+_linkedin_bloqueado = False
+
+
 def _linkedin_pagina(kw: str, ubicacion: str, f_wt: str, ventana: int, page: int,
                      solo_empresa: str | None, modalidad: str) -> list[dict] | None:
     """Una página de resultados de la búsqueda pública de LinkedIn. None = no hay más páginas."""
@@ -125,11 +132,15 @@ def _linkedin_pagina(kw: str, ubicacion: str, f_wt: str, ventana: int, page: int
         "keywords": kw, "location": ubicacion, "f_WT": f_wt,
         "f_TPR": f"r{ventana}", "start": page * 25,
     })
+    global _linkedin_bloqueado
     try:
         page_html = _http(f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?{params}")
     except urllib.error.HTTPError as e:
         if e.code in (400, 404):
             return None
+        if e.code == 429:
+            _linkedin_bloqueado = True
+            raise LinkedInBloqueado() from e
         raise
     ofertas = []
     for card in page_html.split("<li"):
@@ -156,6 +167,15 @@ def _linkedin_pagina(kw: str, ubicacion: str, f_wt: str, ventana: int, page: int
 
 def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     """Búsqueda pública de LinkedIn (la que se ve sin iniciar sesión)."""
+    ofertas: list[dict] = []
+    try:
+        _fetch_linkedin(cfg, keywords, ofertas)
+    except LinkedInBloqueado:
+        print(f"  ! LinkedIn bloqueó las consultas (429); se usan las {len(ofertas)} ofertas ya encontradas")
+    return ofertas
+
+
+def _fetch_linkedin(cfg: dict, keywords: list[str], ofertas: list[dict]) -> None:
     src = cfg["fuentes"]["linkedin"]
     segundos = int(src.get("horas", 24)) * 3600
     # Búsquedas por palabra clave (últimas N horas) y por empresa objetivo (última semana,
@@ -163,13 +183,12 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
     busquedas = [(kw, segundos, None, int(src.get("paginas_por_keyword", 1))) for kw in keywords]
     busquedas += [(emp, 7 * 86400, emp, int(src.get("paginas_por_empresa", 3)))
                   for emp in src.get("empresas", []) or []]
-    ofertas = []
     # Empresas de afuera: búsquedas remotas con ubicación regional (por ejemplo "Latin America").
     # Van primero para que, si una oferta aparece también en la búsqueda de Argentina, quede como exterior.
     ext = src.get("exterior") or {}
     for ubic in ext.get("ubicaciones", []) or []:
         for kw in ext.get("keywords", []) or []:
-            for o in _linkedin_pagina(kw, ubic, "2", int(ext.get("dias", 3)) * 86400, 0, None, "remoto"):
+            for o in _linkedin_pagina(kw, ubic, "2", int(ext.get("dias", 3)) * 86400, 0, None, "remoto") or []:
                 o["mercado"] = "exterior"
                 ofertas.append(o)
             time.sleep(1.5)
@@ -183,7 +202,6 @@ def fetch_linkedin(cfg: dict, keywords: list[str]) -> list[dict]:
                     break
                 ofertas.extend(res)
                 time.sleep(1.5)
-    return ofertas
 
 
 def detalle_linkedin(oferta: dict) -> None:
@@ -522,7 +540,8 @@ def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dic
         score, motivos = puntuar(o, cfg)
         if score < min_score:
             continue
-        if o["fuente"] == "linkedin" and o["id"] not in existentes and detalles < MAX_DETALLES:
+        if (o["fuente"] == "linkedin" and o["id"] not in existentes and detalles < MAX_DETALLES
+                and not _linkedin_bloqueado):
             detalles += 1
             try:
                 detalle_linkedin(o)
@@ -530,6 +549,10 @@ def buscar(dry_run: bool = False, log=print, sin_historial: bool = False) -> dic
                 score, motivos = puntuar(o, cfg)
                 if score < min_score:
                     continue
+            except urllib.error.HTTPError as e:
+                if e.code == 429:
+                    globals()["_linkedin_bloqueado"] = True
+                log(f"  ! detalle {o['link']}: HTTP {e.code}")
             except Exception as e:
                 log(f"  ! detalle {o['link']}: {type(e).__name__}")
         if o.get("mercado") == "exterior" and o["fuente"] == "linkedin" and (

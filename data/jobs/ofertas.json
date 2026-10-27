@@ -1,5 +1,25 @@
 [
  {
+  "id": "workday-b10da75886e1",
+  "fuente": "workday",
+  "empresa": "Pfizer",
+  "puesto": "Pasante - Marketing Vacunas",
+  "link": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers/job/Argentina---Buenos-Aires/Pasante---Marketing-Vacunas_4966369",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Yesterday",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-27"
+ },
+ {
   "id": "linkedin-f108b33cf5ea",
   "fuente": "linkedin",
   "empresa": "Accenture Argentina",

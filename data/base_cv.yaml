@@ -4,6 +4,8 @@
 # La versión en inglés está en data/base_cv_en.yaml
 # ============================================================
 
+lang: es
+
 personal:
   name: "Juan Faure Santamarina"
   title: "Operaciones y Análisis de Datos · Automatización de Procesos"
@@ -117,6 +119,7 @@ skills:
     - "Análisis de datos y reporting"
     - "KPIs y seguimiento de performance"
     - "Automatización de procesos"
+  tools:
     - "Excel"
     - "SQL"
     - "N8N · automatización de flujos"
@@ -125,8 +128,6 @@ skills:
   soft:
     - "Coordinación de proyectos"
     - "Resolución de problemas"
-    - "Mentalidad emprendedora"
-    - "Foco en la ejecución"
   languages:
     - "Español (nativo)"
     - "Inglés (C2)"

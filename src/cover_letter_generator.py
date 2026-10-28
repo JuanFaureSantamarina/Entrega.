@@ -22,12 +22,14 @@ def _find_chromium() -> str | None:
     return shutil.which("chromium") or shutil.which("chromium-browser") or shutil.which("google-chrome")
 
 
-def _today_es() -> str:
+def _today_es(en: bool = False) -> str:
+    now = datetime.now()
+    if en:
+        return now.strftime("%B %d, %Y")
     months = [
         "enero", "febrero", "marzo", "abril", "mayo", "junio",
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
     ]
-    now = datetime.now()
     return f"{now.day} de {months[now.month - 1]} de {now.year}"
 
 
@@ -36,6 +38,7 @@ def generate_cover_letter_html(
     candidate: dict,
     company: str,
     position: str,
+    lang: str = "es",
 ) -> str:
     env = Environment(loader=FileSystemLoader("templates"))
     tmpl = env.get_template("cover_letter.html")
@@ -44,7 +47,7 @@ def generate_cover_letter_html(
         candidate=candidate,
         company=company,
         position=position,
-        today=_today_es(),
+        today=_today_es(lang == "en"),
         paragraphs=[p.strip() for p in content.split("\n\n") if p.strip()],
     )
 
@@ -55,11 +58,12 @@ def generate_cover_letter_pdf(
     company: str,
     position: str,
     output_path: Path,
+    lang: str = "es",
 ) -> Path:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    html_content = generate_cover_letter_html(content, candidate, company, position)
+    html_content = generate_cover_letter_html(content, candidate, company, position, lang)
     html_path = output_path.with_suffix(".html")
     html_path.write_text(html_content, encoding="utf-8")
 

@@ -1,5 +1,505 @@
 [
  {
+  "id": "linkedin-26d145c77100",
+  "fuente": "linkedin",
+  "empresa": "Louis Dreyfus Company",
+  "puesto": "Jr. Sustainability Operations Analyst – SBS Americas",
+  "link": "https://ar.linkedin.com/jobs/view/jr-sustainability-operations-analyst-%E2%80%93-sbs-americas-at-louis-dreyfus-company-4477736487",
+  "ubicacion": "Rosario, Santa Fe, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 55,
+  "motivos": [
+   "título: operations analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-8807d30ad758",
+  "fuente": "linkedin",
+  "empresa": "bioMérieux",
+  "puesto": "General Ledger & Reporting Operations Coordinator | Shared Service Center LATAM",
+  "link": "https://ar.linkedin.com/jobs/view/general-ledger-reporting-operations-coordinator-shared-service-center-latam-at-biom%C3%A9rieux-4458257639",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 54,
+  "motivos": [
+   "título: operations coordinator",
+   "skills: reporting"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-06759ed979ab",
+  "fuente": "linkedin",
+  "empresa": "Manpower Argentina",
+  "puesto": "Analista de Costos y Planeamiento Financiero (req213749) Eventual - Vicente Lopez",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-costos-y-planeamiento-financiero-req213749-eventual-vicente-lopez-at-manpower-argentina-4484952593",
+  "ubicacion": "Vicente López, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 54,
+  "motivos": [
+   "título: analista de costos",
+   "skills: costos"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-9d900647b68d",
+  "fuente": "linkedin",
+  "empresa": "Assurant",
+  "puesto": "Associate Operations Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/associate-operations-analyst-at-assurant-4482527996",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-91db32c6947f",
+  "fuente": "linkedin",
+  "empresa": "Rus Construcciones",
+  "puesto": "Analista de Operaciones Inmobiliarias",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-operaciones-inmobiliarias-at-rus-construcciones-4482555111",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista de operaciones"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-620ce0755839",
+  "fuente": "linkedin",
+  "empresa": "Universia Argentina",
+  "puesto": "REF 1061: Analista de Administración",
+  "link": "https://ar.linkedin.com/jobs/view/ref-1061-analista-de-administraci%C3%B3n-at-universia-argentina-4483172233",
+  "ubicacion": "Cordoba, Córdoba, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista de administración"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-728eacbff398",
+  "fuente": "linkedin",
+  "empresa": "Delfos Tour",
+  "puesto": "Analista Comercial y control de gestión",
+  "link": "https://ar.linkedin.com/jobs/view/analista-comercial-y-control-de-gesti%C3%B3n-at-delfos-tour-4484770793",
+  "ubicacion": "Cordoba, Córdoba, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 50,
+  "motivos": [
+   "título: control de gestión"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-4d48a988156f",
+  "fuente": "linkedin",
+  "empresa": "Air Liquide",
+  "puesto": "Analista De Control De Gestion",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-control-de-gestion-at-air-liquide-4484752486",
+  "ubicacion": "Vicente López, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: control de gestión"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-8087f12bad44",
+  "fuente": "linkedin",
+  "empresa": "Assurant",
+  "puesto": "Associate Procurement Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/associate-procurement-analyst-at-assurant-4482537721",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: procurement analyst"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-a8fc64136d50",
+  "fuente": "linkedin",
+  "empresa": "The Extended",
+  "puesto": "Hotel Sales & Operations Coordinator",
+  "link": "https://ar.linkedin.com/jobs/view/hotel-sales-operations-coordinator-at-the-extended-4484770508",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations coordinator"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-a51d59b9a142",
+  "fuente": "linkedin",
+  "empresa": "Assurant",
+  "puesto": "Associate Operations Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/associate-operations-analyst-at-assurant-4482533888",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-36bfe67ae61c",
+  "fuente": "linkedin",
+  "empresa": "Nubank",
+  "puesto": "Lead Business Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/lead-business-analyst-at-nubank-4484743684",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 50,
+  "motivos": [
+   "título: business analyst",
+   "empresa objetivo",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-01ada8f6338f",
+  "fuente": "linkedin",
+  "empresa": "Danone",
+  "puesto": "Administrativo de Liquidación de Prestaciones (Temporal por 3 meses)",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-de-liquidaci%C3%B3n-de-prestaciones-temporal-por-3-meses-at-danone-4484712810",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 45,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-ad6551db263b",
+  "fuente": "linkedin",
+  "empresa": "Johnson & Johnson MedTech",
+  "puesto": "Analyst Deliver Excelence-Tortuguitas, Provincia de Buenos Aires, Argentina",
+  "link": "https://ar.linkedin.com/jobs/view/analyst-deliver-excelence-tortuguitas-provincia-de-buenos-aires-argentina-at-johnson-johnson-medtech-4484763487",
+  "ubicacion": "Pilar, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 39,
+  "motivos": [
+   "título relacionado",
+   "skills: excel",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-4a5adc828798",
+  "fuente": "linkedin",
+  "empresa": "Brello Health",
+  "puesto": "Business Operations Manager",
+  "link": "https://ar.linkedin.com/jobs/view/business-operations-manager-at-brello-health-4432283222",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título: business operations",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-ed421cd9037b",
+  "fuente": "linkedin",
+  "empresa": "Bunge",
+  "puesto": "Analista de Planta de Agua, Efluentes y Seguridad Operativa_RENOVA",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-planta-de-agua-efluentes-y-seguridad-operativa-renova-at-bunge-4476965615",
+  "ubicacion": "Timbúes, Santa Fe, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-061f744e0fc1",
+  "fuente": "linkedin",
+  "empresa": "Grupo Arcor",
+  "puesto": "Analista Plan. y Ctrl. Gestión",
+  "link": "https://ar.linkedin.com/jobs/view/analista-plan-y-ctrl-gesti%C3%B3n-at-grupo-arcor-4484715097",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-c0475f7d1054",
+  "fuente": "linkedin",
+  "empresa": "Cervecería y Maltería Quilmes",
+  "puesto": "Analista regional",
+  "link": "https://ar.linkedin.com/jobs/view/analista-regional-at-cervecer%C3%ADa-y-malter%C3%ADa-quilmes-4476957059",
+  "ubicacion": "Greater Rosario",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-c2b08feb1cea",
+  "fuente": "linkedin",
+  "empresa": "Pluspetrol",
+  "puesto": "SSR. PLANNING ANALYST",
+  "link": "https://ar.linkedin.com/jobs/view/ssr-planning-analyst-at-pluspetrol-4484742944",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-5bc9cd7741df",
+  "fuente": "linkedin",
+  "empresa": "Louis Dreyfus Company",
+  "puesto": "Pasante de DT&A Finance",
+  "link": "https://ar.linkedin.com/jobs/view/pasante-de-dt-a-finance-at-louis-dreyfus-company-4477730905",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-ac6358fd9d4f",
+  "fuente": "linkedin",
+  "empresa": "DHL Global Forwarding",
+  "puesto": "Pasante de Transporte Internacional Terrestre",
+  "link": "https://ar.linkedin.com/jobs/view/pasante-de-transporte-internacional-terrestre-at-dhl-global-forwarding-4484777041",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-cf1f697b1548",
+  "fuente": "linkedin",
+  "empresa": "Despegar",
+  "puesto": "Revenue Management Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/revenue-management-analyst-at-despegar-4484731450",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-fbe68bb8cb68",
+  "fuente": "linkedin",
+  "empresa": "Bridgenext",
+  "puesto": "Senior Agile Business Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/senior-agile-business-analyst-at-bridgenext-4457622397",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 35,
+  "motivos": [
+   "título: business analyst",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-b3c9914daaa5",
+  "fuente": "linkedin",
+  "empresa": "Randstad Argentina",
+  "puesto": "Analista contable Ssr.",
+  "link": "https://ar.linkedin.com/jobs/view/analista-contable-ssr-%09-at-randstad-argentina-4482547431",
+  "ubicacion": "Don Torcuato, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-ec1dd5e26c00",
+  "fuente": "linkedin",
+  "empresa": "Work Cont",
+  "puesto": "Asistente Administrativo",
+  "link": "https://ar.linkedin.com/jobs/view/asistente-administrativo-at-work-cont-4482567044",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-a094eb39ff0b",
+  "fuente": "linkedin",
+  "empresa": "Vylor",
+  "puesto": "Accounting Analyst - GL",
+  "link": "https://ar.linkedin.com/jobs/view/accounting-analyst-gl-at-vylor-4482549438",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-28",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
+  "id": "linkedin-a3e17f6d722f",
+  "fuente": "linkedin",
+  "empresa": "ExxonMobil",
+  "puesto": "Production & Revenue Accounting Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/production-revenue-accounting-analyst-at-exxonmobil-4440578992",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-10-29",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-10-29"
+ },
+ {
   "id": "workday-b10da75886e1",
   "fuente": "workday",
   "empresa": "Pfizer",

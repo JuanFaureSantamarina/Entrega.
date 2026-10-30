@@ -1,9 +1,9 @@
 {
- "fecha": "2026-10-29T16:58:28+00:00",
+ "fecha": "2026-10-30T16:43:25+00:00",
  "fuentes": {
   "linkedin": {
-   "ok": true,
-   "encontradas": 506
+   "ok": false,
+   "error": "HTTPError: HTTP Error 429: Too Many Requests"
   },
   "remotive": {
    "ok": true,
@@ -23,7 +23,7 @@
   },
   "workday:Kimberly-Clark": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 0
   },
   "workday:Coca-Cola": {
    "ok": true,
@@ -35,11 +35,11 @@
   },
   "workday:Pfizer": {
    "ok": true,
-   "encontradas": 6
+   "encontradas": 2
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 60
+   "encontradas": 21
   },
   "workday:Mastercard": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 1
   }
  },
- "crudas": 692,
- "nuevas": 27,
+ "crudas": 142,
+ "nuevas": 0,
  "total": 60
 }

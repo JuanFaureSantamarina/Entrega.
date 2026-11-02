@@ -33,6 +33,12 @@ keywords:
     - business analyst
     - operations coordinator
     - automation specialist
+    - operations specialist
+    - administrative assistant
+    - virtual assistant
+    - executive assistant
+    - bookkeeper
+    - project coordinator
 
 # Palabras del CV que suman puntos si aparecen en el título o la descripción.
 skills_cv:
@@ -167,10 +173,18 @@ fuentes:
       - Givaudan
     # Empresas de afuera que contratan remoto en la región (publicadas en los últimos N días).
     exterior:
+      # primero: las búsquedas de afuera van antes que las de Argentina (si LinkedIn bloquea, lo de afuera ya quedó)
+      primero: true
       dias: 3
       ubicaciones:
         - Latin America
       keywords:
+        - operations specialist
+        - administrative assistant
+        - virtual assistant
+        - bookkeeper
+        - project coordinator
+        - ai automation
         - operations analyst
         - business operations
         - operations associate

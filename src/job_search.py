@@ -183,6 +183,9 @@ def _fetch_linkedin(cfg: dict, keywords: list[str], ofertas: list[dict]) -> None
     busquedas = [(kw, segundos, None, int(src.get("paginas_por_keyword", 1))) for kw in keywords]
     busquedas += [(emp, 7 * 86400, emp, int(src.get("paginas_por_empresa", 3)))
                   for emp in src.get("empresas", []) or []]
+    ext = src.get("exterior") or {}
+    if ext.get("primero"):
+        _buscar_exterior(src, ofertas)
     # f_WT: 2 = remoto, 3 = híbrido
     for modo, modalidad in (("2", "remoto"), ("3", "hibrido")):
         for kw, ventana, solo_empresa, paginas in busquedas:
@@ -193,8 +196,13 @@ def _fetch_linkedin(cfg: dict, keywords: list[str], ofertas: list[dict]) -> None
                     break
                 ofertas.extend(res)
                 time.sleep(2.5)
+    if not ext.get("primero"):
+        _buscar_exterior(src, ofertas)
+
+
+def _buscar_exterior(src: dict, ofertas: list[dict]) -> None:
     # Empresas de afuera: búsquedas remotas con ubicación regional (por ejemplo "Latin America").
-    # Van al final: si LinkedIn empieza a bloquear, lo de Argentina ya quedó buscado.
+    # El orden respecto de Argentina lo define exterior.primero en config/search.yaml.
     ext = src.get("exterior") or {}
     for ubic in ext.get("ubicaciones", []) or []:
         for kw in ext.get("keywords", []) or []:

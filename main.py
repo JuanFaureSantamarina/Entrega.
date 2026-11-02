@@ -525,15 +525,20 @@ def cmd_track_stats(args):
 def cmd_jobs_search(args):
     from src.job_search import buscar
     head("Buscando ofertas nuevas...")
-    res = buscar(dry_run=args.dry_run, log=info)
+    res = buscar(dry_run=args.dry_run, log=info, sin_historial=args.sin_historial)
     est = res["estado"]
     caidas = [n for n, f in est["fuentes"].items() if not f["ok"]]
     print()
     ok(f"{est['crudas']} ofertas revisadas · {est['nuevas']} nuevas que encajan · {est['total']} en historial")
     if caidas:
         warn(f"Fuentes con error: {', '.join(caidas)} (detalle en data/jobs/estado.json)")
+    if args.json:
+        import json as _json
+        for o in sorted(res["nuevas"], key=lambda o: -o["puntaje"]):
+            print("OFERTA_JSON " + _json.dumps({**o, "descripcion": o.get("descripcion", "")[:600]}, ensure_ascii=False))
     for o in sorted(res["nuevas"], key=lambda o: -o["puntaje"])[:15]:
-        print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, o['modalidad'] or '?')}")
+        desc = f"{len(o.get('descripcion', ''))} car." if o.get("descripcion") else "sin desc."
+        print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, (o['modalidad'] or '?') + ' · ' + desc)}")
 
 
 def cmd_jobs_list(args):
@@ -545,6 +550,31 @@ def cmd_jobs_list(args):
     head(f"Ofertas de los últimos {args.dias} días ({len(ofertas)})")
     for o in ofertas:
         print(f"  {c(GREEN, str(o['puntaje']).rjust(3))}  {o['puesto'][:45]:<45} {c(CYAN, o['empresa'][:22]):<31} {c(DIM, o['link'])}")
+
+
+# ─── Command: postulacion ─────────────────────────────────────────────────────
+
+def cmd_postulacion_armar(args):
+    """Arma CV y carta en PDF para una oferta, a partir de un CV adaptado (YAML) y una carta (TXT)."""
+    from src.cv_generator import generate_cv_pdf
+    from src.cover_letter_generator import generate_cover_letter_pdf
+
+    with open(args.cv) as f:
+        cv_data = yaml.safe_load(f)
+    lang = cv_data.get("lang", "es")
+    name = cv_data.get("personal", {}).get("name", "")
+    out_dir = Path("output/postulaciones") / make_slug(args.empresa, args.puesto)
+
+    cv_pdf = generate_cv_pdf(cv_data, out_dir / f"CV {name}.pdf")
+    ok(f"CV: {cv_pdf}")
+
+    if args.carta:
+        content = Path(args.carta).read_text(encoding="utf-8").strip()
+        cl_pdf = generate_cover_letter_pdf(
+            content, cv_data.get("personal", {}), args.empresa, args.puesto,
+            out_dir / f"Cover Letter {name}.pdf", lang,
+        )
+        ok(f"Carta: {cl_pdf}")
 
 
 # ─── Parser ───────────────────────────────────────────────────────────────────
@@ -618,9 +648,20 @@ def build_parser():
     js = p_jobs.add_subparsers(dest="jobs_cmd", required=True)
     p_js = js.add_parser("search", help="Buscar ofertas nuevas en todas las fuentes")
     p_js.add_argument("--dry-run", action="store_true", help="No guardar resultados")
+    p_js.add_argument("--sin-historial", action="store_true", help="Tratar todas las ofertas como nuevas (para probar)")
+    p_js.add_argument("--json", action="store_true", help="Imprimir las ofertas nuevas en JSON (una por línea)")
     p_jl = js.add_parser("list", help="Ver ofertas encontradas")
     p_jl.add_argument("--min", type=int, default=0, help="Puntaje mínimo")
     p_jl.add_argument("--dias", type=int, default=7, help="Encontradas en los últimos N días")
+
+    # postulacion
+    p_post = sub.add_parser("postulacion", help="Armar CV y carta en PDF para una oferta")
+    ps = p_post.add_subparsers(dest="post_cmd", required=True)
+    p_pa = ps.add_parser("armar", help="Genera los PDFs desde un CV adaptado y una carta")
+    p_pa.add_argument("--cv", required=True, help="YAML del CV adaptado (mismo formato que data/base_cv.yaml)")
+    p_pa.add_argument("--carta", help="TXT con el texto de la carta")
+    p_pa.add_argument("--empresa", "-c", required=True)
+    p_pa.add_argument("--puesto", "-p", required=True)
 
     return parser
 
@@ -636,6 +677,7 @@ def main():
         or getattr(args, "cl_cmd", None)
         or getattr(args, "track_cmd", None)
         or getattr(args, "jobs_cmd", None)
+        or getattr(args, "post_cmd", None)
     )
 
     dispatch = {
@@ -654,6 +696,7 @@ def main():
         ("track",         "stats"):       cmd_track_stats,
         ("jobs",          "search"):      cmd_jobs_search,
         ("jobs",          "list"):        cmd_jobs_list,
+        ("postulacion",   "armar"):       cmd_postulacion_armar,
     }
 
     fn = dispatch.get((args.command, sub_cmd))

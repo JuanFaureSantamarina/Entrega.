@@ -1,17 +1,17 @@
 {
- "fecha": "2026-11-03T17:53:56+00:00",
+ "fecha": "2026-11-04T18:02:56+00:00",
  "fuentes": {
   "linkedin": {
-   "ok": false,
-   "error": "HTTPError: HTTP Error 502: Bad Gateway"
+   "ok": true,
+   "encontradas": 504
   },
   "remotive": {
    "ok": true,
-   "encontradas": 96
+   "encontradas": 108
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 6
   },
   "workday:Givaudan": {
    "ok": false,
@@ -31,19 +31,19 @@
   },
   "workday:Johnson & Johnson": {
    "ok": true,
-   "encontradas": 4
+   "encontradas": 2
   },
   "workday:Pfizer": {
    "ok": true,
-   "encontradas": 2
+   "encontradas": 3
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 16
+   "encontradas": 14
   },
   "workday:Mastercard": {
    "ok": true,
-   "encontradas": 6
+   "encontradas": 8
   },
   "eightfold:Mercado Libre": {
    "ok": false,
@@ -55,10 +55,10 @@
   },
   "lever:dlocal": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 0
   }
  },
- "crudas": 132,
- "nuevas": 0,
- "total": 61
+ "crudas": 651,
+ "nuevas": 34,
+ "total": 95
 }

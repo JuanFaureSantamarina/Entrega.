@@ -1,5 +1,26 @@
 [
  {
+  "id": "workday-fa062634367e",
+  "fuente": "workday",
+  "empresa": "Kimberly-Clark",
+  "puesto": "Analista de Ingeniería Eléctrica o de Procesos",
+  "link": "https://kimberlyclark.wd1.myworkdayjobs.com/GLOBAL/job/Argentina--San-Luis/Analista-de-Ingeniera-Elctrica-o-de-Procesos_888143",
+  "ubicacion": "Argentina- San Luis",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Today",
+  "puntaje": 39,
+  "motivos": [
+   "título relacionado",
+   "skills: procesos",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-06"
+ },
+ {
   "id": "linkedin-a6e6f16c34b0",
   "fuente": "linkedin",
   "empresa": "ID Logistics Argentina",

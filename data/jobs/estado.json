@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-06T17:32:13+00:00",
+ "fecha": "2026-11-09T20:50:03+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -7,11 +7,11 @@
   },
   "remotive": {
    "ok": true,
-   "encontradas": 108
+   "encontradas": 96
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 2
+   "encontradas": 1
   },
   "workday:Givaudan": {
    "ok": false,
@@ -43,7 +43,7 @@
   },
   "workday:Mastercard": {
    "ok": true,
-   "encontradas": 7
+   "encontradas": 10
   },
   "eightfold:Mercado Libre": {
    "ok": false,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 146,
- "nuevas": 1,
+ "crudas": 136,
+ "nuevas": 0,
  "total": 127
 }

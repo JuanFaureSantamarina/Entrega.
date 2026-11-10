@@ -1,17 +1,17 @@
 {
- "fecha": "2026-11-09T20:50:03+00:00",
+ "fecha": "2026-11-10T17:55:48+00:00",
  "fuentes": {
   "linkedin": {
-   "ok": false,
-   "error": "HTTPError: HTTP Error 429: Too Many Requests"
+   "ok": true,
+   "encontradas": 498
   },
   "remotive": {
    "ok": true,
-   "encontradas": 96
+   "encontradas": 108
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 6
   },
   "workday:Givaudan": {
    "ok": false,
@@ -19,15 +19,15 @@
   },
   "workday:Mondelez": {
    "ok": true,
-   "encontradas": 3
+   "encontradas": 4
   },
   "workday:Kimberly-Clark": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 2
   },
   "workday:Coca-Cola": {
    "ok": true,
-   "encontradas": 3
+   "encontradas": 2
   },
   "workday:Johnson & Johnson": {
    "ok": true,
@@ -35,7 +35,7 @@
   },
   "workday:Pfizer": {
    "ok": true,
-   "encontradas": 5
+   "encontradas": 3
   },
   "workday:Salesforce": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 136,
- "nuevas": 0,
- "total": 127
+ "crudas": 650,
+ "nuevas": 22,
+ "total": 149
 }

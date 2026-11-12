@@ -1,5 +1,486 @@
 [
  {
+  "id": "linkedin-d02fbcb7f252",
+  "fuente": "linkedin",
+  "empresa": "Givaudan",
+  "puesto": "Accounts Payable Intern",
+  "link": "https://ar.linkedin.com/jobs/view/accounts-payable-intern-at-givaudan-4489983621",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 70,
+  "motivos": [
+   "título: accounts payable",
+   "empresa objetivo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-db6897f91b9f",
+  "fuente": "linkedin",
+  "empresa": "Globant",
+  "puesto": "Accounts Payable Analyst - Mid Level",
+  "link": "https://ar.linkedin.com/jobs/view/accounts-payable-analyst-mid-level-at-globant-4489275252",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 65,
+  "motivos": [
+   "título: accounts payable",
+   "empresa objetivo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-13490cd651a5",
+  "fuente": "linkedin",
+  "empresa": "Inspired Way",
+  "puesto": "Analista de Control de Gestión (La Salteña) - Jóvenes Profesionales Molinos",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-control-de-gesti%C3%B3n-la-salte%C3%B1a-j%C3%B3venes-profesionales-molinos-at-inspired-way-4489071619",
+  "ubicacion": "Burzaco, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 55,
+  "motivos": [
+   "título: control de gestión"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-626d8f24cbbb",
+  "fuente": "linkedin",
+  "empresa": "GDM",
+  "puesto": "BUSINESS OPERATIONS ANALYST III",
+  "link": "https://ar.linkedin.com/jobs/view/business-operations-analyst-iii-at-gdm-4479444142",
+  "ubicacion": "San Isidro, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations analyst"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-fa68b1ed0fdd",
+  "fuente": "linkedin",
+  "empresa": "SGS",
+  "puesto": "Analista de Operaciones",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-operaciones-at-sgs-4488538420",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista de operaciones"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-29ffd7d711b0",
+  "fuente": "linkedin",
+  "empresa": "SEGULA Technologies",
+  "puesto": "Analista de Compras – Desarrollo de Componentes",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-compras-%E2%80%93-desarrollo-de-componentes-at-segula-technologies-4473522873",
+  "ubicacion": "Cordoba, Córdoba, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista de compras"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-d8c1f2ff695f",
+  "fuente": "linkedin",
+  "empresa": "SGS",
+  "puesto": "Analista de Operaciones",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-operaciones-at-sgs-4488536494",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: analista de operaciones"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-8d0b24475a22",
+  "fuente": "linkedin",
+  "empresa": "Viva Talent",
+  "puesto": "Revenue Operations Specialist",
+  "link": "https://ar.linkedin.com/jobs/view/revenue-operations-specialist-at-viva-talent-4490358247",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: revenue operations"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-de3349ff1ed4",
+  "fuente": "linkedin",
+  "empresa": "Stayd Collective",
+  "puesto": "Cleaning Operations Coordinator",
+  "link": "https://ar.linkedin.com/jobs/view/cleaning-operations-coordinator-at-stayd-collective-4489080146",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 50,
+  "motivos": [
+   "título: operations coordinator"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-149fe733eabd",
+  "fuente": "linkedin",
+  "empresa": "PwC Argentina",
+  "puesto": "Junior – Auditoría Externa Contable",
+  "link": "https://ar.linkedin.com/jobs/view/junior-%E2%80%93-auditor%C3%ADa-externa-contable-at-pwc-argentina-4488259397",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 40,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-382f32f6dc49",
+  "fuente": "linkedin",
+  "empresa": "PwC Argentina",
+  "puesto": "Junior - Auditoría Externa Contable",
+  "link": "https://ar.linkedin.com/jobs/view/junior-auditor%C3%ADa-externa-contable-at-pwc-argentina-4488262284",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 40,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-93d9b89ae6e0",
+  "fuente": "linkedin",
+  "empresa": "Hires LATAM",
+  "puesto": "Jefe/a de Planeamiento y Control de Gestión",
+  "link": "https://ar.linkedin.com/jobs/view/jefe-a-de-planeamiento-y-control-de-gesti%C3%B3n-at-hires-latam-4489060170",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 35,
+  "motivos": [
+   "título: control de gestión",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-c974600cb902",
+  "fuente": "linkedin",
+  "empresa": "NCR Atleos",
+  "puesto": "Procurement Support Jr. Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/procurement-support-jr-analyst-at-ncr-atleos-4481144729",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-d0a5e4b27706",
+  "fuente": "linkedin",
+  "empresa": "Mercado Libre",
+  "puesto": "Analista de Estrategia Comercial - Fintech",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-estrategia-comercial-fintech-at-mercado-libre-4488531011",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 35,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-9354f937dca8",
+  "fuente": "linkedin",
+  "empresa": "Syneos Health",
+  "puesto": "Sr Technical Business Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/sr-technical-business-analyst-at-syneos-health-4488471591",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 35,
+  "motivos": [
+   "título: business analyst",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-61ed333cd548",
+  "fuente": "linkedin",
+  "empresa": "Recursos en Mente - Consultora de RRHH",
+  "puesto": "Analista de Mora – con experiencia en Administración y cobranzas (Empresa Financiera – La Plata)",
+  "link": "https://ar.linkedin.com/jobs/view/analista-de-mora-%E2%80%93-con-experiencia-en-administraci%C3%B3n-y-cobranzas-empresa-financiera-%E2%80%93-la-plata-at-recursos-en-mente-consultora-de-rrhh-4490054570",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 34,
+  "motivos": [
+   "título relacionado",
+   "skills: cobranza"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-340e395ade49",
+  "fuente": "linkedin",
+  "empresa": "EY",
+  "puesto": "Activation Center Recruiting Process Operations Specialist - Senior Associate - EY GDS",
+  "link": "https://ar.linkedin.com/jobs/view/activation-center-recruiting-process-operations-specialist-senior-associate-ey-gds-at-ey-4489030369",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 34,
+  "motivos": [
+   "título relacionado",
+   "skills: process",
+   "empresa objetivo",
+   "seniority alta"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-4af84e4c62ef",
+  "fuente": "linkedin",
+  "empresa": "SONDA",
+  "puesto": "Administrativo/a IT",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-a-it-at-sonda-4490369738",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-95f4b0161c88",
+  "fuente": "linkedin",
+  "empresa": "SanCor Salud Grupo de Medicina Privada",
+  "puesto": "Administrativo Facturación Empresa - Eventual",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-facturaci%C3%B3n-empresa-eventual-at-sancor-salud-grupo-de-medicina-privada-4490059038",
+  "ubicacion": "Rafaela, Santa Fe, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-11",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-11ab17d7aada",
+  "fuente": "linkedin",
+  "empresa": "Vertice - Consultoría de Talento Humano",
+  "puesto": "Responsable de Administración",
+  "link": "https://ar.linkedin.com/jobs/view/responsable-de-administraci%C3%B3n-at-vertice-consultor%C3%ADa-de-talento-humano-4488517877",
+  "ubicacion": "Rosario, Santa Fe, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-135ce749f595",
+  "fuente": "linkedin",
+  "empresa": "ExxonMobil",
+  "puesto": "Production & Revenue Accounting Analyst",
+  "link": "https://ar.linkedin.com/jobs/view/production-revenue-accounting-analyst-at-exxonmobil-4490397142",
+  "ubicacion": "Buenos Aires, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-045bb7443fb6",
+  "fuente": "linkedin",
+  "empresa": "Worley",
+  "puesto": "Vendor Administrator - Roster 14x14",
+  "link": "https://ar.linkedin.com/jobs/view/vendor-administrator-roster-14x14-at-worley-4490382806",
+  "ubicacion": "Salta, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-24a0c2e0bf14",
+  "fuente": "linkedin",
+  "empresa": "COTO",
+  "puesto": "Administrativo Técnico para Mantenimiento",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-t%C3%A9cnico-para-mantenimiento-at-coto-4488502901",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-2ad96eb81da8",
+  "fuente": "linkedin",
+  "empresa": "Mercado Libre",
+  "puesto": "Analista Senior de Contabilidad y Control",
+  "link": "https://ar.linkedin.com/jobs/view/analista-senior-de-contabilidad-y-control-at-mercado-libre-4488530975",
+  "ubicacion": "Greater Buenos Aires",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado",
+   "empresa objetivo",
+   "seniority alta"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-b073eabce8f4",
+  "fuente": "linkedin",
+  "empresa": "IC Consultora de Recursos Humanos",
+  "puesto": "Administrativo de Logística – GBA Norte",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-de-log%C3%ADstica-%E2%80%93-gba-norte-at-ic-consultora-de-recursos-humanos-4488554076",
+  "ubicacion": "General Pacheco, Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
+  "id": "linkedin-eefac1237c1d",
+  "fuente": "linkedin",
+  "empresa": "TALENT RECRUITERS",
+  "puesto": "Administrativo/a Back Office",
+  "link": "https://ar.linkedin.com/jobs/view/administrativo-a-back-office-at-talent-recruiters-4489269787",
+  "ubicacion": "Buenos Aires Province, Argentina",
+  "modalidad": "remoto",
+  "descripcion": "",
+  "publicada": "2026-11-12",
+  "puntaje": 30,
+  "motivos": [
+   "título relacionado"
+  ],
+  "nicho": "administracion",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-12"
+ },
+ {
   "id": "linkedin-6c12a889dab5",
   "fuente": "linkedin",
   "empresa": "MailAmericas",

@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-13T17:50:00+00:00",
+ "fecha": "2026-11-16T20:32:42+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -11,7 +11,7 @@
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 1
+   "encontradas": 4
   },
   "workday:Givaudan": {
    "ok": false,
@@ -19,7 +19,7 @@
   },
   "workday:Mondelez": {
    "ok": true,
-   "encontradas": 5
+   "encontradas": 4
   },
   "workday:Kimberly-Clark": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 167,
+ "crudas": 169,
  "nuevas": 0,
  "total": 175
 }

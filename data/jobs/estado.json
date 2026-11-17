@@ -1,13 +1,13 @@
 {
- "fecha": "2026-11-16T20:32:42+00:00",
+ "fecha": "2026-11-17T19:13:35+00:00",
  "fuentes": {
   "linkedin": {
-   "ok": false,
-   "error": "HTTPError: HTTP Error 429: Too Many Requests"
+   "ok": true,
+   "encontradas": 516
   },
   "remotive": {
    "ok": true,
-   "encontradas": 132
+   "encontradas": 120
   },
   "himalayas": {
    "ok": true,
@@ -43,7 +43,7 @@
   },
   "workday:Mastercard": {
    "ok": true,
-   "encontradas": 9
+   "encontradas": 8
   },
   "eightfold:Mercado Libre": {
    "ok": false,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 169,
- "nuevas": 0,
- "total": 175
+ "crudas": 672,
+ "nuevas": 37,
+ "total": 212
 }

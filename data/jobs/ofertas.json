@@ -1,5 +1,45 @@
 [
  {
+  "id": "workday-09205de04ec7",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "Business Operations Analyst",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/Business-Operations-Analyst_JR368438",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Today",
+  "puntaje": 55,
+  "motivos": [
+   "título: operations analyst",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-18"
+ },
+ {
+  "id": "workday-0e5ccce04e7c",
+  "fuente": "workday",
+  "empresa": "Salesforce",
+  "puesto": "Business Operations Analyst",
+  "link": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/Argentina---Buenos-Aires/Business-Operations-Analyst_JR368437",
+  "ubicacion": "Argentina - Buenos Aires",
+  "modalidad": "",
+  "descripcion": "",
+  "publicada": "Posted Today",
+  "puntaje": 55,
+  "motivos": [
+   "título: operations analyst",
+   "empresa objetivo",
+   "modalidad a confirmar"
+  ],
+  "nicho": "operaciones",
+  "mercado": "argentina",
+  "fecha_encontrada": "2026-11-18"
+ },
+ {
   "id": "linkedin-811078d9da75",
   "fuente": "linkedin",
   "empresa": "EY",

@@ -1,5 +1,43 @@
 [
  {
+  "id": "himalayas-793db422b16d",
+  "fuente": "himalayas",
+  "empresa": "NeoWork",
+  "puesto": "Operations Associate",
+  "link": "https://himalayas.app/companies/neowork/jobs/operations-associate-8896569455?utm_source=api",
+  "ubicacion": "Argentina",
+  "modalidad": "remoto",
+  "descripcion": "NeoWork is hiring Operations Associates to keep day-to-day processes running smoothly for U.S. companies. You will handle back-office tasks, maintain systems and data, and help teams run more efficiently. NeoWork is a global staffing and operations partner that builds dedicated remote teams for fast-growing U.S. companies. Our teammates work directly inside our clients' teams and tools, while NeoWork takes care of recruiting, HR, benefits, and ongoing support. Key Responsibilities Execute daily operational workflows and back-office tasks • Maintain accurate data in CRMs, spreadsheets, and internal systems • Coordinate with internal teams and vendors to resolve issues • Document processes and keep SOPs up to date • Prepare basic reports and track operational metrics • Support special projects as the business grows Requirements 1+ year of experience in operations, administration, or a similar role • Strong attention to detail and organization • Proficiency in Excel or Google Sheets • Good written and spoken English Comfortable learning new tools quickly • Availability to work U.S. business hours • Based in Argentina, with a reliable home office setup and stable internet connection Nice to Have • Experience with CRM tools or automation tools such as Zapier • Experience in a startup or fast-paced environment • Fluency in Spanish Benefits We offer health insurance for contractors • Holiday Extra Pay The work hours generally align with standard business hours in the US, with some p",
+  "publicada": "1795108014",
+  "puntaje": 74,
+  "motivos": [
+   "título: operations associate",
+   "skills: excel, automation, process, crm"
+  ],
+  "nicho": "operaciones",
+  "mercado": "exterior",
+  "fecha_encontrada": "2026-11-19"
+ },
+ {
+  "id": "himalayas-886a4e11bd8a",
+  "fuente": "himalayas",
+  "empresa": "Agentic Dream",
+  "puesto": "Business Analyst | Remote LATAM Only",
+  "link": "https://himalayas.app/companies/agentic-dream/jobs/business-analyst-remote-latam-only?utm_source=api",
+  "ubicacion": "Anguilla, Antigua and Barbuda, Argentina, Aruba, Bahamas, Barbados, Belize, Bermuda, Bolivia, Bonaire, Sint Eustatius and Saba, Brazil, Cayman Islands, Chile, Colombia, Costa Rica, Cuba, Dominica, Dominican Republic, Ecuador, El Salvador, Falkland Islands (Malvinas), Grenada, Guatemala, Guyana, Haiti, Honduras, Jamaica, Mexico, Montserrat, Nicaragua, Panama, Paraguay, Peru, Puerto Rico, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, South Georgia and the South Sandwich Islands, Suriname, Trinidad and Tobago, Turks and Caicos Islands, Uruguay, Venezuela, Virgin Islands, British, Virgin Islands, U.S.",
+  "modalidad": "remoto",
+  "descripcion": "We are seeking a Senior Business Analyst with a hybrid profile and strong technical capability to lead the full lifecycle of integration and automation projects. The candidate will serve as the strategic bridge between business needs and technical execution, translating complex processes into functional requirements, as well as documenting and managing automated workflows in UiPath and GlobalCapture. Key Responsibilities Create detailed requirements and lead the execution of integration projects. Document and manage business logic in automations using UiPath. Administer workflows and intelligent data capture in GlobalCapture. Ensure alignment between business stakeholders and the development team. Key Requirements Essential Skills (Hard Skills) Expert command of the software development lifecycle (SDLC) and agile methodologies. Advanced experience gathering requirements for system integrations (APIs, middleware). Ability to document logical architecture diagrams and data mapping. Knowledge of document capture tools (OCR) and content management. Developer Role Skills (Technical Stack): RPA: Managing and documenting processes in UiPath. Document Management: Technical configuration in GlobalCapture (Square 9). Data: SQL queries to validate data flows. Required Years of Experience: Minimum 6 to 8 years in similar roles (BA / Technical PM). - Required English Level: C1 / C2 (Advanced / Bilingual) Originally posted on Himalayas",
+  "publicada": "1795108031",
+  "puntaje": 70,
+  "motivos": [
+   "título: business analyst",
+   "skills: sql, automation, process, workflow"
+  ],
+  "nicho": "operaciones",
+  "mercado": "exterior",
+  "fecha_encontrada": "2026-11-19"
+ },
+ {
   "id": "workday-09205de04ec7",
   "fuente": "workday",
   "empresa": "Salesforce",

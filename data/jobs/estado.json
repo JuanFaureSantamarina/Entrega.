@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-19T19:02:15+00:00",
+ "fecha": "2026-11-20T18:38:26+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -11,7 +11,7 @@
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 12
+   "encontradas": 5
   },
   "workday:Givaudan": {
    "ok": false,
@@ -23,7 +23,7 @@
   },
   "workday:Kimberly-Clark": {
    "ok": true,
-   "encontradas": 4
+   "encontradas": 5
   },
   "workday:Coca-Cola": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 14
+   "encontradas": 15
   },
   "workday:Mastercard": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 158,
- "nuevas": 2,
+ "crudas": 153,
+ "nuevas": 0,
  "total": 216
 }

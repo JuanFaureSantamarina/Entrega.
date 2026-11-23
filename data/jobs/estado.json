@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-20T18:38:26+00:00",
+ "fecha": "2026-11-23T22:05:17+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -7,11 +7,11 @@
   },
   "remotive": {
    "ok": true,
-   "encontradas": 108
+   "encontradas": 96
   },
   "himalayas": {
    "ok": true,
-   "encontradas": 5
+   "encontradas": 1
   },
   "workday:Givaudan": {
    "ok": false,
@@ -35,11 +35,11 @@
   },
   "workday:Pfizer": {
    "ok": true,
-   "encontradas": 3
+   "encontradas": 4
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 15
+   "encontradas": 16
   },
   "workday:Mastercard": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 153,
+ "crudas": 139,
  "nuevas": 0,
  "total": 216
 }

@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-23T22:05:17+00:00",
+ "fecha": "2026-11-24T20:41:32+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -23,7 +23,7 @@
   },
   "workday:Kimberly-Clark": {
    "ok": true,
-   "encontradas": 5
+   "encontradas": 6
   },
   "workday:Coca-Cola": {
    "ok": true,
@@ -35,11 +35,11 @@
   },
   "workday:Pfizer": {
    "ok": true,
-   "encontradas": 4
+   "encontradas": 2
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 16
+   "encontradas": 17
   },
   "workday:Mastercard": {
    "ok": true,

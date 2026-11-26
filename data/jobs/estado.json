@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-25T19:58:30+00:00",
+ "fecha": "2026-11-26T19:41:52+00:00",
  "fuentes": {
   "linkedin": {
    "ok": false,
@@ -39,7 +39,7 @@
   },
   "workday:Salesforce": {
    "ok": true,
-   "encontradas": 17
+   "encontradas": 18
   },
   "workday:Mastercard": {
    "ok": true,
@@ -58,7 +58,7 @@
    "encontradas": 0
   }
  },
- "crudas": 153,
+ "crudas": 154,
  "nuevas": 0,
  "total": 216
 }
